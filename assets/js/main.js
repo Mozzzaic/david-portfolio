@@ -32,10 +32,15 @@ const translations = {
     "hero.meta2": "🕒 Landing possible within 72 hours",
     "hero.meta3": "🌐 French, English, Portuguese, Spanish",
 
-    "home.placeholder.kicker": "Home",
-    "home.placeholder.title": "Home hub coming soon",
-    "home.placeholder.subtitle": "I’m turning this page into a small hub that points to client work, creative projects and resources. In the meantime, you can explore my web services.",
-    "home.placeholder.cta": "See Web / Services",
+    "home.kicker": "Digital practice · Berlin",
+    "home.title": "Hey there, I’m David.",
+    "home.subtitle": "I build clear, fast websites for creatives and small teams — and spend the rest of my time chasing light and sound.",
+    "home.web.title": "Web / Services",
+    "home.web.subtitle": "Landing pages & showcase sites to move your project forward.",
+    "home.portfolio.title": "Photo portfolio",
+    "home.portfolio.subtitle": "Places, faces and late nights — selected series.",
+    "home.lab.title": "Creative Lab",
+    "home.lab.subtitle": "Ableton, textures and visual/sonic experiments.",
 
     "fit.kicker": "Who it’s for",
     "fit.title": "Who I work with",
@@ -214,10 +219,15 @@ const translations = {
     "hero.meta2": "🕒 Landing possible en 72 h",
     "hero.meta3": "🌐 Français, Anglais, Portugais, Espagnol",
 
-    "home.placeholder.kicker": "Accueil",
-    "home.placeholder.title": "Hub principal à venir",
-    "home.placeholder.subtitle": "Je transforme cette page en un petit hub vers les projets clients, créations et ressources. En attendant, explorez la page Web / Services.",
-    "home.placeholder.cta": "Voir Web / Services",
+    "home.kicker": "Pratique digitale · Berlin",
+    "home.title": "Salut, moi c’est David.",
+    "home.subtitle": "Je crée des sites clairs et rapides pour des créatifs et petites structures — et je passe le reste de mon temps à traquer la lumière et le son.",
+    "home.web.title": "Web / Services",
+    "home.web.subtitle": "Landing pages & sites vitrines pour faire avancer votre projet.",
+    "home.portfolio.title": "Portfolio photo",
+    "home.portfolio.subtitle": "Lieux, visages et nuits tardives — une sélection de séries.",
+    "home.lab.title": "Creative Lab",
+    "home.lab.subtitle": "Ableton, textures et expérimentations visuelles/sonores.",
 
     "fit.kicker": "Pour qui",
     "fit.title": "Avec qui je travaille",
@@ -457,6 +467,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
   if (!prefersReducedMotion.matches) {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       const href = anchor.getAttribute("href");

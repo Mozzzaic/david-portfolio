@@ -1,3 +1,112 @@
+/* Home hero -------------------------------------------------------------- */
+
+.home-hero {
+  min-height: calc(100vh - 7rem);
+  display: flex;
+  align-items: center;
+  padding: clamp(4rem, 10vw, 7rem) 0 clamp(3rem, 8vw, 6rem);
+}
+
+.home-hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+  max-width: 780px;
+}
+
+.home-hero__kicker {
+  color: var(--accent);
+  letter-spacing: 0.12em;
+}
+
+.home-hero__title {
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.home-hero__subtitle {
+  margin: 0;
+  font-size: clamp(1.05rem, 2.3vw, 1.25rem);
+  max-width: 38rem;
+  color: color-mix(in srgb, var(--text) 90%, transparent);
+}
+
+.home-doors {
+  display: grid;
+  gap: clamp(1.4rem, 3vw, 2rem);
+  margin-top: clamp(2rem, 6vw, 3rem);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.home-door {
+  border-radius: calc(var(--radius) * 0.9);
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
+  background: color-mix(in srgb, var(--accent) 14%, var(--bg));
+  padding: clamp(1.6rem, 4vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 9.5rem;
+  transition:
+    transform var(--transition-snappy),
+    background-color var(--transition-snappy),
+    border-color var(--transition-snappy),
+    box-shadow var(--transition-snappy);
+}
+
+.home-door:hover,
+.home-door:focus-visible {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 52%, var(--border));
+  background: color-mix(in srgb, var(--accent) 22%, var(--bg));
+  box-shadow: 0 18px 32px color-mix(in srgb, var(--accent) 16%, transparent);
+  outline: none;
+}
+
+.home-door:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  outline-offset: 4px;
+}
+
+.home-door__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.home-door__subtitle {
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--text) 75%, transparent);
+}
+
+@media (max-width: 720px) {
+  .home-hero {
+    min-height: auto;
+  }
+
+  .home-hero__inner {
+    gap: 1.6rem;
+  }
+
+  .home-doors {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero {
+    min-height: auto;
+  }
+
+  .home-door {
+    transition:
+      background-color 200ms ease,
+      border-color 200ms ease,
+      box-shadow 200ms ease;
+  }
+}
+
 /* Page-specific shells for home and creative pages */
 .page-placeholder {
   padding: var(--space-section-tight) 0 var(--space-section);

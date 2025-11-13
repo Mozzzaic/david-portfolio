@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/home.css">
 </head>
-<body>
+<body class="page--home">
   <header>
     <div class="container nav" aria-label="Site header">
       <div class="nav-left">
@@ -43,9 +43,6 @@
         <a href="web.html" class="nav-link" data-i18n="nav.web">Web / Services</a>
         <a href="portfolio.html" class="nav-link" data-i18n="nav.portfolio">Portfolio</a>
         <a href="creative-lab.html" class="nav-link" data-i18n="nav.lab">Creative Lab</a>
-        <a href="{CALENDLY_URL}" class="btn btn-secondary" aria-label="Book a 15-minute call with David — no sales pressure, just a plan" data-i18n="nav.cta">
-          15-min call
-        </a>
       </nav>
       <div class="lang-switch" aria-label="Language switcher">
         <button class="btn btn-ghost" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
@@ -55,17 +52,36 @@
   </header>
 
   <main>
-    <section class="page-placeholder" id="home">
-      <div class="container">
-        <p class="section-kicker" data-i18n="home.placeholder.kicker">Home</p>
-        <h1 data-i18n="home.placeholder.title">Home hub coming soon</h1>
-        <p data-i18n="home.placeholder.subtitle">
-          I’m turning this page into a small hub that points to client work, creative projects and resources.
-          In the meantime, you can explore my web services.
+    <section class="home-hero hero--intro" id="hero">
+      <div class="container home-hero__inner">
+        <p class="section-kicker home-hero__kicker" data-i18n="home.kicker">Digital practice · Berlin</p>
+        <h1 class="home-hero__title" data-i18n="home.title">Hey there, I’m David.</h1>
+        <p class="home-hero__subtitle" data-i18n="home.subtitle">
+          I build clear, fast websites for creatives and small teams — and spend the rest of my time chasing light and sound.
         </p>
-        <a href="web.html" class="btn btn-primary" data-i18n="home.placeholder.cta">
-          See Web / Services
-        </a>
+
+        <div class="home-doors" role="list">
+          <a href="web.html" class="home-door" role="listitem">
+            <span class="home-door__title" data-i18n="home.web.title">Web / Services</span>
+            <span class="home-door__subtitle" data-i18n="home.web.subtitle">
+              Landing pages &amp; showcase sites to move your project forward.
+            </span>
+          </a>
+
+          <a href="portfolio.html" class="home-door" role="listitem">
+            <span class="home-door__title" data-i18n="home.portfolio.title">Photo portfolio</span>
+            <span class="home-door__subtitle" data-i18n="home.portfolio.subtitle">
+              Places, faces and late nights — selected series.
+            </span>
+          </a>
+
+          <a href="creative-lab.html" class="home-door" role="listitem">
+            <span class="home-door__title" data-i18n="home.lab.title">Creative Lab</span>
+            <span class="home-door__subtitle" data-i18n="home.lab.subtitle">
+              Ableton, textures and visual/sonic experiments.
+            </span>
+          </a>
+        </div>
       </div>
     </section>
   </main>
