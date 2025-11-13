@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>David Pinheiro – Web Developer, landing pages & showcase sites</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Berlin-based web developer creating fast, clear landing pages and showcase sites for freelancers and small businesses across Europe.">
+  <link rel="canonical" href="https://davidpinheiro.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="David Pinheiro – Web Developer, landing pages & showcase sites">
+  <meta property="og:description" content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses. Based in Berlin, available remote in the EU.">
+  <meta property="og:url" content="https://davidpinheiro.dev/">
+  <meta property="og:image" content="https://davidpinheiro.dev/og-image.jpg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="David Pinheiro – Web Developer, landing pages & showcase sites">
+  <meta name="twitter:description" content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses.">
+  <meta name="twitter:image" content="https://davidpinheiro.dev/og-image.jpg">
+
+  <!-- Favicon minimal -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%232563eb'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='32' fill='white'>D</text></svg>">
+
+  <!-- Fonts (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+  <header>
+    <div class="container nav" aria-label="Site header">
+      <div class="nav-left">
+        <span data-i18n="nav.name">David Pinheiro</span>
+        <span class="nav-tag" data-i18n="nav.role">Web Developer</span>
+      </div>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="web.html" class="nav-link nav-link--active" data-i18n="nav.web" aria-current="page">Web / Services</a>
+        <a href="portfolio.html" class="nav-link" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="creative-lab.html" class="nav-link" data-i18n="nav.lab">Creative Lab</a>
+        <a href="{CALENDLY_URL}" class="btn btn-secondary" aria-label="Book a 15-minute call with David — no sales pressure, just a plan" data-i18n="nav.cta">
+          15-min call
+        </a>
+      </nav>
+      <div class="lang-switch" aria-label="Language switcher">
+        <button class="btn btn-ghost" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+        <button class="btn btn-ghost" type="button" data-lang-btn="fr" aria-pressed="false">FR</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero hero--intro" id="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="section-kicker" data-i18n="hero.kicker">Landing pages & showcase sites</p>
+          <h1 data-i18n="hero.title">Clean, fast pages that make people click.</h1>
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
+            I design and build landing pages and showcase sites that explain your offer clearly,
+            load fast and guide visitors to your main action: booking, quote request, or purchase.
+          </p>
+          <div class="hero-tags">
+            <span class="pill" data-i18n="hero.tag1">Based in Berlin</span>
+            <span class="pill" data-i18n="hero.tag2">Remote EU</span>
+            <span class="pill" data-i18n="hero.tag3">FR / EN / PT / ES</span>
+          </div>
+          <div class="hero-actions">
+            <a href="{CALENDLY_URL}" class="btn btn-primary" aria-label="Book a 15-minute call with David — no sales pressure, just a plan" data-i18n="hero.cta_primary">
+              Book a 15-min call
+            </a>
+            <a href="#offers" class="btn btn-secondary" aria-label="Jump to the service packs section" data-i18n="hero.cta_secondary">
+              See the 3 packs
+            </a>
+          </div>
+          <p class="hero-note" data-i18n="hero.note">
+            In 15 minutes, we clarify your needs, outline the plan, budget and next steps. No sales pitch.
+          </p>
+        </div>
+        <aside class="hero-card" aria-label="Key guarantees">
+          <strong data-i18n="hero.card_title">What you get</strong>
+          <ul>
+            <li data-i18n="hero.card_li1">A site that is easy to understand for your visitors.</li>
+            <li data-i18n="hero.card_li2">Optimised loading time, especially on mobile.</li>
+            <li data-i18n="hero.card_li3">Basic SEO and Analytics (GA4) already plugged in.</li>
+          </ul>
+          <div class="hero-meta">
+            <div class="hero-meta-row">
+              <span data-i18n="hero.meta1">📍 Berlin & remote EU</span>
+              <span data-i18n="hero.meta2">🕒 Landing possible within 72 hours</span>
+            </div>
+            <div class="hero-meta-row">
+              <span data-i18n="hero.meta3">🌐 French, English, Portuguese, Spanish</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- WHO THIS IS FOR -->
+    <section id="fit" aria-labelledby="fit-title">
+      <div class="container">
+        <p class="section-kicker" data-i18n="fit.kicker">Who it’s for</p>
+        <h2 class="section-title" id="fit-title" data-i18n="fit.title">Who I work with</h2>
+        <p class="section-subtitle" data-i18n="fit.subtitle">
+          I mostly collaborate with small, nimble teams who need clarity and momentum.
+        </p>
+        <div class="who-grid" role="list">
+          <div class="who-item" role="listitem" data-i18n="fit.item1">
+            Freelance creatives launching a new offer or productized service.
+          </div>
+          <div class="who-item" role="listitem" data-i18n="fit.item2">
+            Small studios needing a landing page that explains their positioning fast.
+          </div>
+          <div class="who-item" role="listitem" data-i18n="fit.item3">
+            Coaches and consultants who want leads to book a call without hunting for information.
+          </div>
+          <div class="who-item" role="listitem" data-i18n="fit.item4">
+            Bootstrapped SaaS or e-commerce founders polishing their early-stage presence.
+          </div>
+        </div>
+        <p class="who-note" data-i18n="fit.note">
+          Past work with: business coach, photo studio, boutique agency, SaaS advisor.
+        </p>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="proof" aria-labelledby="proof-title">
+      <div class="container">
+        <p class="section-kicker" data-i18n="proof.kicker">Social proof</p>
+        <h2 class="section-title" id="proof-title" data-i18n="proof.title">What clients say after launch</h2>
+        <p class="section-subtitle" data-i18n="proof.subtitle">
+          Short notes from recent projects — straight to the point, like the sites we ship.
+        </p>
+        <div class="testimonials-grid" role="list">
+          <figure class="testimonial" role="listitem" aria-labelledby="proof-quote1">
+            <blockquote>
+              <p id="proof-quote1" data-i18n="proof.quote1">
+                “David distilled my messy draft into something clients actually read. Calls doubled the first week.”
+              </p>
+            </blockquote>
+            <cite data-i18n="proof.author1">Lina S. — Creative coach</cite>
+          </figure>
+          <figure class="testimonial" role="listitem" aria-labelledby="proof-quote2">
+            <blockquote>
+              <p id="proof-quote2" data-i18n="proof.quote2">
+                “We shipped a new landing page in three days. Clean, fast, and easy for my team to tweak later.”
+              </p>
+            </blockquote>
+            <cite data-i18n="proof.author2">Mark P. — Boutique studio lead</cite>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFERS -->
+    <section id="offers">
+      <div class="container">
+        <p class="section-kicker" data-i18n="offers.kicker">Service packs</p>
+        <h2 class="section-title" data-i18n="offers.title">3 clear packs to get online quickly</h2>
+        <p class="section-subtitle" data-i18n="offers.subtitle">
+          Each pack comes with a defined scope, price range and realistic timeline.
+          You provide the content (text, images, logo), I handle the rest.
+        </p>
+
+        <div class="cards" aria-label="Service offers">
+          <!-- Landing 72h -->
+          <article class="card">
+            <header class="card-header">
+              <div>
+                <h3 class="card-title" data-i18n="offers.landing.title">Landing 72h</h3>
+                <p class="card-delay" data-i18n="offers.landing.subtitle">1–3 sections, fast launch</p>
+              </div>
+              <div>
+                <div class="card-price" data-i18n="offers.landing.price">€500–900</div>
+                <div class="card-tag" data-i18n="offers.landing.tag">~72h</div>
+              </div>
+            </header>
+            <p class="card-intro" data-i18n="offers.landing.intro">
+              Perfect to test an offer, a campaign or an event with one clear, focused page.
+            </p>
+            <ul>
+              <li data-i18n="offers.landing.li1">Simple structure: hero, benefits, proof / contact.</li>
+              <li data-i18n="offers.landing.li2">Uses your existing visual identity.</li>
+              <li data-i18n="offers.landing.li3">Main CTA: form, email, Calendly, etc.</li>
+              <li data-i18n="offers.landing.li4">Basic SEO (title, meta, headings, alt tags).</li>
+            </ul>
+            <div class="card-footer" data-i18n="offers.landing.footer">
+              Timeline: up to 72 hours after receiving approved content.<br>
+              1 round of revisions included.
+            </div>
+          </article>
+
+          <!-- Showcase site -->
+          <article class="card">
+            <header class="card-header">
+              <div>
+                <h3 class="card-title" data-i18n="offers.vitrine.title">Showcase site (3–5 pages)</h3>
+                <p class="card-delay" data-i18n="offers.vitrine.subtitle">For freelancers, studios, small businesses</p>
+              </div>
+              <div>
+                <div class="card-price" data-i18n="offers.vitrine.price">€1,000–2,000</div>
+                <div class="card-tag" data-i18n="offers.vitrine.tag">~2 weeks</div>
+              </div>
+            </header>
+            <p class="card-intro" data-i18n="offers.vitrine.intro">
+              A complete site to present who you are, what you do and how to work with you.
+            </p>
+            <ul>
+              <li data-i18n="offers.vitrine.li1">3–5 pages (Home, About, Services, Portfolio, Contact…)</li>
+              <li data-i18n="offers.vitrine.li2">Responsive design, readable on mobile and desktop.</li>
+              <li data-i18n="offers.vitrine.li3">Basic SEO + simple sitemap.</li>
+              <li data-i18n="offers.vitrine.li4">Google Analytics 4 setup with basic events.</li>
+            </ul>
+            <div class="card-footer" data-i18n="offers.vitrine.footer">
+              Approx. 2 weeks after the wireframe is approved and content is complete.
+            </div>
+          </article>
+
+          <!-- Maintenance -->
+          <article class="card">
+            <header class="card-header">
+              <div>
+                <h3 class="card-title" data-i18n="offers.maintenance.title">Monthly maintenance</h3>
+                <p class="card-delay" data-i18n="offers.maintenance.subtitle">Keep your site clean & up to date</p>
+              </div>
+              <div>
+                <div class="card-price" data-i18n="offers.maintenance.price">€120–250 / month</div>
+                <div class="card-tag" data-i18n="offers.maintenance.tag">monthly</div>
+              </div>
+            </header>
+            <p class="card-intro" data-i18n="offers.maintenance.intro">
+              You keep a living site without worrying about updates and small fixes.
+            </p>
+            <ul>
+              <li data-i18n="offers.maintenance.li1">Simple content updates.</li>
+              <li data-i18n="offers.maintenance.li2">Backups & basic checks.</li>
+              <li data-i18n="offers.maintenance.li3">Small design tweaks or new sections.</li>
+              <li data-i18n="offers.maintenance.li4">Light performance and traffic overview.</li>
+            </ul>
+            <div class="card-footer" data-i18n="offers.maintenance.footer">
+              Price depends on volume. Monthly, cancellable with notice.
+            </div>
+          </article>
+        </div>
+
+        <div class="inline-list">
+          <strong data-i18n="mentions.title">Quick terms:</strong>
+          <ul>
+            <li data-i18n="mentions.li1">30% upfront, 70% on delivery.</li>
+            <li data-i18n="mentions.li2">1 round of revisions included per pack (extra rounds on quote).</li>
+            <li data-i18n="mentions.li3">Content (text, images, logo) is provided by the client.</li>
+            <li data-i18n="mentions.li4">Timeline pauses if we are waiting for content or approvals.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="container">
+        <p class="section-kicker" data-i18n="process.kicker">Process</p>
+        <h2 class="section-title" data-i18n="process.title">From idea to live site, with minimal friction</h2>
+        <p class="section-subtitle" data-i18n="process.subtitle">
+          The goal: move from “we should have a proper site” to “here’s the link, share it” without unnecessary meetings.
+        </p>
+
+        <div class="process-grid" aria-label="Process steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-title" data-i18n="process.step1.title">Quick brief (30 min)</div>
+            <p data-i18n="process.step1.text">
+              We clarify your audience, offer and primary action (leads, sales, bookings).
+              You send what you already have: logo, copy drafts, visuals, references.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-title" data-i18n="process.step2.title">Structure & wireframe</div>
+            <p data-i18n="process.step2.text">
+              I prepare a simple structure or wireframe with a clear user journey.
+              We adjust once together before I start coding.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-title" data-i18n="process.step3.title">Build & go live</div>
+            <p data-i18n="process.step3.text">
+              I develop the page, optimise performance, connect your domain and GA4.
+              You get a live site, plus access and a short handover.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASES -->
+    <section id="cases">
+      <div class="container">
+        <p class="section-kicker" data-i18n="cases.kicker">Case studies</p>
+        <h2 class="section-title" data-i18n="cases.title">Before / after: more clarity, more action</h2>
+        <p class="section-subtitle" data-i18n="cases.subtitle">
+          Two recent redesigns: same core content, but better structure, clearer message and stronger CTAs.
+        </p>
+
+        <div class="cases-grid">
+          <article class="case">
+            <div class="case-label" data-i18n="cases.case1.label">Case 1</div>
+            <h3 data-i18n="cases.case1.title">Wellness coach – Landing 72h</h3>
+            <p data-i18n="cases.case1.before">
+              <strong>Before:</strong> long page, dense text, weak CTA, no clear message above the fold.
+            </p>
+            <p data-i18n="cases.case1.after">
+              <strong>After:</strong> hero focused on a clear target, 3 concrete benefits, one strong Calendly CTA on desktop and mobile.
+            </p>
+            <p data-i18n="cases.case1.result">
+              <strong>Result:</strong> smoother journey, more calls booked from mobile, positive feedback on clarity.
+            </p>
+          </article>
+
+          <article class="case">
+            <div class="case-label" data-i18n="cases.case2.label">Case 2</div>
+            <h3 data-i18n="cases.case2.title">Photo studio in Berlin – Showcase site</h3>
+            <p data-i18n="cases.case2.before">
+              <strong>Before:</strong> slow site, confusing portfolio, technical copy, menu that didn’t speak to clients.
+            </p>
+            <p data-i18n="cases.case2.after">
+              <strong>After:</strong> 4 clear pages (Home, Portfolio, Services, Contact), optimised images, simple navigation, shorter copy.
+            </p>
+            <p data-i18n="cases.case2.result">
+              <strong>Result:</strong> faster loading, better mobile UX, more qualified quote requests.
+            </p>
+          </article>
+        </div>
+
+        <div class="before-after" aria-label="Before and after screenshots">
+          <div class="ba-item">
+            <div class="ba-label" data-i18n="cases.before_label">Before</div>
+            <img
+              src="{CASE1_BEFORE_URL}"
+              alt="Screenshot of the site before the redesign"
+              loading="lazy"
+              class="ba-img">
+          </div>
+          <div class="ba-item">
+            <div class="ba-label" data-i18n="cases.after_label">After</div>
+            <img
+              src="{CASE1_AFTER_URL}"
+              alt="Screenshot of the site after the redesign"
+              loading="lazy"
+              class="ba-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <p class="section-kicker" data-i18n="about.kicker">About</p>
+        <h2 class="section-title" data-i18n="about.title">Berlin-based web developer with a creative background</h2>
+        <p class="section-subtitle" data-i18n="about.subtitle">
+          I come from photography and music, and I apply the same mindset to the web:
+          remove noise, keep the essential, and make it pleasant to look at and use.
+        </p>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <p class="about-highlight" data-i18n="about.speed">
+              <strong>Speed:</strong> simple, lightweight stack (HTML, CSS, JS) so your site is quick to build and easy to maintain.
+            </p>
+            <p class="about-highlight" data-i18n="about.design">
+              <strong>Design:</strong> clean layouts, readable type, real breathing space, focus on your message and visuals.
+            </p>
+            <p class="about-highlight" data-i18n="about.support">
+              <strong>Support:</strong> I help you prioritise, structure your content and decide what really deserves to be on the page.
+            </p>
+            <p class="about-meta" data-i18n="about.languages">
+              Languages: French, English, Portuguese, Spanish – handy if you work across different markets or teams.
+            </p>
+          </div>
+          <div class="about-card">
+            <p data-i18n="about.text1">
+              Based in Berlin, I work with freelancers, creative studios and small businesses in Germany, France and across the EU.
+            </p>
+            <p data-i18n="about.text2">
+              My goal: a site you’re not shy to share, because it finally matches who you are and what you offer.
+            </p>
+            <p>
+              GitHub : <a href="https://github.com/Mozzzaic" target="_blank" rel="noreferrer">github.com/Mozzzaic</a><br>
+              Instagram : <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noreferrer">@dvd.phr</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <p class="section-kicker" data-i18n="faq.kicker">FAQ</p>
+        <h2 class="section-title" data-i18n="faq.title">Quick answers</h2>
+        <p class="section-subtitle" data-i18n="faq.subtitle">
+          A few common questions. The rest is easier to cover in a short call.
+        </p>
+
+        <div class="faq-grid">
+          <details aria-labelledby="faq-q1">
+            <summary aria-controls="faq-a1">
+              <span class="faq-question" id="faq-q1" data-i18n="faq.q1">How much does a project cost?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <p id="faq-a1" data-i18n="faq.a1">
+              Most projects fit one of the three packs: landing from €500–900, showcase site from €1,000–2,000,
+              maintenance from €120–250/month. A precise quote comes after the brief.
+            </p>
+          </details>
+
+          <details aria-labelledby="faq-q2">
+            <summary aria-controls="faq-a2">
+              <span class="faq-question" id="faq-q2" data-i18n="faq.q2">What are the typical timelines?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <p id="faq-a2" data-i18n="faq.a2">
+              A simple landing can be ready within 72 hours once content is final.
+              A 3–5 page site usually takes around 2 weeks after the structure is approved.
+            </p>
+          </details>
+
+          <details aria-labelledby="faq-q3">
+            <summary aria-controls="faq-a3">
+              <span class="faq-question" id="faq-q3" data-i18n="faq.q3">Who writes the copy and provides images?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <p id="faq-a3" data-i18n="faq.a3">
+              You provide copy, logo and visuals. I guide you on length, clarity and missing pieces.
+              I can also simplify or slightly rewrite your existing copy.
+            </p>
+          </details>
+
+          <details aria-labelledby="faq-q4">
+            <summary aria-controls="faq-a4">
+              <span class="faq-question" id="faq-q4" data-i18n="faq.q4">How many revisions are included?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <p id="faq-a4" data-i18n="faq.a4">
+              Each pack includes 1 round of revisions (copy & micro design tweaks). Extra rounds are possible with an additional quote or hourly rate.
+            </p>
+          </details>
+
+          <details aria-labelledby="faq-q5">
+            <summary aria-controls="faq-a5">
+              <span class="faq-question" id="faq-q5" data-i18n="faq.q5">Who owns the site once it’s live?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <p id="faq-a5" data-i18n="faq.a5">
+              You own the site, the code and the domain. I hand over all access (hosting, CMS if any, analytics) at the end of the project.
+            </p>
+          </details>
+
+          <details aria-labelledby="faq-q6">
+            <summary aria-controls="faq-a6">
+              <span class="faq-question" id="faq-q6" data-i18n="faq.q6">Is SEO and Analytics included?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <p id="faq-a6" data-i18n="faq.a6">
+              Yes, basic SEO is included (title, meta, structure, alt tags, performance)
+              and I integrate Google Analytics 4 with simple events on your key CTAs.
+            </p>
+          </details>
+        </div>
+
+        <div class="checklist">
+          <strong data-i18n="checklist.title">Quality checklist applied to every project:</strong>
+          <ul>
+            <li data-i18n="checklist.li1">Responsive layout (mobile / tablet / desktop).</li>
+            <li data-i18n="checklist.li2">Optimised images (WebP, ≤ 200 KB) with lazy loading.</li>
+            <li data-i18n="checklist.li3">One H1, clear heading hierarchy, basic SEO meta.</li>
+            <li data-i18n="checklist.li4">Alt text on images and accessible contrast.</li>
+            <li data-i18n="checklist.li5">GA4 setup with simple event tracking.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <p class="section-kicker" data-i18n="contact.kicker">Contact</p>
+        <h2 class="section-title" data-i18n="contact.title">Book a 15-minute call</h2>
+        <p class="section-subtitle" data-i18n="contact.subtitle">
+          Tell me where you are (idea, draft, existing site) and what you want your next site to do for you.
+        </p>
+
+        <div class="contact-card">
+          <div class="contact-info">
+            <p class="contact-highlight" data-i18n="contact.highlight">
+              A short call, a concrete plan: scope, budget, timeline.
+            </p>
+            <p data-i18n="contact.location">
+              📍 Based in Berlin, working remotely across the EU.
+            </p>
+            <p>
+              ✉️ Email : <a href="mailto:david.pinheiro.d@gmail.com">david.pinheiro.d@gmail.com</a>
+            </p>
+            <p>
+              GitHub : <a href="https://github.com/Mozzzaic" target="_blank" rel="noreferrer">github.com/Mozzzaic</a><br>
+              Instagram : <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noreferrer">@dvd.phr</a>
+            </p>
+            <p data-i18n="contact.langs">
+              Languages: French, English, Portuguese, Spanish.
+            </p>
+          </div>
+          <div>
+            <a href="{CALENDLY_URL}" class="btn btn-primary btn-full" aria-label="Book a 15-minute call with David — no sales pressure, just a plan and budget" data-i18n="contact.cta">
+              Book a 15-min slot
+            </a>
+            <p class="contact-note" data-i18n="contact.note">
+              Pick a slot, describe your project in a few lines, and you’ll get a confirmation email with the video link.
+            </p>
+            <p class="contact-note" data-i18n="contact.reassurance">
+              Call = 15 minutes. No aggressive pitch — we map the scope, a realistic budget and next steps.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>
+        © <span id="current-year"></span> <span data-i18n="footer.name">David Pinheiro</span> —
+        <span data-i18n="footer.location">Based in Berlin & remote EU</span>
+      </div>
+      <div class="footer-links">
+        <span><a href="mailto:david.pinheiro.d@gmail.com">david.pinheiro.d@gmail.com</a></span>
+        <span><a href="https://github.com/Mozzzaic" target="_blank" rel="noreferrer">GitHub</a></span>
+        <span><a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noreferrer">Instagram</a></span>
+        <span><a href="#legal" data-i18n="footer.legal">Legal & cookies</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Simple legal text (anchor target) -->
+  <div id="legal" class="legal">
+    <p data-i18n="legal.text">
+      Site edited by David Pinheiro, web developer based in Berlin. Contact: david.pinheiro.d@gmail.com.
+      Data sent through forms is only used to answer your requests and is not sold to third parties.
+      This site may use Google Analytics 4 for anonymised audience measurement. You can disable analytics cookies in your browser settings.
+    </p>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
