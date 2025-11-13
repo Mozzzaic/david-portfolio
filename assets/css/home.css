@@ -1,3 +1,10 @@
+.page--home {
+  background:
+    radial-gradient(120% 120% at 20% 0%, color-mix(in srgb, var(--accent) 12%, transparent) 0%, transparent 55%),
+    radial-gradient(130% 130% at 85% 0%, color-mix(in srgb, var(--accent) 8%, transparent) 0%, transparent 50%),
+    var(--bg);
+}
+
 /* Home hero -------------------------------------------------------------- */
 
 .home-hero {
@@ -40,32 +47,35 @@
 }
 
 .home-door {
+  position: relative;
   border-radius: calc(var(--radius) * 0.9);
-  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
-  background: color-mix(in srgb, var(--accent) 14%, var(--bg));
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--bg) 90%, var(--accent) 10%) 0%, color-mix(in srgb, var(--bg) 96%, var(--accent) 4%) 100%);
   padding: clamp(1.6rem, 4vw, 2rem);
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
   min-height: 9.5rem;
   transition:
-    transform var(--transition-snappy),
-    background-color var(--transition-snappy),
-    border-color var(--transition-snappy),
-    box-shadow var(--transition-snappy);
+    transform 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
 .home-door:hover,
 .home-door:focus-visible {
   transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--accent) 52%, var(--border));
-  background: color-mix(in srgb, var(--accent) 22%, var(--bg));
-  box-shadow: 0 18px 32px color-mix(in srgb, var(--accent) 16%, transparent);
-  outline: none;
+  border-color: var(--accent);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent-soft) 70%, var(--bg)) 0%, color-mix(in srgb, var(--bg) 86%, var(--accent)) 100%);
+  box-shadow: 0 20px 38px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
 .home-door:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--accent) 65%, transparent);
   outline-offset: 4px;
 }
 
@@ -73,11 +83,23 @@
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: -0.01em;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  width: fit-content;
 }
 
 .home-door__subtitle {
   font-size: 0.95rem;
   color: color-mix(in srgb, var(--text) 75%, transparent);
+}
+
+.home-door:active {
+  transform: translateY(0);
+}
+
+.home-door:hover .home-door__title,
+.home-door:focus-visible .home-door__title {
+  border-bottom-color: var(--accent);
 }
 
 @media (max-width: 720px) {
@@ -101,9 +123,14 @@
 
   .home-door {
     transition:
-      background-color 200ms ease,
+      background 200ms ease,
       border-color 200ms ease,
       box-shadow 200ms ease;
+  }
+
+  .home-door:hover,
+  .home-door:focus-visible {
+    transform: none;
   }
 }
 
@@ -137,4 +164,3 @@
 .page-placeholder .btn {
   align-self: center;
 }
-

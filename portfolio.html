@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>David Pinheiro – Web Developer, landing pages & showcase sites</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Berlin-based web developer creating fast, clear landing pages and showcase sites for freelancers and small businesses across Europe.">
+  <meta name="description"
+    content="Berlin-based web developer creating fast, clear landing pages and showcase sites for freelancers and small businesses across Europe.">
   <link rel="canonical" href="https://davidpinheiro.dev/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="David Pinheiro – Web Developer, landing pages & showcase sites">
-  <meta property="og:description" content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses. Based in Berlin, available remote in the EU.">
+  <meta property="og:description"
+    content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses. Based in Berlin, available remote in the EU.">
   <meta property="og:url" content="https://davidpinheiro.dev/">
   <meta property="og:image" content="https://davidpinheiro.dev/og-image.jpg">
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="David Pinheiro – Web Developer, landing pages & showcase sites">
-  <meta name="twitter:description" content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses.">
+  <meta name="twitter:description"
+    content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses.">
   <meta name="twitter:image" content="https://davidpinheiro.dev/og-image.jpg">
 
   <!-- Favicon minimal -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%232563eb'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='32' fill='white'>D</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%232563eb'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='32' fill='white'>D</text></svg>">
 
   <!-- Fonts (Inter) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +36,7 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/home.css">
 </head>
+
 <body class="page--portfolio">
   <header>
     <div class="container nav" aria-label="Site header">
@@ -41,11 +47,9 @@
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
         <a href="web.html" class="nav-link" data-i18n="nav.web">Web / Services</a>
-        <a href="portfolio.html" class="nav-link nav-link--active" data-i18n="nav.portfolio" aria-current="page">Portfolio</a>
+        <a href="portfolio.html" class="nav-link nav-link--active" data-i18n="nav.portfolio"
+          aria-current="page">Portfolio</a>
         <a href="creative-lab.html" class="nav-link" data-i18n="nav.lab">Creative Lab</a>
-        <a href="{CALENDLY_URL}" class="btn btn-secondary" aria-label="Book a 15-minute call with David — no sales pressure, just a plan" data-i18n="nav.cta">
-          15-min call
-        </a>
       </nav>
       <div class="lang-switch" aria-label="Language switcher">
         <button class="btn btn-ghost" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
@@ -55,32 +59,123 @@
   </header>
 
   <main>
-    <section class="page-placeholder" id="portfolio">
+    <section class="portfolio-hero" id="portfolio-hero">
       <div class="container">
-        <p class="section-kicker" data-i18n="portfolio.placeholder.kicker">Portfolio</p>
-        <h1 data-i18n="portfolio.placeholder.title">Photo portfolio coming soon</h1>
-        <p data-i18n="portfolio.placeholder.subtitle">
-          I’m curating selected shoots, press material and branding work in one place.
-          Until it’s ready, feel free to reach out if you need access or a press kit.
+        <p class="section-kicker" data-i18n="portfolio.hero.kicker">Photo portfolio</p>
+        <h1 class="portfolio-hero__title section-title" data-i18n="portfolio.hero.title">Places, faces and late nights.
+        </h1>
+        <p class="portfolio-hero__subtitle section-subtitle" data-i18n="portfolio.hero.subtitle">
+          A selection of images from travels, portraits and night walks. This is the visual side of my practice — the
+          same eye I bring to web projects.
         </p>
-        <a href="mailto:david.pinheiro.d@gmail.com" class="btn btn-primary" data-i18n="portfolio.placeholder.cta">
-          Request press kit
-        </a>
+      </div>
+    </section>
+
+    <section class="portfolio-series" id="series-travel" aria-labelledby="series-travel-title">
+      <div class="container">
+        <p class="section-kicker" data-i18n="portfolio.series.kicker">Series</p>
+        <div class="portfolio-series__head">
+          <h2 class="section-title" id="series-travel-title" data-i18n="portfolio.series.travel.title">Travel & places
+          </h2>
+          <p class="section-subtitle" data-i18n="portfolio.series.travel.subtitle">
+            Deserts, coastlines and cities in-between — quiet frames from the road.
+          </p>
+        </div>
+        <div class="portfolio-grid" role="list">
+          <figure class="portfolio-item" role="listitem">
+            <img src="assets/img/portfolio-travel-1.webp" alt="Golden hour dunes and a lone road in the desert"
+              loading="lazy">
+          </figure>
+          <figure class="portfolio-item" role="listitem">
+            <img src="assets/img/portfolio-travel-2.webp" alt="Rocky coastline with misty sunrise light" loading="lazy">
+          </figure>
+          <figure class="portfolio-item" role="listitem">
+            <img src="assets/img/portfolio-travel-3.webp" alt="Quiet European street with pastel buildings"
+              loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-series" id="series-portraits" aria-labelledby="series-portraits-title">
+      <div class="container">
+        <p class="section-kicker" data-i18n="portfolio.series.kicker">Series</p>
+        <div class="portfolio-series__head">
+          <h2 class="section-title" id="series-portraits-title" data-i18n="portfolio.series.portraits.title">Portraits
+          </h2>
+          <p class="section-subtitle" data-i18n="portfolio.series.portraits.subtitle">
+            People in their own light — slow sessions focused on trust and presence.
+          </p>
+        </div>
+        <div class="portfolio-grid" role="list">
+          <figure class="portfolio-item" role="listitem">
+            <img src="assets/img/portfolio-portraits-1.webp" alt="Portrait of a woman looking out a studio window"
+              loading="lazy">
+          </figure>
+          <figure class="portfolio-item" role="listitem">
+            <img src="assets/img/portfolio-portraits-2.webp" alt="Close-up portrait of an artist with dramatic shadows"
+              loading="lazy">
+          </figure>
+          <figure class="portfolio-item" role="listitem">
+            <img src="assets/img/portfolio-portraits-3.webp" alt="Musician seated with guitar in warm light"
+              loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-series" id="series-night" aria-labelledby="series-night-title">
+      <div class="container">
+        <p class="section-kicker" data-i18n="portfolio.series.kicker">Series</p>
+        <div class="portfolio-series__head">
+          <h2 class="section-title" id="series-night-title" data-i18n="portfolio.series.night.title">Nights &
+            atmospheres</h2>
+          <p class="section-subtitle" data-i18n="portfolio.series.night.subtitle">
+            Late-night walks, city glow and small surreal moments.
+          </p>
+        </div>
+        <div class="portfolio-grid" role="list">
+          <figure class="portfolio-item" role="listitem">
+            <img src="assets/img/portfolio-night-1.webp" alt="Neon-lit alleyway with reflections on wet pavement"
+              loading="lazy">
+          </figure>
+          <figure class="portfolio-item" role="listitem">
+            <img src="assets/img/portfolio-night-2.webp" alt="Silhouette of a person under streetlights at night"
+              loading="lazy">
+          </figure>
+          <figure class="portfolio-item" role="listitem">
+            <img src="assets/img/portfolio-night-3.webp" alt="Blurred city lights creating abstract shapes"
+              loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-press" id="presskit">
+      <div class="container">
+        <div class="press-card">
+          <div>
+            <h2 class="section-title" data-i18n="portfolio.press.title">Press & festivals</h2>
+            <p class="section-subtitle" data-i18n="portfolio.press.text">
+              If you need a quick overview for programming, you can request or download a photo presskit.
+            </p>
+          </div>
+          <a href="assets/presskit/david-pinheiro-photo-presskit.pdf" class="btn btn-primary" target="_blank"
+            rel="noreferrer" data-i18n="portfolio.press.cta">
+            Download photo presskit
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-row">
-      <div>
-        © <span id="current-year"></span> <span data-i18n="footer.name">David Pinheiro</span> —
-        <span data-i18n="footer.location">Based in Berlin & remote EU</span>
-      </div>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.available">Available in Berlin & remote EU.</p>
       <div class="footer-links">
-        <span><a href="mailto:david.pinheiro.d@gmail.com">david.pinheiro.d@gmail.com</a></span>
-        <span><a href="https://github.com/Mozzzaic" target="_blank" rel="noreferrer">GitHub</a></span>
-        <span><a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noreferrer">Instagram</a></span>
-        <span><a href="#legal" data-i18n="footer.legal">Legal & cookies</a></span>
+        <a href="mailto:david.pinheiro.d@gmail.com">david.pinheiro.d@gmail.com</a>
+        <a href="https://github.com/Mozzzaic" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noreferrer">Instagram</a>
       </div>
     </div>
   </footer>
@@ -90,10 +185,12 @@
     <p data-i18n="legal.text">
       Site edited by David Pinheiro, web developer based in Berlin. Contact: david.pinheiro.d@gmail.com.
       Data sent through forms is only used to answer your requests and is not sold to third parties.
-      This site may use Google Analytics 4 for anonymised audience measurement. You can disable analytics cookies in your browser settings.
+      This site may use Google Analytics 4 for anonymised audience measurement. You can disable analytics cookies in
+      your browser settings.
     </p>
   </div>
 
   <script src="assets/js/main.js"></script>
 </body>
+
 </html>

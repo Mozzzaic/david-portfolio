@@ -51,10 +51,19 @@ const translations = {
     "fit.item4": "Bootstrapped SaaS or e-commerce founders polishing their early-stage presence.",
     "fit.note": "Past work with: business coach, photo studio, boutique agency, SaaS advisor.",
 
-    "portfolio.placeholder.kicker": "Portfolio",
-    "portfolio.placeholder.title": "Photo portfolio coming soon",
-    "portfolio.placeholder.subtitle": "I’m curating selected shoots, press material and branding work in one place. Until it’s ready, feel free to reach out if you need access or a press kit.",
-    "portfolio.placeholder.cta": "Request press kit",
+    "portfolio.hero.kicker": "Photo portfolio",
+    "portfolio.hero.title": "Places, faces and late nights.",
+    "portfolio.hero.subtitle": "A selection of images from travels, portraits and night walks. This is the visual side of my practice — the same eye I bring to web projects.",
+    "portfolio.series.kicker": "Series",
+    "portfolio.series.travel.title": "Travel & places",
+    "portfolio.series.travel.subtitle": "Deserts, coastlines and cities in-between — quiet frames from the road.",
+    "portfolio.series.portraits.title": "Portraits",
+    "portfolio.series.portraits.subtitle": "People in their own light — slow sessions focused on trust and presence.",
+    "portfolio.series.night.title": "Nights & atmospheres",
+    "portfolio.series.night.subtitle": "Late-night walks, city glow and small surreal moments.",
+    "portfolio.press.title": "Press & festivals",
+    "portfolio.press.text": "If you need a quick overview for programming, you can request or download a photo presskit.",
+    "portfolio.press.cta": "Download photo presskit",
 
     "lab.placeholder.kicker": "Creative Lab",
     "lab.placeholder.title": "Creative lab in progress",
@@ -180,9 +189,7 @@ const translations = {
     "contact.note": "Pick a slot, describe your project in a few lines, and you’ll get a confirmation email with the video link.",
     "contact.reassurance": "Call = 15 minutes. No aggressive pitch — we map the scope, a realistic budget and next steps.",
 
-    "footer.name": "David Pinheiro",
-    "footer.location": "Based in Berlin & remote EU",
-    "footer.legal": "Legal & cookies",
+    "footer.available": "Available in Berlin & remote EU.",
 
     "legal.text": "Site edited by David Pinheiro, web developer based in Berlin. Contact: david.pinheiro.d@gmail.com. Data sent through forms is only used to answer your requests and is not sold to third parties. This site may use Google Analytics 4 for anonymised audience measurement. You can disable analytics cookies in your browser settings."
   },
@@ -238,10 +245,19 @@ const translations = {
     "fit.item4": "Fondateurs SaaS ou e-commerce en phase early-stage qui souhaitent une présence soignée.",
     "fit.note": "Déjà accompagné : coach business, studio photo, agence boutique, conseiller SaaS.",
 
-    "portfolio.placeholder.kicker": "Portfolio",
-    "portfolio.placeholder.title": "Portfolio photo bientôt en ligne",
-    "portfolio.placeholder.subtitle": "Je rassemble ici une sélection de shootings, de visuels presse et de branding. Si vous avez besoin d’un accès ou d’un press kit, écrivez-moi.",
-    "portfolio.placeholder.cta": "Demander le press kit",
+    "portfolio.hero.kicker": "Portfolio photo",
+    "portfolio.hero.title": "Lieux, visages et nuits tardives.",
+    "portfolio.hero.subtitle": "Une sélection d’images issues de voyages, portraits et marches nocturnes. C’est la partie visuelle de ma pratique — le même regard que j’apporte aux projets web.",
+    "portfolio.series.kicker": "Séries",
+    "portfolio.series.travel.title": "Voyages & lieux",
+    "portfolio.series.travel.subtitle": "Déserts, littoraux et villes entre les deux — des instants calmes pris sur la route.",
+    "portfolio.series.portraits.title": "Portraits",
+    "portfolio.series.portraits.subtitle": "Des personnes dans leur propre lumière — des séances lentes centrées sur la confiance et la présence.",
+    "portfolio.series.night.title": "Nuits & atmosphères",
+    "portfolio.series.night.subtitle": "Marches tardives, lumières de ville et petits moments irréels.",
+    "portfolio.press.title": "Presse & festivals",
+    "portfolio.press.text": "Si vous avez besoin d’un aperçu rapide pour une programmation, vous pouvez demander ou télécharger un presskit photo.",
+    "portfolio.press.cta": "Télécharger le presskit photo",
 
     "lab.placeholder.kicker": "Creative Lab",
     "lab.placeholder.title": "Creative lab en préparation",
@@ -367,9 +383,7 @@ const translations = {
     "contact.note": "Vous choisissez un créneau, décrivez votre projet en quelques lignes, et vous recevez un mail de confirmation avec le lien de visio.",
     "contact.reassurance": "Appel = 15 minutes. Pas de pitch agressif — on clarifie le périmètre, un budget réaliste et les prochaines étapes.",
 
-    "footer.name": "David Pinheiro",
-    "footer.location": "Disponible à Berlin & remote UE",
-    "footer.legal": "Mentions & cookies",
+    "footer.available": "Disponible à Berlin et à distance dans l’UE.",
 
     "legal.text": "Site édité par David Pinheiro, développeur web basé à Berlin. Contact : david.pinheiro.d@gmail.com. Les informations envoyées via les formulaires servent uniquement à répondre à vos demandes et ne sont pas revendues. Ce site peut utiliser Google Analytics 4 pour mesurer l’audience de manière anonymisée. Vous pouvez désactiver les cookies d’analytics dans les réglages de votre navigateur."
   }
@@ -430,12 +444,6 @@ function detectInitialLanguage() {
 
 // Init
 document.addEventListener("DOMContentLoaded", () => {
-  // year in footer
-  const yearEl = document.getElementById("current-year");
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
-
   const initialLang = detectInitialLanguage();
   applyLanguage(initialLang);
 
