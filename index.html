@@ -41,21 +41,64 @@
   <!-- AOS - Animate On Scroll -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+  <!-- Three.js for Starfield -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
   <link rel="stylesheet" href="assets/css/new-styles.css">
 </head>
 
 <body>
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress" aria-hidden="true"></div>
-
   <!-- Particles Background -->
   <div id="tsparticles"></div>
+
+  <!-- Starfield Canvas (Dark mode only) -->
+  <canvas id="starfield-canvas" aria-hidden="true"></canvas>
 
   <!-- Animated Gradient Background (ambient glow) -->
   <div class="gradient-bg" aria-hidden="true">
     <div class="gradient-blob gradient-blob--1"></div>
     <div class="gradient-blob gradient-blob--2"></div>
     <div class="gradient-blob gradient-blob--3"></div>
+  </div>
+
+  <!-- Floating ambient particles - Stars style -->
+  <div class="floating-particles" aria-hidden="true">
+    <!-- Small stars -->
+    <div class="particle particle--star" style="--x: 5%; --y: 10%; --size: 2px; --duration: 15s; --delay: 0s;"></div>
+    <div class="particle particle--star" style="--x: 15%; --y: 25%; --size: 1px; --duration: 12s; --delay: 1s;"></div>
+    <div class="particle particle--star" style="--x: 25%; --y: 8%; --size: 2px; --duration: 18s; --delay: 2s;"></div>
+    <div class="particle particle--star" style="--x: 35%; --y: 45%; --size: 1px; --duration: 14s; --delay: 0.5s;"></div>
+    <div class="particle particle--star" style="--x: 45%; --y: 15%; --size: 2px; --duration: 16s; --delay: 3s;"></div>
+    <div class="particle particle--star" style="--x: 55%; --y: 35%; --size: 1px; --duration: 13s; --delay: 1.5s;"></div>
+    <div class="particle particle--star" style="--x: 65%; --y: 5%; --size: 2px; --duration: 17s; --delay: 2.5s;"></div>
+    <div class="particle particle--star" style="--x: 75%; --y: 55%; --size: 1px; --duration: 11s; --delay: 0s;"></div>
+    <div class="particle particle--star" style="--x: 85%; --y: 20%; --size: 2px; --duration: 15s; --delay: 4s;"></div>
+    <div class="particle particle--star" style="--x: 95%; --y: 40%; --size: 1px; --duration: 14s; --delay: 1s;"></div>
+
+    <!-- Medium glow particles -->
+    <div class="particle particle--glow" style="--x: 10%; --y: 60%; --size: 4px; --duration: 20s; --delay: 0s;"></div>
+    <div class="particle particle--glow" style="--x: 30%; --y: 75%; --size: 3px; --duration: 18s; --delay: 2s;"></div>
+    <div class="particle particle--glow" style="--x: 50%; --y: 85%; --size: 4px; --duration: 22s; --delay: 1s;"></div>
+    <div class="particle particle--glow" style="--x: 70%; --y: 70%; --size: 3px; --duration: 19s; --delay: 3s;"></div>
+    <div class="particle particle--glow" style="--x: 90%; --y: 80%; --size: 4px; --duration: 21s; --delay: 0.5s;"></div>
+
+    <!-- Larger accent particles with color -->
+    <div class="particle particle--accent" style="--x: 8%; --y: 30%; --size: 6px; --duration: 25s; --delay: 0s;"></div>
+    <div class="particle particle--accent" style="--x: 22%; --y: 55%; --size: 5px; --duration: 23s; --delay: 2s;"></div>
+    <div class="particle particle--accent" style="--x: 42%; --y: 70%; --size: 6px; --duration: 28s; --delay: 1s;"></div>
+    <div class="particle particle--accent" style="--x: 62%; --y: 45%; --size: 5px; --duration: 24s; --delay: 3s;"></div>
+    <div class="particle particle--accent" style="--x: 82%; --y: 65%; --size: 6px; --duration: 26s; --delay: 1.5s;"></div>
+    <div class="particle particle--accent" style="--x: 92%; --y: 35%; --size: 5px; --duration: 22s; --delay: 0.5s;"></div>
+
+    <!-- Extra tiny particles for density -->
+    <div class="particle particle--tiny" style="--x: 3%; --y: 50%; --size: 1px; --duration: 10s; --delay: 0s;"></div>
+    <div class="particle particle--tiny" style="--x: 18%; --y: 90%; --size: 1px; --duration: 12s; --delay: 1s;"></div>
+    <div class="particle particle--tiny" style="--x: 38%; --y: 20%; --size: 1px; --duration: 11s; --delay: 2s;"></div>
+    <div class="particle particle--tiny" style="--x: 58%; --y: 95%; --size: 1px; --duration: 13s; --delay: 0.5s;"></div>
+    <div class="particle particle--tiny" style="--x: 78%; --y: 12%; --size: 1px; --duration: 10s; --delay: 3s;"></div>
+    <div class="particle particle--tiny" style="--x: 88%; --y: 88%; --size: 1px; --duration: 14s; --delay: 1.5s;"></div>
+    <div class="particle particle--tiny" style="--x: 48%; --y: 58%; --size: 1px; --duration: 11s; --delay: 2.5s;"></div>
+    <div class="particle particle--tiny" style="--x: 28%; --y: 38%; --size: 1px; --duration: 12s; --delay: 0s;"></div>
   </div>
 
   <!-- Hamburger Menu Button -->
@@ -165,7 +208,7 @@
         <h1 class="hero__title">
           <span data-i18n="hero.greeting">Hi, I'm</span> <span class="hero__name" data-text="David Pinheiro">David Pinheiro</span>
         </h1>
-        <p class="hero__tagline" data-i18n="hero.tagline">I Build Web Apps. I Understand Business.</p>
+        <p class="hero__tagline">I Build Web Apps. I Understand <span class="typewriter-container" data-typewriter="Business.|Vision.|Users."></span></p>
         <p class="hero__subtitle" data-i18n="hero.subtitle">
           With 10 years in sales and a fresh bootcamp graduation from Le Wagon Berlin,
           I bring a unique blend of business acumen and technical skills to every project.
@@ -210,28 +253,28 @@
           </div>
 
           <div class="about__highlights">
-            <div class="highlight-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="highlight-card" data-aos="fade-right" data-aos-offset="120" data-aos-duration="600">
               <div class="highlight-card__icon"><i class="fas fa-briefcase"></i></div>
               <div class="highlight-card__content">
                 <h3 data-i18n="about.highlight1.title">10 Years in Sales</h3>
                 <p data-i18n="about.highlight1.text">Client communication, negotiation, understanding business needs</p>
               </div>
             </div>
-            <div class="highlight-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="highlight-card" data-aos="fade-left" data-aos-offset="120" data-aos-duration="600" data-aos-delay="100">
               <div class="highlight-card__icon"><i class="fas fa-code"></i></div>
               <div class="highlight-card__content">
                 <h3 data-i18n="about.highlight2.title">Le Wagon Berlin 2025</h3>
                 <p data-i18n="about.highlight2.text">Full-stack web development, Ruby on Rails, JavaScript</p>
               </div>
             </div>
-            <div class="highlight-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="highlight-card" data-aos="fade-right" data-aos-offset="120" data-aos-duration="600" data-aos-delay="200">
               <div class="highlight-card__icon"><i class="fas fa-camera"></i></div>
               <div class="highlight-card__content">
                 <h3 data-i18n="about.highlight3.title">10 Years of Photography</h3>
                 <p data-i18n="about.highlight3.text">Visual storytelling, Photoshop, Lightroom, DaVinci Resolve</p>
               </div>
             </div>
-            <div class="highlight-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="highlight-card" data-aos="fade-left" data-aos-offset="120" data-aos-duration="600" data-aos-delay="300">
               <div class="highlight-card__icon"><i class="fas fa-headphones"></i></div>
               <div class="highlight-card__content">
                 <h3 data-i18n="about.highlight4.title">7 Years of Music Production</h3>
@@ -254,7 +297,7 @@
 
         <div class="projects__grid">
           <!-- Terminal Impact -->
-          <article class="project-card project-card--featured" data-aos="zoom-in" data-aos-duration="1000">
+          <article class="project-card project-card--featured" data-aos="zoom-in" data-aos-offset="150" data-aos-duration="800">
             <div class="project-card__badge">
               <i class="fas fa-star"></i> Published Extension
             </div>
@@ -280,7 +323,7 @@
           </article>
 
           <!-- Talez -->
-          <article class="project-card project-card--featured" data-aos="fade-right" data-aos-delay="100">
+          <article class="project-card project-card--featured" data-aos="fade-right" data-aos-offset="150" data-aos-duration="700">
             <div class="project-card__badge project-card__badge--award">
               <i class="fas fa-trophy"></i> Best Project 2025
             </div>
@@ -305,7 +348,7 @@
           </article>
 
           <!-- Muzik -->
-          <article class="project-card" data-aos="fade-left" data-aos-delay="200">
+          <article class="project-card" data-aos="fade-left" data-aos-offset="150" data-aos-duration="700">
             <div class="project-card__content">
               <h3 class="project-card__title">Muzik</h3>
               <p class="project-card__description" data-i18n="projects.muzik.desc">
@@ -326,7 +369,7 @@
           </article>
 
           <!-- Track ID Hunter -->
-          <article class="project-card project-card--coming-soon" data-aos="fade-right" data-aos-delay="300">
+          <article class="project-card project-card--coming-soon" data-aos="fade-right" data-aos-offset="150" data-aos-duration="700">
             <div class="project-card__badge project-card__badge--soon">
               <i class="fas fa-clock"></i> Coming Soon
             </div>
@@ -410,7 +453,7 @@
         </p>
 
         <div class="creative__grid">
-          <a href="portfolio.html" class="creative-card creative-card--photo" data-aos="fade-right" data-aos-delay="100">
+          <a href="portfolio.html" class="creative-card creative-card--photo" data-aos="fade-right" data-aos-offset="150" data-aos-duration="700">
             <div class="creative-card__overlay"></div>
             <div class="creative-card__content">
               <i class="fas fa-camera"></i>
@@ -420,7 +463,7 @@
             </div>
           </a>
 
-          <a href="creative-lab.html" class="creative-card creative-card--music" data-aos="fade-left" data-aos-delay="200">
+          <a href="creative-lab.html" class="creative-card creative-card--music" data-aos="fade-left" data-aos-offset="150" data-aos-duration="700" data-aos-delay="100">
             <div class="creative-card__overlay"></div>
             <div class="creative-card__content">
               <i class="fas fa-headphones"></i>
@@ -489,8 +532,14 @@
   <!-- AOS - Animate On Scroll -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-  <!-- Vanilla Tilt - 3D card effects -->
+  <!-- Vanilla Tilt - 3D card effects (highlight cards only) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+  <!-- Starfield Canvas Animation -->
+  <script src="assets/js/starfield.js"></script>
+
+  <!-- Typewriter Effect -->
+  <script src="assets/js/typewriter.js"></script>
 
   <script src="assets/js/main.js"></script>
 </body>

@@ -110,31 +110,6 @@ body.scrolled-orange {
 }
 
 /* --------------------------------------------------------------------------
-   SCROLL PROGRESS BAR
-   -------------------------------------------------------------------------- */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
-  z-index: 9999;
-  transition: width 0.1s linear;
-  box-shadow: 0 0 10px var(--accent-glow);
-}
-
-body.scrolled-dark .scroll-progress {
-  background: linear-gradient(90deg, var(--accent) 0%, #A78BFA 100%);
-  box-shadow: 0 0 15px var(--accent-glow);
-}
-
-body.scrolled-orange .scroll-progress {
-  background: linear-gradient(90deg, #581C87 0%, #6B21A8 100%);
-  box-shadow: 0 0 10px rgba(88, 28, 135, 0.5);
-}
-
-/* --------------------------------------------------------------------------
    RESET & BASE
    -------------------------------------------------------------------------- */
 *,
@@ -176,6 +151,18 @@ body {
   inset: 0;
   z-index: -1;
   pointer-events: none;
+}
+
+/* Starfield canvas (dark mode only) */
+#starfield-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
 body.nav-open {
@@ -265,13 +252,13 @@ button {
   opacity: 0.15;
 }
 
-/* Dark mode: more visible blobs */
+/* Dark mode: hide blobs for pure black background with starfield */
 body.scrolled-dark .gradient-blob {
-  opacity: 0.35;
+  opacity: 0;
 }
 
 body.scrolled-dark .gradient-blob--3 {
-  opacity: 0.2;
+  opacity: 0;
 }
 
 @keyframes float {
@@ -781,8 +768,8 @@ body.scrolled-orange .nav-drawer__page-link:hover {
   pointer-events: none;
   transform: translateY(-50px);
   transition:
-    opacity var(--tr-slow),
-    transform var(--tr-slow);
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .sidebar--left {
@@ -793,8 +780,8 @@ body.scrolled-orange .nav-drawer__page-link:hover {
   right: var(--space-xl);
 }
 
-/* Sidebars appear when scrolled to dark mode - slide down from top */
-body.scrolled-dark .sidebar {
+/* Sidebars appear when About section is visible */
+body.sidebar-visible .sidebar {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
@@ -890,28 +877,28 @@ body.contact-visible .sidebar {
   font-size: 0.9375rem;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 12px;
   overflow: hidden;
   transition:
     color 0.3s ease,
     transform 0.2s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    border-color 0s;
   z-index: 1;
   white-space: nowrap;
 }
 
-/* Pseudo-element for fill effect */
+/* Pseudo-element for fill effect - diagonal from bottom-left */
 .btn::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  transform: translateX(-100%) rotate(10deg);
-  transform-origin: top left;
-  transition: transform 0.3s ease-out;
+  top: -50%;
+  left: -10%;
+  width: 150%;
+  height: 200%;
+  transform: translateX(-100%) rotate(20deg);
+  transform-origin: bottom left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -1;
 }
 
@@ -919,12 +906,8 @@ body.contact-visible .sidebar {
   transform: translateX(0) rotate(0deg);
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-}
-
 .btn:active {
-  transform: translateY(0);
+  opacity: 0.9;
 }
 
 /* ===== PRIMARY BUTTON ===== */
@@ -980,12 +963,13 @@ body.scrolled-orange .btn--primary:hover {
 }
 
 .btn--secondary::after {
-  background: var(--accent);
+  background: #FF6B2C;
 }
 
 .btn--secondary:hover {
   color: #fff;
-  border-color: var(--accent);
+  border-color: #FF6B2C;
+  box-shadow: 0 8px 24px rgba(255, 107, 44, 0.35);
 }
 
 /* Dark mode */
@@ -995,26 +979,30 @@ body.scrolled-dark .btn--secondary {
 }
 
 body.scrolled-dark .btn--secondary::after {
-  background: var(--accent);
+  background: #FF6B2C;
 }
 
 body.scrolled-dark .btn--secondary:hover {
   color: #fff;
+  border-color: #FF6B2C;
+  box-shadow: 0 8px 24px rgba(255, 107, 44, 0.4);
 }
 
-/* Orange mode */
+/* Orange mode - secondary fills with orange/white */
 body.scrolled-orange .btn--secondary {
-  color: #581C87;
-  border-color: #581C87;
+  color: #46146E;
+  border-color: #46146E;
+  background: transparent;
 }
 
 body.scrolled-orange .btn--secondary::after {
-  background: #581C87;
+  background: #FF6B2C;
 }
 
 body.scrolled-orange .btn--secondary:hover {
-  color: #fff;
-  border-color: #581C87;
+  color: #46146E;
+  border-color: #FF6B2C;
+  box-shadow: 0 8px 24px rgba(255, 107, 44, 0.4);
 }
 
 .btn--large {
@@ -1213,6 +1201,28 @@ body.scrolled-orange .hero__name {
   margin-bottom: var(--space-lg);
 }
 
+/* Typewriter Effect */
+.typewriter-container {
+  display: inline-block;
+  min-height: 1.5em;
+}
+
+.typewriter-text {
+  color: inherit;
+}
+
+.typewriter-cursor {
+  color: var(--accent);
+  font-weight: 300;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 .hero__subtitle {
   font-size: 1.125rem;
   color: var(--text-muted);
@@ -1277,18 +1287,6 @@ body.scrolled-orange .hero__name {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  transition:
-    transform var(--tr-medium),
-    box-shadow var(--tr-medium),
-    border-color var(--tr-medium),
-    background-color var(--transition-theme),
-    color var(--transition-theme);
-}
-
-.highlight-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-glow);
-  transform: translateX(4px);
 }
 
 .highlight-card__icon {
@@ -1341,17 +1339,6 @@ body.scrolled-orange .hero__name {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
-  transition:
-    transform var(--tr-medium),
-    box-shadow var(--tr-medium),
-    border-color var(--tr-medium),
-    background-color var(--transition-theme);
-}
-
-.project-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-glow);
-  transform: translateY(-4px);
 }
 
 .project-card--featured {
@@ -1583,10 +1570,6 @@ body.scrolled-orange .hero__name {
   overflow: hidden;
   display: flex;
   align-items: flex-end;
-  transition:
-    transform var(--tr-medium),
-    box-shadow var(--tr-medium),
-    border-color var(--tr-medium);
 }
 
 .creative-card--photo {
@@ -1985,34 +1968,65 @@ body.scrolled-orange .footer__legal {
 }
 
 /* --------------------------------------------------------------------------
-   AOS OVERRIDES
+   AOS CUSTOM - STRONGER ANIMATIONS
    -------------------------------------------------------------------------- */
+
+/* Base easing for all AOS animations */
 [data-aos] {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-[data-aos="fade-up"] {
-  transform: translateY(30px);
-}
-
+/* Fade right - starts further left for more visible movement */
 [data-aos="fade-right"] {
-  transform: translateX(-30px);
+  transform: translateX(-100px);
+  opacity: 0;
 }
 
+[data-aos="fade-right"].aos-animate {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Fade left - starts further right */
 [data-aos="fade-left"] {
-  transform: translateX(30px);
+  transform: translateX(100px);
+  opacity: 0;
 }
 
-[data-aos].aos-animate {
-  transform: translateY(0) translateX(0) scale(1);
+[data-aos="fade-left"].aos-animate {
+  transform: translateX(0);
+  opacity: 1;
 }
 
+/* Fade up - starts lower */
+[data-aos="fade-up"] {
+  transform: translateY(60px);
+  opacity: 0;
+}
+
+[data-aos="fade-up"].aos-animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Zoom in - more dramatic scale */
 [data-aos="zoom-in"] {
-  transform: scale(0.9);
+  transform: scale(0.8);
+  opacity: 0;
 }
 
 [data-aos="zoom-in"].aos-animate {
   transform: scale(1);
+  opacity: 1;
+}
+
+/* Reduced motion - disable AOS transforms */
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -2043,121 +2057,111 @@ body.scrolled-orange .footer__legal {
 }
 
 /* --------------------------------------------------------------------------
-   ENHANCED CARD HOVER EFFECTS (3D Tilt + Mouse Glow)
+   CARDS HOVER - SMOOTH LIFT EFFECT (Project & Creative cards)
    -------------------------------------------------------------------------- */
 
-/* Base card preparation for 3D */
 .project-card,
-.highlight-card,
 .creative-card {
-  transform-style: preserve-3d;
-  transform: perspective(1000px);
-  position: relative;
-  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.3s ease,
+    background-color var(--transition-theme);
 }
 
-/* Mouse-following glow effect on hover */
-.project-card::before,
-.highlight-card::before,
-.creative-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(139, 92, 246, 0.15) 0%,
-    transparent 50%
-  );
-  opacity: 0;
-  transition: opacity var(--tr-medium);
-  z-index: 0;
-  pointer-events: none;
+/* After AOS animation completes, enable hover lift */
+.project-card.aos-animate:hover,
+.creative-card.aos-animate:hover,
+.project-card:not([data-aos]):hover,
+.creative-card:not([data-aos]):hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent);
 }
 
-.project-card:hover::before,
-.highlight-card:hover::before,
-.creative-card:hover::before {
-  opacity: 1;
+/* Dark mode hover */
+body.scrolled-dark .project-card.aos-animate:hover,
+body.scrolled-dark .creative-card.aos-animate:hover {
+  box-shadow: 0 16px 32px rgba(139, 92, 246, 0.15);
 }
 
-/* Glare customization */
-.js-tilt-glare {
-  border-radius: inherit;
-}
-
-.js-tilt-glare-inner {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0) 60%
-  ) !important;
-}
-
-/* Dark mode glow */
-body.scrolled-dark .project-card::before,
-body.scrolled-dark .highlight-card::before,
-body.scrolled-dark .creative-card::before {
-  background: radial-gradient(
-    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(139, 92, 246, 0.2) 0%,
-    transparent 50%
-  );
-}
-
-/* Orange mode glow */
-body.scrolled-orange .project-card::before,
-body.scrolled-orange .highlight-card::before,
-body.scrolled-orange .creative-card::before {
-  background: radial-gradient(
-    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(88, 28, 135, 0.2) 0%,
-    transparent 50%
-  );
-}
-
-body.scrolled-orange .js-tilt-glare-inner {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0) 60%
-  ) !important;
-}
-
-/* Inner content lift on hover */
-.project-card__content,
-.highlight-card__content,
-.creative-card__content {
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover .project-card__content,
-.highlight-card:hover .highlight-card__content,
-.creative-card:hover .creative-card__content {
-  transform: translateZ(20px);
-}
-
-/* Disable tilt on mobile */
-@media (max-width: 768px) {
-  .project-card,
-  .highlight-card,
-  .creative-card {
-    transform: none !important;
-  }
+/* Orange mode hover */
+body.scrolled-orange .project-card.aos-animate:hover,
+body.scrolled-orange .creative-card.aos-animate:hover {
+  box-shadow: 0 16px 32px rgba(88, 28, 135, 0.15);
+  border-color: #581C87;
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .project-card,
-  .highlight-card,
   .creative-card {
-    transform: none !important;
+    transition: none;
   }
 
-  .project-card::before,
-  .highlight-card::before,
-  .creative-card::before {
-    display: none;
+  .project-card:hover,
+  .creative-card:hover {
+    transform: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   TILT EFFECT - HIGHLIGHT CARDS ONLY
+   -------------------------------------------------------------------------- */
+
+.highlight-card {
+  transform-style: preserve-3d;
+  transition:
+    border-color 0.3s ease,
+    background-color var(--transition-theme);
+}
+
+.highlight-card:hover {
+  border-color: var(--accent);
+}
+
+.highlight-card .js-tilt-glare {
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+/* Light mode glare */
+.highlight-card .js-tilt-glare-inner {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0) 60%
+  ) !important;
+}
+
+/* Dark mode glare */
+body.scrolled-dark .highlight-card .js-tilt-glare-inner {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.25) 0%,
+    rgba(139, 92, 246, 0) 60%
+  ) !important;
+}
+
+/* Orange mode glare */
+body.scrolled-orange .highlight-card .js-tilt-glare-inner {
+  background: linear-gradient(
+    135deg,
+    rgba(88, 28, 135, 0.25) 0%,
+    rgba(88, 28, 135, 0) 60%
+  ) !important;
+}
+
+/* Disable tilt on mobile */
+@media (max-width: 768px) {
+  .highlight-card {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .highlight-card {
+    transform: none !important;
   }
 }
 
@@ -2259,6 +2263,266 @@ body.scrolled-orange .hero__title.text-revealed .letter {
   100% {
     text-shadow: 0 0 0 transparent;
   }
+}
+
+/* ==========================================================================
+   COSMOS STYLE ENHANCEMENTS
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   GRADIENT TEXT
+   -------------------------------------------------------------------------- */
+.gradient-text {
+  background: linear-gradient(135deg, #8B5CF6 0%, #F97316 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Enhanced hero name gradient - violet to orange (only the name, not "Hi, I'm") */
+.hero__name {
+  background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 50%, #F97316 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Section titles in dark mode - bright violet gradient */
+body.scrolled-dark .section__title {
+  background: linear-gradient(135deg, #C4B5FD 0%, #E9D5FF 50%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Section titles gradient in orange mode - deep violet */
+body.scrolled-orange .section__title {
+  background: linear-gradient(135deg, #581C87 0%, #6B21A8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   CUSTOM SCROLLBAR WITH GLOW
+   -------------------------------------------------------------------------- */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #8B5CF6 #18181B;
+}
+
+html::-webkit-scrollbar {
+  display: block;
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary, #18181B);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent, #8B5CF6);
+  border: 2px solid var(--bg-secondary, #18181B);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A78BFA;
+  box-shadow:
+    0 0 8px #8B5CF6,
+    0 0 16px #8B5CF6,
+    0 0 24px #A78BFA,
+    inset 0 0 8px rgba(255, 255, 255, 0.2);
+  border-color: transparent;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #7C3AED;
+  box-shadow:
+    0 0 12px #8B5CF6,
+    0 0 20px #8B5CF6,
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Orange mode scrollbar */
+body.scrolled-orange::-webkit-scrollbar-thumb {
+  background: #581C87;
+}
+
+body.scrolled-orange::-webkit-scrollbar-thumb:hover {
+  background: #6B21A8;
+  box-shadow:
+    0 0 8px #581C87,
+    0 0 16px #581C87,
+    0 0 24px #6B21A8;
+}
+
+body.scrolled-orange {
+  scrollbar-color: #581C87 #FF8C32;
+}
+
+/* --------------------------------------------------------------------------
+   DARK MODE BACKGROUND - PURE BLACK FOR STARFIELD
+   -------------------------------------------------------------------------- */
+body.scrolled-dark {
+  background: #0a0a0f;
+}
+
+/* Hero blob disabled for pure black starfield background */
+body.scrolled-dark .hero::before {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   FLOATING PARTICLES - COSMOS STARS STYLE
+   -------------------------------------------------------------------------- */
+.floating-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  transition: opacity 0.8s ease;
+}
+
+.particle {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  animation: floatStar var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+/* Tiny stars - pure white */
+.particle--tiny {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Small stars - white with light glow */
+.particle--star {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+/* Medium glow - subtle violet */
+.particle--glow {
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.8) 0%, transparent 70%);
+  box-shadow: 0 0 6px rgba(167, 139, 250, 0.6);
+}
+
+/* Accent particles - more visible violet */
+.particle--accent {
+  background: radial-gradient(circle, #8B5CF6 0%, transparent 70%);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+}
+
+@keyframes floatStar {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+  }
+}
+
+/* Light mode - very subtle particles */
+.particle {
+  opacity: 0.1;
+  transition: opacity 1s ease, background 1s ease;
+}
+
+.particle--tiny {
+  opacity: 0.08;
+}
+
+.particle--star {
+  opacity: 0.1;
+}
+
+.particle--glow {
+  opacity: 0.08;
+}
+
+.particle--accent {
+  opacity: 0.1;
+}
+
+/* Dark mode - hide CSS particles, show starfield canvas instead */
+body.scrolled-dark .floating-particles {
+  opacity: 0 !important;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+body.scrolled-dark #starfield-canvas {
+  opacity: 1;
+}
+
+/* Orange mode - deep violet particles */
+body.scrolled-orange .particle--glow {
+  background: radial-gradient(circle, rgba(88, 28, 135, 0.8) 0%, transparent 70%);
+}
+
+body.scrolled-orange .particle--accent {
+  background: radial-gradient(circle, #581C87 0%, transparent 70%);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .particle {
+    animation: none;
+    opacity: 0.3;
+  }
+
+  body.scrolled-dark .hero::before {
+    animation: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   UNIVERSAL HOVER LIFT
+   -------------------------------------------------------------------------- */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  color: var(--accent);
+}
+
+/* Apply to social links, nav links, footer links */
+.sidebar a,
+.nav-drawer__link,
+.footer a {
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover,
+.footer a:hover {
+  transform: translateY(-2px);
+}
+
+/* Badge hover lift */
+.badge {
+  transition:
+    background-color var(--tr-fast),
+    border-color var(--tr-fast),
+    color var(--tr-fast),
+    transform var(--tr-fast),
+    box-shadow var(--tr-fast);
+}
+
+.badge:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 4px 12px var(--accent-glow);
 }
 
 

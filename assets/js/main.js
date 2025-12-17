@@ -640,50 +640,6 @@ function initMenu() {
 }
 
 // --------------------------------------------------------------------------
-// TILT EFFECT ON CARDS
-// --------------------------------------------------------------------------
-
-function initTiltEffect() {
-  if (typeof VanillaTilt === 'undefined' || window.innerWidth <= 768) return;
-
-  // Project cards: subtle glare only, no 3D rotation
-  const projectCards = document.querySelectorAll('.project-card');
-  VanillaTilt.init(projectCards, {
-    max: 0,
-    speed: 400,
-    glare: true,
-    "max-glare": 0.12,
-    scale: 1,
-    perspective: 1000,
-    gyroscope: false,
-  });
-
-  // Creative cards: subtle tilt with visible glare
-  const creativeCards = document.querySelectorAll('.creative-card');
-  VanillaTilt.init(creativeCards, {
-    max: 3,
-    speed: 400,
-    glare: true,
-    "max-glare": 0.25,
-    scale: 1.01,
-    perspective: 1000,
-    gyroscope: false,
-  });
-
-  // Highlight cards: keep the 3D tilt effect
-  const highlightCards = document.querySelectorAll('.highlight-card');
-  VanillaTilt.init(highlightCards, {
-    max: 8,
-    speed: 400,
-    glare: true,
-    "max-glare": 0.15,
-    scale: 1.02,
-    perspective: 1000,
-    gyroscope: false,
-  });
-}
-
-// --------------------------------------------------------------------------
 // TEXT REVEAL ANIMATION
 // --------------------------------------------------------------------------
 
@@ -901,6 +857,20 @@ function initScrollThemeTransition() {
 }
 
 // --------------------------------------------------------------------------
+// STARFIELD CANVAS INITIALIZATION
+// --------------------------------------------------------------------------
+
+// starfield instance is created in starfield.js as window.starfield
+
+function initStarfield() {
+  // Starfield is auto-initialized via window.starfield in starfield.js
+  // Just verify it exists - don't start yet, will be activated when entering dark mode
+  if (!window.starfield) {
+    console.warn('Starfield not initialized');
+  }
+}
+
+// --------------------------------------------------------------------------
 // TSPARTICLES INITIALIZATION
 // --------------------------------------------------------------------------
 
@@ -979,6 +949,20 @@ function initParticles() {
 }
 
 function updateParticlesTheme(theme) {
+  // Handle starfield toggle for dark mode only
+  if (theme === "dark") {
+    // Start starfield in dark mode
+    if (window.starfield) {
+      window.starfield.start();
+    }
+  } else {
+    // Stop starfield in light/orange mode
+    if (window.starfield) {
+      window.starfield.stop();
+    }
+  }
+
+  // Update tsParticles colors (still runs in background for all modes)
   if (!particlesInstance) return;
 
   const particles = particlesInstance.options.particles;
@@ -1047,49 +1031,78 @@ function initScrollAnimations() {
 }
 
 // --------------------------------------------------------------------------
-// CONTACT VISIBILITY
+// SIDEBAR VISIBILITY (appears at About, hides at Contact)
 // --------------------------------------------------------------------------
 
-function initContactObserver() {
+function initSidebarObservers() {
   const contactSection = document.querySelector(".contact");
-  if (!contactSection) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          document.body.classList.add("contact-visible");
-        } else {
-          document.body.classList.remove("contact-visible");
-        }
-      });
-    },
-    {
-      threshold: 0.2,
-      rootMargin: "0px 0px -10% 0px",
-    }
-  );
+  // Show/hide sidebar when About content is visible (at "In 2025, I graduated..." level)
+  const aboutContent = document.querySelector(".about__content");
+  if (aboutContent) {
+    const showObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const rect = aboutContent.getBoundingClientRect();
+          if (entry.isIntersecting) {
+            document.body.classList.add("sidebar-visible");
+          } else if (rect.top > 0) {
+            // Only hide when scrolling back UP (about content is below viewport)
+            document.body.classList.remove("sidebar-visible");
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "0px 0px 0px 0px",
+      }
+    );
+    showObserver.observe(aboutContent);
+  }
 
-  observer.observe(contactSection);
+  // Hide sidebar when Contact section appears
+  if (contactSection) {
+    const hideObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.body.classList.add("contact-visible");
+          } else {
+            document.body.classList.remove("contact-visible");
+          }
+        });
+      },
+      {
+        threshold: 0,
+        rootMargin: "0px 0px 0px 0px",
+      }
+    );
+    hideObserver.observe(contactSection);
+  }
 }
 
 // --------------------------------------------------------------------------
-// CARD GLOW EFFECT (follows mouse)
+// TILT & GLARE EFFECTS
 // --------------------------------------------------------------------------
 
-function initCardGlow() {
-  const cards = document.querySelectorAll('.project-card, .highlight-card, .creative-card');
+function initCardEffects() {
+  if (typeof VanillaTilt === 'undefined' || window.innerWidth <= 768) return;
 
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-      card.style.setProperty('--mouse-x', `${x}%`);
-      card.style.setProperty('--mouse-y', `${y}%`);
+  // Highlight cards only: full 3D tilt + glare
+  const highlightCards = document.querySelectorAll('.highlight-card');
+  if (highlightCards.length > 0) {
+    VanillaTilt.init(highlightCards, {
+      max: 12,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.2,
+      scale: 1.03,
+      perspective: 1000,
+      gyroscope: false,
     });
-  });
+  }
+
+  // Project & Creative cards: CSS-only effects (no VanillaTilt)
 }
 
 // --------------------------------------------------------------------------
@@ -1133,11 +1146,13 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroAnimation();
   initScrollAnimations();
   initFAQ();
-  initContactObserver();
+  initSidebarObservers();
   initScrollProgress();
   initActiveNavTracking();
-  initTiltEffect();
-  initCardGlow();
+  initCardEffects();
+
+  // Initialize starfield (for dark mode)
+  initStarfield();
 
   if (document.querySelector("#tsparticles")) {
     initParticles();
@@ -1146,11 +1161,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (typeof AOS !== "undefined") {
     AOS.init({
-      duration: 800,
+      duration: 700,
       easing: 'ease-out-cubic',
       once: true,
-      offset: 80,
+      offset: 100,
       delay: 0,
+      anchorPlacement: 'top-bottom',
       disable: window.innerWidth < 768 ? true : false,
     });
   }
