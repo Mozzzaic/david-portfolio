@@ -1,111 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>David Pinheiro – Web Developer, landing pages & showcase sites</title>
+  <title>David Pinheiro – Full-Stack Developer | Berlin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Berlin-based web developer creating fast, clear landing pages and showcase sites for freelancers and small businesses across Europe.">
+  <meta name="description"
+    content="Full-Stack Developer based in Berlin. I build web apps and understand business. 10 years of sales experience meets modern web development.">
   <link rel="canonical" href="https://davidpinheiro.dev/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="David Pinheiro – Web Developer, landing pages & showcase sites">
-  <meta property="og:description" content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses. Based in Berlin, available remote in the EU.">
+  <meta property="og:title" content="David Pinheiro – Full-Stack Developer | Berlin">
+  <meta property="og:description"
+    content="Full-Stack Developer based in Berlin. I build web apps and understand business.">
   <meta property="og:url" content="https://davidpinheiro.dev/">
   <meta property="og:image" content="https://davidpinheiro.dev/og-image.jpg">
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="David Pinheiro – Web Developer, landing pages & showcase sites">
-  <meta name="twitter:description" content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses.">
+  <meta name="twitter:title" content="David Pinheiro – Full-Stack Developer | Berlin">
+  <meta name="twitter:description" content="Full-Stack Developer based in Berlin. I build web apps and understand business.">
   <meta name="twitter:image" content="https://davidpinheiro.dev/og-image.jpg">
 
-  <!-- Favicon minimal -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%232563eb'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='32' fill='white'>D</text></svg>">
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%238B5CF6'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='32' font-weight='bold' fill='white'>D</text></svg>">
 
-  <!-- Fonts (Inter) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/home.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Devicon for tech stack -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+  <link rel="stylesheet" href="assets/css/new-styles.css">
 </head>
-<body class="page--home">
-  <header>
-    <div class="container nav" aria-label="Site header">
-      <div class="nav-left">
-        <span data-i18n="nav.name">David Pinheiro</span>
-        <span class="nav-tag" data-i18n="nav.role">Web Developer</span>
-      </div>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html" class="nav-link nav-link--active" data-i18n="nav.home" aria-current="page">Home</a>
-        <a href="web.html" class="nav-link" data-i18n="nav.web">Web / Services</a>
-        <a href="portfolio.html" class="nav-link" data-i18n="nav.portfolio">Portfolio</a>
-        <a href="creative-lab.html" class="nav-link" data-i18n="nav.lab">Creative Lab</a>
-      </nav>
-      <div class="lang-switch" aria-label="Language switcher">
-        <button class="btn btn-ghost" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
-        <button class="btn btn-ghost" type="button" data-lang-btn="fr" aria-pressed="false">FR</button>
+
+<body>
+  <!-- Particles Background -->
+  <div id="tsparticles"></div>
+
+  <!-- Animated Gradient Background (ambient glow) -->
+  <div class="gradient-bg" aria-hidden="true">
+    <div class="gradient-blob gradient-blob--1"></div>
+    <div class="gradient-blob gradient-blob--2"></div>
+    <div class="gradient-blob gradient-blob--3"></div>
+  </div>
+
+  <!-- Hamburger Menu Button -->
+  <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span class="menu-toggle__bar"></span>
+    <span class="menu-toggle__bar"></span>
+    <span class="menu-toggle__bar"></span>
+  </button>
+
+  <!-- Slide-out Navigation -->
+  <nav class="nav-drawer" aria-label="Main navigation">
+    <div class="nav-drawer__header">
+      <span class="nav-drawer__name">David Pinheiro</span>
+      <span class="nav-drawer__tag">Full-Stack Developer</span>
+    </div>
+    <ul class="nav-drawer__links">
+      <li><a href="index.html" class="nav-drawer__link nav-drawer__link--active" aria-current="page">Home</a></li>
+      <li><a href="web.html" class="nav-drawer__link">Web / Services</a></li>
+      <li><a href="portfolio.html" class="nav-drawer__link">Photo Portfolio</a></li>
+      <li><a href="creative-lab.html" class="nav-drawer__link">Creative Lab</a></li>
+    </ul>
+    <div class="nav-drawer__footer">
+      <div class="lang-switch">
+        <button class="lang-btn" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+        <button class="lang-btn" type="button" data-lang-btn="fr" aria-pressed="false">FR</button>
       </div>
     </div>
-  </header>
+  </nav>
+
+  <!-- Overlay -->
+  <div class="nav-overlay" aria-hidden="true"></div>
+
+  <!-- Left Sidebar - Social Links -->
+  <aside class="sidebar sidebar--left" aria-label="Social links">
+    <a href="https://github.com/Mozzzaic" target="_blank" rel="noopener noreferrer" class="sidebar__icon" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/davidpinheiro" target="_blank" rel="noopener noreferrer" class="sidebar__icon" aria-label="LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noopener noreferrer" class="sidebar__icon" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <div class="sidebar__line"></div>
+  </aside>
+
+  <!-- Right Sidebar - Email -->
+  <aside class="sidebar sidebar--right" aria-label="Email contact">
+    <a href="mailto:david.pinheiro.d@gmail.com" class="sidebar__email">david.pinheiro.d@gmail.com</a>
+    <div class="sidebar__line"></div>
+  </aside>
 
   <main>
-    <section class="home-hero hero--intro" id="hero">
-      <div class="container home-hero__inner">
-        <p class="section-kicker home-hero__kicker" data-i18n="home.kicker">Digital practice · Berlin</p>
-        <h1 class="home-hero__title" data-i18n="home.title">Hey there, I’m David.</h1>
-        <p class="home-hero__subtitle" data-i18n="home.subtitle">
-          I build clear, fast websites for creatives and small teams — and spend the rest of my time chasing light and sound.
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <p class="hero__kicker" data-i18n="hero.kicker">Full-Stack Developer · Berlin</p>
+        <h1 class="hero__title">
+          <span data-i18n="hero.greeting">Hi, I'm</span> <span class="hero__name">David Pinheiro</span>
+        </h1>
+        <p class="hero__tagline" data-i18n="hero.tagline">I Build Web Apps. I Understand Business.</p>
+        <p class="hero__subtitle" data-i18n="hero.subtitle">
+          With 10 years in sales and a fresh bootcamp graduation from Le Wagon Berlin,
+          I bring a unique blend of business acumen and technical skills to every project.
+        </p>
+        <div class="hero__actions">
+          <a href="#projects" class="btn btn--primary">
+            <span data-i18n="hero.cta_projects">View Projects</span>
+            <i class="fas fa-arrow-down"></i>
+          </a>
+          <a href="#contact" class="btn btn--secondary">
+            <span data-i18n="hero.cta_contact">Get in Touch</span>
+          </a>
+        </div>
+        <div class="hero__badges">
+          <span class="badge"><i class="fas fa-map-marker-alt"></i> Berlin, Germany</span>
+          <span class="badge"><i class="fas fa-globe"></i> Remote EU</span>
+          <span class="badge"><i class="fas fa-language"></i> FR / EN / PT / ES</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <p class="section__kicker" data-i18n="about.kicker">About Me</p>
+        <h2 class="section__title" data-i18n="about.title">A Different Kind of Developer</h2>
+
+        <div class="about__grid">
+          <div class="about__content">
+            <p class="about__lead" data-i18n="about.lead">
+              I'm not your typical junior developer. I spent 10 years in sales, working my way up to Sales Manager
+              at a recycling company in Paris. I know how to talk to clients, understand their needs, and deliver results.
+            </p>
+            <p data-i18n="about.text1">
+              In 2025, I graduated from Le Wagon Berlin's intensive bootcamp and immediately started building.
+              My first VS Code extension, Terminal Impact, is already published on the marketplace.
+            </p>
+            <p data-i18n="about.text2">
+              Beyond code, I've spent 10 years behind a camera and 7 years producing music in Ableton.
+              This creative background gives me an eye for design and attention to detail that shows in my work.
+            </p>
+          </div>
+
+          <div class="about__highlights">
+            <div class="highlight-card">
+              <div class="highlight-card__icon"><i class="fas fa-briefcase"></i></div>
+              <div class="highlight-card__content">
+                <h3 data-i18n="about.highlight1.title">10 Years in Sales</h3>
+                <p data-i18n="about.highlight1.text">Client communication, negotiation, understanding business needs</p>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-card__icon"><i class="fas fa-code"></i></div>
+              <div class="highlight-card__content">
+                <h3 data-i18n="about.highlight2.title">Le Wagon Berlin 2025</h3>
+                <p data-i18n="about.highlight2.text">Full-stack web development, Ruby on Rails, JavaScript</p>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-card__icon"><i class="fas fa-camera"></i></div>
+              <div class="highlight-card__content">
+                <h3 data-i18n="about.highlight3.title">10 Years of Photography</h3>
+                <p data-i18n="about.highlight3.text">Visual storytelling, Photoshop, Lightroom, DaVinci Resolve</p>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-card__icon"><i class="fas fa-headphones"></i></div>
+              <div class="highlight-card__content">
+                <h3 data-i18n="about.highlight4.title">7 Years of Music Production</h3>
+                <p data-i18n="about.highlight4.text">Sound design, mixing, Ableton Live</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+      <div class="container">
+        <p class="section__kicker" data-i18n="projects.kicker">Featured Work</p>
+        <h2 class="section__title" data-i18n="projects.title">Projects</h2>
+        <p class="section__subtitle" data-i18n="projects.subtitle">
+          From VS Code extensions to award-winning bootcamp projects, here's what I've been building.
         </p>
 
-        <div class="home-doors" role="list">
-          <a href="web.html" class="home-door" role="listitem">
-            <span class="home-door__title" data-i18n="home.web.title">Web / Services</span>
-            <span class="home-door__subtitle" data-i18n="home.web.subtitle">
-              Landing pages &amp; showcase sites to move your project forward.
-            </span>
+        <div class="projects__grid">
+          <!-- Terminal Impact -->
+          <article class="project-card project-card--featured">
+            <div class="project-card__badge">
+              <i class="fas fa-star"></i> Published Extension
+            </div>
+            <div class="project-card__content">
+              <h3 class="project-card__title">Terminal Impact</h3>
+              <p class="project-card__description" data-i18n="projects.terminal.desc">
+                VS Code extension that highlights files created or modified by integrated terminal commands or AI agents,
+                right in the Explorer. Helps developers track changes made by CLI tools and AI assistants.
+              </p>
+              <div class="project-card__stack">
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">VS Code API</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://marketplace.visualstudio.com/items?itemName=DavidPinheiro.terminal-impact" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                  <i class="fas fa-external-link-alt"></i> VS Code Marketplace
+                </a>
+                <a href="https://github.com/Mozzzaic/terminal-impact" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                  <i class="fab fa-github"></i> Source Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Talez -->
+          <article class="project-card project-card--featured">
+            <div class="project-card__badge project-card__badge--award">
+              <i class="fas fa-trophy"></i> Best Project 2025
+            </div>
+            <div class="project-card__content">
+              <h3 class="project-card__title">Talez</h3>
+              <p class="project-card__description" data-i18n="projects.talez.desc">
+                Interactive storybook app for children that helps them express themselves through AI-powered
+                image and text generation. Awarded best project across all Le Wagon batches in 2025.
+              </p>
+              <div class="project-card__stack">
+                <span class="tech-tag">Ruby on Rails</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">SCSS</span>
+                <span class="tech-tag">AI APIs</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/victorav3lla-beep/Talez" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                  <i class="fab fa-github"></i> Source Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Muzik -->
+          <article class="project-card">
+            <div class="project-card__content">
+              <h3 class="project-card__title">Muzik</h3>
+              <p class="project-card__description" data-i18n="projects.muzik.desc">
+                Music discovery and sharing app built during Le Wagon bootcamp.
+                Allows users to explore and share their favorite tracks.
+              </p>
+              <div class="project-card__stack">
+                <span class="tech-tag">Ruby on Rails</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">SCSS</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/victorav3lla-beep/Muzik" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                  <i class="fab fa-github"></i> Source Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Track ID Hunter -->
+          <article class="project-card project-card--coming-soon">
+            <div class="project-card__badge project-card__badge--soon">
+              <i class="fas fa-clock"></i> Coming Soon
+            </div>
+            <div class="project-card__content">
+              <h3 class="project-card__title">Track ID Hunter</h3>
+              <p class="project-card__description" data-i18n="projects.trackid.desc">
+                App for DJs to manage and organize their track IDs from sets and mixes.
+                Never lose a track ID again.
+              </p>
+              <div class="project-card__stack">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="techstack" id="techstack">
+      <div class="container">
+        <p class="section__kicker" data-i18n="techstack.kicker">Technologies</p>
+        <h2 class="section__title" data-i18n="techstack.title">Tech Stack</h2>
+      </div>
+
+      <!-- Infinite Marquee -->
+      <div class="marquee" aria-label="Technologies I work with">
+        <div class="marquee__track">
+          <div class="marquee__content">
+            <div class="tech-item"><i class="devicon-ruby-plain"></i><span>Ruby</span></div>
+            <div class="tech-item"><i class="devicon-rails-plain"></i><span>Rails</span></div>
+            <div class="tech-item"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
+            <div class="tech-item"><i class="devicon-typescript-plain"></i><span>TypeScript</span></div>
+            <div class="tech-item"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
+            <div class="tech-item"><i class="devicon-css3-plain"></i><span>CSS3</span></div>
+            <div class="tech-item"><i class="devicon-sass-original"></i><span>SCSS</span></div>
+            <div class="tech-item"><i class="devicon-postgresql-plain"></i><span>PostgreSQL</span></div>
+            <div class="tech-item"><i class="devicon-git-plain"></i><span>Git</span></div>
+            <div class="tech-item"><i class="devicon-github-original"></i><span>GitHub</span></div>
+            <div class="tech-item"><i class="devicon-heroku-original"></i><span>Heroku</span></div>
+            <div class="tech-item"><i class="devicon-vscode-plain"></i><span>VS Code</span></div>
+          </div>
+          <div class="marquee__content" aria-hidden="true">
+            <div class="tech-item"><i class="devicon-ruby-plain"></i><span>Ruby</span></div>
+            <div class="tech-item"><i class="devicon-rails-plain"></i><span>Rails</span></div>
+            <div class="tech-item"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
+            <div class="tech-item"><i class="devicon-typescript-plain"></i><span>TypeScript</span></div>
+            <div class="tech-item"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
+            <div class="tech-item"><i class="devicon-css3-plain"></i><span>CSS3</span></div>
+            <div class="tech-item"><i class="devicon-sass-original"></i><span>SCSS</span></div>
+            <div class="tech-item"><i class="devicon-postgresql-plain"></i><span>PostgreSQL</span></div>
+            <div class="tech-item"><i class="devicon-git-plain"></i><span>Git</span></div>
+            <div class="tech-item"><i class="devicon-github-original"></i><span>GitHub</span></div>
+            <div class="tech-item"><i class="devicon-heroku-original"></i><span>Heroku</span></div>
+            <div class="tech-item"><i class="devicon-vscode-plain"></i><span>VS Code</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Learning Section -->
+      <div class="container">
+        <div class="techstack__learning">
+          <h3 data-i18n="techstack.learning">Currently Learning</h3>
+          <div class="techstack__learning-items">
+            <div class="tech-item tech-item--learning"><i class="devicon-react-original"></i><span>React</span></div>
+            <div class="tech-item tech-item--learning"><i class="devicon-python-plain"></i><span>Python</span></div>
+            <div class="tech-item tech-item--learning"><i class="devicon-nodejs-plain"></i><span>Node.js</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Creative Section -->
+    <section class="creative" id="creative">
+      <div class="container">
+        <p class="section__kicker" data-i18n="creative.kicker">Beyond Code</p>
+        <h2 class="section__title" data-i18n="creative.title">Creative Side</h2>
+        <p class="section__subtitle" data-i18n="creative.subtitle">
+          Code is just one part of what I do. Photography and music production have shaped how I think about design and detail.
+        </p>
+
+        <div class="creative__grid">
+          <a href="portfolio.html" class="creative-card creative-card--photo">
+            <div class="creative-card__overlay"></div>
+            <div class="creative-card__content">
+              <i class="fas fa-camera"></i>
+              <h3 data-i18n="creative.photo.title">Photography</h3>
+              <p data-i18n="creative.photo.text">10 years of visual storytelling. Travel, portraits, and night atmospheres.</p>
+              <span class="creative-card__cta">View Portfolio <i class="fas fa-arrow-right"></i></span>
+            </div>
           </a>
 
-          <a href="portfolio.html" class="home-door" role="listitem">
-            <span class="home-door__title" data-i18n="home.portfolio.title">Photo portfolio</span>
-            <span class="home-door__subtitle" data-i18n="home.portfolio.subtitle">
-              Places, faces and late nights — selected series.
-            </span>
+          <a href="creative-lab.html" class="creative-card creative-card--music">
+            <div class="creative-card__overlay"></div>
+            <div class="creative-card__content">
+              <i class="fas fa-headphones"></i>
+              <h3 data-i18n="creative.music.title">Music Production</h3>
+              <p data-i18n="creative.music.text">7 years in Ableton. Electronic music, sound design, and sonic experiments.</p>
+              <span class="creative-card__cta">Explore Lab <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <p class="section__kicker" data-i18n="contact.kicker">Get in Touch</p>
+        <h2 class="section__title" data-i18n="contact.title">Let's Work Together</h2>
+        <p class="section__subtitle" data-i18n="contact.subtitle">
+          I'm currently available for freelance projects, collaborations, or full-time opportunities.
+          Let's discuss how I can help bring your ideas to life.
+        </p>
+
+        <div class="contact__content">
+          <a href="mailto:david.pinheiro.d@gmail.com" class="btn btn--primary btn--large">
+            <i class="fas fa-envelope"></i>
+            <span data-i18n="contact.cta">Say Hello</span>
           </a>
 
-          <a href="creative-lab.html" class="home-door" role="listitem">
-            <span class="home-door__title" data-i18n="home.lab.title">Creative Lab</span>
-            <span class="home-door__subtitle" data-i18n="home.lab.subtitle">
-              Ableton, textures and visual/sonic experiments.
-            </span>
-          </a>
+          <div class="contact__info">
+            <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="contact.location">Berlin, Germany</span></p>
+            <p><i class="fas fa-globe"></i> <span data-i18n="contact.remote">Available for remote work across EU</span></p>
+          </div>
+
+          <div class="contact__social">
+            <a href="https://github.com/Mozzzaic" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/davidpinheiro" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://marketplace.visualstudio.com/publishers/DavidPinheiro" target="_blank" rel="noopener noreferrer" aria-label="VS Code Marketplace">
+              <i class="fas fa-puzzle-piece"></i>
+            </a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p data-i18n="footer.available">Available in Berlin & remote EU.</p>
-      <div class="footer-links">
-        <a href="mailto:david.pinheiro.d@gmail.com">david.pinheiro.d@gmail.com</a>
-        <a href="https://github.com/Mozzzaic" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noreferrer">Instagram</a>
-      </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="footer.copyright">&copy; 2025 David Pinheiro. Built with vanilla HTML, CSS & JS.</p>
+      <p class="footer__legal" data-i18n="footer.legal">
+        Based in Berlin. Available for projects across the EU.
+      </p>
     </div>
   </footer>
 
-  <!-- Simple legal text (anchor target) -->
-  <div id="legal" class="legal">
-    <p data-i18n="legal.text">
-      Site edited by David Pinheiro, web developer based in Berlin. Contact: david.pinheiro.d@gmail.com.
-      Data sent through forms is only used to answer your requests and is not sold to third parties.
-      This site may use Google Analytics 4 for anonymised audience measurement. You can disable analytics cookies in your browser settings.
-    </p>
-  </div>
+  <!-- tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 
   <script src="assets/js/main.js"></script>
 </body>
+
 </html>
