@@ -38,6 +38,9 @@
   <!-- Devicon for tech stack -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
+  <!-- AOS - Animate On Scroll -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/new-styles.css">
 </head>
 
@@ -135,11 +138,11 @@
     <!-- About Section -->
     <section class="about" id="about">
       <div class="container">
-        <p class="section__kicker" data-i18n="about.kicker">About Me</p>
-        <h2 class="section__title" data-i18n="about.title">A Different Kind of Developer</h2>
+        <p class="section__kicker" data-aos="fade-right" data-aos-duration="600" data-i18n="about.kicker">About Me</p>
+        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-i18n="about.title">A Different Kind of Developer</h2>
 
         <div class="about__grid">
-          <div class="about__content">
+          <div class="about__content" data-aos="fade-up" data-aos-delay="200">
             <p class="about__lead" data-i18n="about.lead">
               I'm not your typical junior developer. I spent 10 years in sales, working my way up to Sales Manager
               at a recycling company in Paris. I know how to talk to clients, understand their needs, and deliver results.
@@ -155,28 +158,28 @@
           </div>
 
           <div class="about__highlights">
-            <div class="highlight-card">
+            <div class="highlight-card" data-aos="fade-up" data-aos-delay="100">
               <div class="highlight-card__icon"><i class="fas fa-briefcase"></i></div>
               <div class="highlight-card__content">
                 <h3 data-i18n="about.highlight1.title">10 Years in Sales</h3>
                 <p data-i18n="about.highlight1.text">Client communication, negotiation, understanding business needs</p>
               </div>
             </div>
-            <div class="highlight-card">
+            <div class="highlight-card" data-aos="fade-up" data-aos-delay="200">
               <div class="highlight-card__icon"><i class="fas fa-code"></i></div>
               <div class="highlight-card__content">
                 <h3 data-i18n="about.highlight2.title">Le Wagon Berlin 2025</h3>
                 <p data-i18n="about.highlight2.text">Full-stack web development, Ruby on Rails, JavaScript</p>
               </div>
             </div>
-            <div class="highlight-card">
+            <div class="highlight-card" data-aos="fade-up" data-aos-delay="300">
               <div class="highlight-card__icon"><i class="fas fa-camera"></i></div>
               <div class="highlight-card__content">
                 <h3 data-i18n="about.highlight3.title">10 Years of Photography</h3>
                 <p data-i18n="about.highlight3.text">Visual storytelling, Photoshop, Lightroom, DaVinci Resolve</p>
               </div>
             </div>
-            <div class="highlight-card">
+            <div class="highlight-card" data-aos="fade-up" data-aos-delay="400">
               <div class="highlight-card__icon"><i class="fas fa-headphones"></i></div>
               <div class="highlight-card__content">
                 <h3 data-i18n="about.highlight4.title">7 Years of Music Production</h3>
@@ -191,15 +194,15 @@
     <!-- Projects Section -->
     <section class="projects" id="projects">
       <div class="container">
-        <p class="section__kicker" data-i18n="projects.kicker">Featured Work</p>
-        <h2 class="section__title" data-i18n="projects.title">Projects</h2>
-        <p class="section__subtitle" data-i18n="projects.subtitle">
+        <p class="section__kicker" data-aos="fade-up" data-i18n="projects.kicker">Featured Work</p>
+        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-i18n="projects.title">Projects</h2>
+        <p class="section__subtitle" data-aos="fade-up" data-aos-delay="150" data-i18n="projects.subtitle">
           From VS Code extensions to award-winning bootcamp projects, here's what I've been building.
         </p>
 
         <div class="projects__grid">
           <!-- Terminal Impact -->
-          <article class="project-card project-card--featured">
+          <article class="project-card project-card--featured" data-aos="zoom-in" data-aos-duration="1000">
             <div class="project-card__badge">
               <i class="fas fa-star"></i> Published Extension
             </div>
@@ -225,7 +228,7 @@
           </article>
 
           <!-- Talez -->
-          <article class="project-card project-card--featured">
+          <article class="project-card project-card--featured" data-aos="fade-right" data-aos-delay="100">
             <div class="project-card__badge project-card__badge--award">
               <i class="fas fa-trophy"></i> Best Project 2025
             </div>
@@ -250,7 +253,7 @@
           </article>
 
           <!-- Muzik -->
-          <article class="project-card">
+          <article class="project-card" data-aos="fade-left" data-aos-delay="200">
             <div class="project-card__content">
               <h3 class="project-card__title">Muzik</h3>
               <p class="project-card__description" data-i18n="projects.muzik.desc">
@@ -271,7 +274,7 @@
           </article>
 
           <!-- Track ID Hunter -->
-          <article class="project-card project-card--coming-soon">
+          <article class="project-card project-card--coming-soon" data-aos="fade-right" data-aos-delay="300">
             <div class="project-card__badge project-card__badge--soon">
               <i class="fas fa-clock"></i> Coming Soon
             </div>
@@ -294,12 +297,12 @@
     <!-- Tech Stack Section -->
     <section class="techstack" id="techstack">
       <div class="container">
-        <p class="section__kicker" data-i18n="techstack.kicker">Technologies</p>
-        <h2 class="section__title" data-i18n="techstack.title">Tech Stack</h2>
+        <p class="section__kicker" data-aos="fade-up" data-i18n="techstack.kicker">Technologies</p>
+        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-i18n="techstack.title">Tech Stack</h2>
       </div>
 
       <!-- Infinite Marquee -->
-      <div class="marquee" aria-label="Technologies I work with">
+      <div class="marquee" data-aos="fade-up" data-aos-delay="200" aria-label="Technologies I work with">
         <div class="marquee__track">
           <div class="marquee__content">
             <div class="tech-item"><i class="devicon-ruby-plain"></i><span>Ruby</span></div>
@@ -334,7 +337,7 @@
 
       <!-- Learning Section -->
       <div class="container">
-        <div class="techstack__learning">
+        <div class="techstack__learning" data-aos="fade-up" data-aos-delay="300">
           <h3 data-i18n="techstack.learning">Currently Learning</h3>
           <div class="techstack__learning-items">
             <div class="tech-item tech-item--learning"><i class="devicon-react-original"></i><span>React</span></div>
@@ -348,14 +351,14 @@
     <!-- Creative Section -->
     <section class="creative" id="creative">
       <div class="container">
-        <p class="section__kicker" data-i18n="creative.kicker">Beyond Code</p>
-        <h2 class="section__title" data-i18n="creative.title">Creative Side</h2>
-        <p class="section__subtitle" data-i18n="creative.subtitle">
+        <p class="section__kicker" data-aos="fade-up" data-i18n="creative.kicker">Beyond Code</p>
+        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-i18n="creative.title">Creative Side</h2>
+        <p class="section__subtitle" data-aos="fade-up" data-aos-delay="150" data-i18n="creative.subtitle">
           Code is just one part of what I do. Photography and music production have shaped how I think about design and detail.
         </p>
 
         <div class="creative__grid">
-          <a href="portfolio.html" class="creative-card creative-card--photo">
+          <a href="portfolio.html" class="creative-card creative-card--photo" data-aos="fade-right" data-aos-delay="100">
             <div class="creative-card__overlay"></div>
             <div class="creative-card__content">
               <i class="fas fa-camera"></i>
@@ -365,7 +368,7 @@
             </div>
           </a>
 
-          <a href="creative-lab.html" class="creative-card creative-card--music">
+          <a href="creative-lab.html" class="creative-card creative-card--music" data-aos="fade-left" data-aos-delay="200">
             <div class="creative-card__overlay"></div>
             <div class="creative-card__content">
               <i class="fas fa-headphones"></i>
@@ -381,25 +384,25 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
       <div class="container">
-        <p class="section__kicker" data-i18n="contact.kicker">Get in Touch</p>
-        <h2 class="section__title" data-i18n="contact.title">Let's Work Together</h2>
-        <p class="section__subtitle" data-i18n="contact.subtitle">
+        <p class="section__kicker" data-aos="fade-up" data-i18n="contact.kicker">Get in Touch</p>
+        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-i18n="contact.title">Let's Work Together</h2>
+        <p class="section__subtitle" data-aos="fade-up" data-aos-delay="150" data-i18n="contact.subtitle">
           I'm currently available for freelance projects, collaborations, or full-time opportunities.
           Let's discuss how I can help bring your ideas to life.
         </p>
 
         <div class="contact__content">
-          <a href="mailto:david.pinheiro.d@gmail.com" class="btn btn--primary btn--large">
+          <a href="mailto:david.pinheiro.d@gmail.com" class="btn btn--primary btn--large" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="600">
             <i class="fas fa-envelope"></i>
             <span data-i18n="contact.cta">Say Hello</span>
           </a>
 
-          <div class="contact__info">
+          <div class="contact__info" data-aos="fade-up" data-aos-delay="250">
             <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="contact.location">Berlin, Germany</span></p>
             <p><i class="fas fa-globe"></i> <span data-i18n="contact.remote">Available for remote work across EU</span></p>
           </div>
 
-          <div class="contact__social">
+          <div class="contact__social" data-aos="fade-up" data-aos-delay="300">
             <a href="https://github.com/Mozzzaic" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <i class="fab fa-github"></i>
             </a>
@@ -430,6 +433,9 @@
 
   <!-- tsParticles -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+  <!-- AOS - Animate On Scroll -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <script src="assets/js/main.js"></script>
 </body>

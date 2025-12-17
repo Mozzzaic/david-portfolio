@@ -661,7 +661,6 @@ function initHeroAnimation() {
   const heroSection = document.querySelector(".hero");
   if (!heroSection) return;
 
-  // Add entrance animation class
   heroSection.style.opacity = "0";
   heroSection.style.transform = "translateY(20px)";
   heroSection.style.transition = "opacity 0.6s ease, transform 0.6s ease";
@@ -683,7 +682,6 @@ function initScrollThemeTransition() {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        // When hero leaves viewport (scrolled past), switch to dark
         if (!entry.isIntersecting) {
           document.body.classList.add("scrolled-dark");
           updateParticlesTheme(true);
@@ -694,7 +692,6 @@ function initScrollThemeTransition() {
       });
     },
     {
-      // Trigger when 30% of the hero is still visible
       threshold: 0.3,
       rootMargin: "0px",
     }
@@ -827,7 +824,6 @@ function initScrollAnimations() {
     observer.observe(section);
   });
 
-  // CSS for .is-visible
   const style = document.createElement("style");
   style.textContent = `
     section.is-visible {
@@ -839,7 +835,34 @@ function initScrollAnimations() {
 }
 
 // --------------------------------------------------------------------------
-// FAQ ACCORDION (for web.html)
+// CONTACT VISIBILITY
+// --------------------------------------------------------------------------
+
+function initContactObserver() {
+  const contactSection = document.querySelector(".contact");
+  if (!contactSection) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          document.body.classList.add("contact-visible");
+        } else {
+          document.body.classList.remove("contact-visible");
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: "0px 0px -10% 0px",
+    }
+  );
+
+  observer.observe(contactSection);
+}
+
+// --------------------------------------------------------------------------
+// FAQ ACCORDION
 // --------------------------------------------------------------------------
 
 function initFAQ() {
@@ -861,11 +884,9 @@ function initFAQ() {
 // --------------------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize language
   const initialLang = detectInitialLanguage();
   applyLanguage(initialLang);
 
-  // Language buttons
   document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const lang = btn.dataset.langBtn;
@@ -873,16 +894,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Initialize components
   initMenu();
   initSmoothScroll();
   initHeroAnimation();
   initScrollAnimations();
   initFAQ();
+  initContactObserver();
 
-  // Initialize particles and scroll theme transition (homepage only)
   if (document.querySelector("#tsparticles")) {
     initParticles();
     initScrollThemeTransition();
+  }
+
+  if (typeof AOS !== "undefined") {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 80,
+      delay: 0,
+      disable: window.innerWidth < 768 ? true : false,
+    });
   }
 });
