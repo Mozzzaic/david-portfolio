@@ -9,6 +9,11 @@ const translations = {
   en: {
     // Navigation
     "nav.home": "Home",
+    "nav.about": "About",
+    "nav.projects": "Projects",
+    "nav.skills": "Skills",
+    "nav.creative": "Creative",
+    "nav.contact": "Contact",
     "nav.web": "Web / Services",
     "nav.portfolio": "Photo Portfolio",
     "nav.lab": "Creative Lab",
@@ -267,6 +272,11 @@ const translations = {
   fr: {
     // Navigation
     "nav.home": "Accueil",
+    "nav.about": "À propos",
+    "nav.projects": "Projets",
+    "nav.skills": "Compétences",
+    "nav.creative": "Créatif",
+    "nav.contact": "Contact",
     "nav.web": "Web / Services",
     "nav.portfolio": "Portfolio Photo",
     "nav.lab": "Creative Lab",
@@ -585,6 +595,7 @@ function initMenu() {
   const menuToggle = document.querySelector(".menu-toggle");
   const navDrawer = document.querySelector(".nav-drawer");
   const navOverlay = document.querySelector(".nav-overlay");
+  const closeButton = document.querySelector(".nav-drawer__close");
 
   if (!menuToggle || !navDrawer) return;
 
@@ -613,6 +624,7 @@ function initMenu() {
 
   menuToggle.addEventListener("click", toggleMenu);
   navOverlay?.addEventListener("click", closeMenu);
+  closeButton?.addEventListener("click", closeMenu);
 
   // Close on escape key
   document.addEventListener("keydown", (e) => {
@@ -625,6 +637,162 @@ function initMenu() {
   navDrawer.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", closeMenu);
   });
+}
+
+// --------------------------------------------------------------------------
+// TILT EFFECT ON CARDS
+// --------------------------------------------------------------------------
+
+function initTiltEffect() {
+  if (typeof VanillaTilt === 'undefined' || window.innerWidth <= 768) return;
+
+  // Project cards: subtle glare only, no 3D rotation
+  const projectCards = document.querySelectorAll('.project-card');
+  VanillaTilt.init(projectCards, {
+    max: 0,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.12,
+    scale: 1,
+    perspective: 1000,
+    gyroscope: false,
+  });
+
+  // Creative cards: subtle tilt with visible glare
+  const creativeCards = document.querySelectorAll('.creative-card');
+  VanillaTilt.init(creativeCards, {
+    max: 3,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.25,
+    scale: 1.01,
+    perspective: 1000,
+    gyroscope: false,
+  });
+
+  // Highlight cards: keep the 3D tilt effect
+  const highlightCards = document.querySelectorAll('.highlight-card');
+  VanillaTilt.init(highlightCards, {
+    max: 8,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.15,
+    scale: 1.02,
+    perspective: 1000,
+    gyroscope: false,
+  });
+}
+
+// --------------------------------------------------------------------------
+// TEXT REVEAL ANIMATION
+// --------------------------------------------------------------------------
+
+function initTextReveal() {
+  // Only apply to section titles (hero has complex structure with nested spans)
+  const titles = document.querySelectorAll('.section__title');
+
+  titles.forEach((title) => {
+    // Skip if already processed
+    if (title.classList.contains('text-reveal-ready')) return;
+
+    const text = title.textContent;
+    const words = text.trim().split(' ');
+
+    // Clear title
+    title.innerHTML = '';
+    title.classList.add('text-reveal-ready');
+
+    words.forEach((word, wordIndex) => {
+      const wordSpan = document.createElement('span');
+      wordSpan.className = 'word';
+      wordSpan.style.setProperty('--word-index', wordIndex);
+
+      // Create letter spans
+      word.split('').forEach((letter, letterIndex) => {
+        const letterSpan = document.createElement('span');
+        letterSpan.className = 'letter';
+        letterSpan.textContent = letter;
+        letterSpan.style.setProperty('--letter-index', letterIndex);
+        wordSpan.appendChild(letterSpan);
+      });
+
+      title.appendChild(wordSpan);
+
+      // Add space between words (except last)
+      if (wordIndex < words.length - 1) {
+        title.appendChild(document.createTextNode(' '));
+      }
+    });
+  });
+
+  // Observer to trigger animation
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('text-revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: '0px 0px -10% 0px',
+    }
+  );
+
+  titles.forEach((title) => revealObserver.observe(title));
+}
+
+// --------------------------------------------------------------------------
+// SCROLL PROGRESS BAR
+// --------------------------------------------------------------------------
+
+function initScrollProgress() {
+  const progressBar = document.querySelector('.scroll-progress');
+  if (!progressBar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+    progressBar.style.width = scrollPercent + '%';
+  }, { passive: true });
+}
+
+// --------------------------------------------------------------------------
+// ACTIVE NAV SECTION TRACKING
+// --------------------------------------------------------------------------
+
+function initActiveNavTracking() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-drawer__link');
+
+  if (sections.length === 0 || navLinks.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+
+          navLinks.forEach((link) => {
+            link.classList.remove('is-active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('is-active');
+            }
+          });
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+      rootMargin: '-20% 0px -60% 0px',
+    }
+  );
+
+  sections.forEach((section) => observer.observe(section));
 }
 
 // --------------------------------------------------------------------------
@@ -672,32 +840,64 @@ function initHeroAnimation() {
 }
 
 // --------------------------------------------------------------------------
-// LIGHT → DARK SCROLL TRANSITION
+// SCROLL THEME TRANSITIONS
 // --------------------------------------------------------------------------
 
 function initScrollThemeTransition() {
   const heroSection = document.querySelector(".hero");
+  const techSection = document.querySelector(".techstack");
+
   if (!heroSection) return;
 
-  const observer = new IntersectionObserver(
+  let currentTheme = "light";
+
+  // Light → Dark: after hero
+  const darkObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
+        if (!entry.isIntersecting && currentTheme === "light") {
           document.body.classList.add("scrolled-dark");
-          updateParticlesTheme(true);
-        } else {
-          document.body.classList.remove("scrolled-dark");
-          updateParticlesTheme(false);
+          currentTheme = "dark";
+          updateParticlesTheme("dark");
+        } else if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+          document.body.classList.remove("scrolled-dark", "scrolled-orange");
+          currentTheme = "light";
+          updateParticlesTheme("light");
         }
       });
     },
-    {
-      threshold: 0.3,
-      rootMargin: "0px",
-    }
+    { threshold: [0, 0.3, 0.7] }
   );
 
-  observer.observe(heroSection);
+  darkObserver.observe(heroSection);
+
+  // Dark → Orange: at tech stack section (stays orange once triggered)
+  if (techSection) {
+    const orangeObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const techTop = techSection.getBoundingClientRect().top;
+
+          if (entry.isIntersecting && currentTheme !== "light") {
+            // Entering orange zone
+            document.body.classList.remove("scrolled-dark");
+            document.body.classList.add("scrolled-orange");
+            currentTheme = "orange";
+            updateParticlesTheme("orange");
+          } else if (!entry.isIntersecting && currentTheme === "orange" && techTop > 0) {
+            // Only go back to dark if we scrolled UP (techSection is below viewport)
+            document.body.classList.remove("scrolled-orange");
+            document.body.classList.add("scrolled-dark");
+            currentTheme = "dark";
+            updateParticlesTheme("dark");
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -15% 0px" }
+    );
+
+    orangeObserver.observe(techSection);
+  }
 }
 
 // --------------------------------------------------------------------------
@@ -778,17 +978,29 @@ function initParticles() {
     });
 }
 
-function updateParticlesTheme(isDark) {
+function updateParticlesTheme(theme) {
   if (!particlesInstance) return;
 
   const particles = particlesInstance.options.particles;
   const links = particles.links;
 
-  // Update opacity values for dark/light mode
-  particles.opacity.value = isDark ? 0.4 : 0.25;
-  links.opacity = isDark ? 0.25 : 0.12;
+  if (theme === "orange") {
+    particles.color.value = "#581C87";
+    links.color = "#581C87";
+    particles.opacity.value = 0.5;
+    links.opacity = 0.3;
+  } else if (theme === "dark") {
+    particles.color.value = "#8B5CF6";
+    links.color = "#8B5CF6";
+    particles.opacity.value = 0.4;
+    links.opacity = 0.25;
+  } else {
+    particles.color.value = "#8B5CF6";
+    links.color = "#8B5CF6";
+    particles.opacity.value = 0.25;
+    links.opacity = 0.12;
+  }
 
-  // Refresh particles with new options
   particlesInstance.refresh();
 }
 
@@ -862,6 +1074,25 @@ function initContactObserver() {
 }
 
 // --------------------------------------------------------------------------
+// CARD GLOW EFFECT (follows mouse)
+// --------------------------------------------------------------------------
+
+function initCardGlow() {
+  const cards = document.querySelectorAll('.project-card, .highlight-card, .creative-card');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+      card.style.setProperty('--mouse-x', `${x}%`);
+      card.style.setProperty('--mouse-y', `${y}%`);
+    });
+  });
+}
+
+// --------------------------------------------------------------------------
 // FAQ ACCORDION
 // --------------------------------------------------------------------------
 
@@ -894,12 +1125,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Text reveal BEFORE AOS (avoid conflict)
+  initTextReveal();
+
   initMenu();
   initSmoothScroll();
   initHeroAnimation();
   initScrollAnimations();
   initFAQ();
   initContactObserver();
+  initScrollProgress();
+  initActiveNavTracking();
+  initTiltEffect();
+  initCardGlow();
 
   if (document.querySelector("#tsparticles")) {
     initParticles();

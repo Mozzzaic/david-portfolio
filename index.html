@@ -45,6 +45,9 @@
 </head>
 
 <body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
   <!-- Particles Background -->
   <div id="tsparticles"></div>
 
@@ -63,20 +66,69 @@
   </button>
 
   <!-- Slide-out Navigation -->
-  <nav class="nav-drawer" aria-label="Main navigation">
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Main navigation">
+    <button class="nav-drawer__close" aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
     <div class="nav-drawer__header">
       <span class="nav-drawer__name">David Pinheiro</span>
       <span class="nav-drawer__tag">Full-Stack Developer</span>
     </div>
-    <ul class="nav-drawer__links">
-      <li><a href="index.html" class="nav-drawer__link nav-drawer__link--active" aria-current="page">Home</a></li>
-      <li><a href="web.html" class="nav-drawer__link">Web / Services</a></li>
-      <li><a href="portfolio.html" class="nav-drawer__link">Photo Portfolio</a></li>
-      <li><a href="creative-lab.html" class="nav-drawer__link">Creative Lab</a></li>
+
+    <ul class="nav-drawer__list">
+      <li class="nav-drawer__item" style="--i: 0">
+        <a href="#hero" class="nav-drawer__link">
+          <span class="nav-drawer__icon">01</span>
+          <span class="nav-drawer__text" data-i18n="nav.home">Home</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 1">
+        <a href="#about" class="nav-drawer__link">
+          <span class="nav-drawer__icon">02</span>
+          <span class="nav-drawer__text" data-i18n="nav.about">About</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 2">
+        <a href="#projects" class="nav-drawer__link">
+          <span class="nav-drawer__icon">03</span>
+          <span class="nav-drawer__text" data-i18n="nav.projects">Projects</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 3">
+        <a href="#techstack" class="nav-drawer__link">
+          <span class="nav-drawer__icon">04</span>
+          <span class="nav-drawer__text" data-i18n="nav.skills">Skills</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 4">
+        <a href="#creative" class="nav-drawer__link">
+          <span class="nav-drawer__icon">05</span>
+          <span class="nav-drawer__text" data-i18n="nav.creative">Creative</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 5">
+        <a href="#contact" class="nav-drawer__link">
+          <span class="nav-drawer__icon">06</span>
+          <span class="nav-drawer__text" data-i18n="nav.contact">Contact</span>
+        </a>
+      </li>
     </ul>
+
+    <div class="nav-drawer__pages">
+      <p class="nav-drawer__pages-label">Pages</p>
+      <a href="web.html" class="nav-drawer__page-link">Web / Services</a>
+      <a href="portfolio.html" class="nav-drawer__page-link">Photo Portfolio</a>
+      <a href="creative-lab.html" class="nav-drawer__page-link">Creative Lab</a>
+    </div>
+
     <div class="nav-drawer__footer">
-      <div class="lang-switch">
+      <div class="nav-drawer__lang">
         <button class="lang-btn" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+        <span class="lang-separator">/</span>
         <button class="lang-btn" type="button" data-lang-btn="fr" aria-pressed="false">FR</button>
       </div>
     </div>
@@ -111,7 +163,7 @@
       <div class="container">
         <p class="hero__kicker" data-i18n="hero.kicker">Full-Stack Developer · Berlin</p>
         <h1 class="hero__title">
-          <span data-i18n="hero.greeting">Hi, I'm</span> <span class="hero__name">David Pinheiro</span>
+          <span data-i18n="hero.greeting">Hi, I'm</span> <span class="hero__name" data-text="David Pinheiro">David Pinheiro</span>
         </h1>
         <p class="hero__tagline" data-i18n="hero.tagline">I Build Web Apps. I Understand Business.</p>
         <p class="hero__subtitle" data-i18n="hero.subtitle">
@@ -139,7 +191,7 @@
     <section class="about" id="about">
       <div class="container">
         <p class="section__kicker" data-aos="fade-right" data-aos-duration="600" data-i18n="about.kicker">About Me</p>
-        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-i18n="about.title">A Different Kind of Developer</h2>
+        <h2 class="section__title" data-i18n="about.title">A Different Kind of Developer</h2>
 
         <div class="about__grid">
           <div class="about__content" data-aos="fade-up" data-aos-delay="200">
@@ -195,7 +247,7 @@
     <section class="projects" id="projects">
       <div class="container">
         <p class="section__kicker" data-aos="fade-up" data-i18n="projects.kicker">Featured Work</p>
-        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-i18n="projects.title">Projects</h2>
+        <h2 class="section__title" data-i18n="projects.title">Projects</h2>
         <p class="section__subtitle" data-aos="fade-up" data-aos-delay="150" data-i18n="projects.subtitle">
           From VS Code extensions to award-winning bootcamp projects, here's what I've been building.
         </p>
@@ -298,7 +350,7 @@
     <section class="techstack" id="techstack">
       <div class="container">
         <p class="section__kicker" data-aos="fade-up" data-i18n="techstack.kicker">Technologies</p>
-        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-i18n="techstack.title">Tech Stack</h2>
+        <h2 class="section__title" data-i18n="techstack.title">Tech Stack</h2>
       </div>
 
       <!-- Infinite Marquee -->
@@ -352,7 +404,7 @@
     <section class="creative" id="creative">
       <div class="container">
         <p class="section__kicker" data-aos="fade-up" data-i18n="creative.kicker">Beyond Code</p>
-        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-i18n="creative.title">Creative Side</h2>
+        <h2 class="section__title" data-i18n="creative.title">Creative Side</h2>
         <p class="section__subtitle" data-aos="fade-up" data-aos-delay="150" data-i18n="creative.subtitle">
           Code is just one part of what I do. Photography and music production have shaped how I think about design and detail.
         </p>
@@ -385,7 +437,7 @@
     <section class="contact" id="contact">
       <div class="container">
         <p class="section__kicker" data-aos="fade-up" data-i18n="contact.kicker">Get in Touch</p>
-        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-i18n="contact.title">Let's Work Together</h2>
+        <h2 class="section__title" data-i18n="contact.title">Let's Work Together</h2>
         <p class="section__subtitle" data-aos="fade-up" data-aos-delay="150" data-i18n="contact.subtitle">
           I'm currently available for freelance projects, collaborations, or full-time opportunities.
           Let's discuss how I can help bring your ideas to life.
@@ -436,6 +488,9 @@
 
   <!-- AOS - Animate On Scroll -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Vanilla Tilt - 3D card effects -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
   <script src="assets/js/main.js"></script>
 </body>
