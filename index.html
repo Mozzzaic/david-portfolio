@@ -296,8 +296,39 @@
         </p>
 
         <div class="projects__grid">
+          <!-- Talez -->
+          <article class="project-card" data-aos="zoom-in" data-aos-offset="150" data-aos-duration="800">
+            <div class="project-card__image">
+              <img src="assets/img/talez.2.webp" alt="Talez - Interactive storybook app" loading="lazy">
+            </div>
+            <div class="project-card__badge project-card__badge--award">
+              <i class="fas fa-trophy"></i> Best Project 2025
+            </div>
+            <div class="project-card__content">
+              <h3 class="project-card__title">Talez</h3>
+              <p class="project-card__description" data-i18n="projects.talez.desc">
+                Interactive storybook app for children that helps them express themselves through AI-powered
+                image and text generation. Awarded best project across all Le Wagon batches in 2025.
+              </p>
+              <div class="project-card__stack">
+                <span class="tech-tag">Ruby on Rails</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">SCSS</span>
+                <span class="tech-tag">AI APIs</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/victorav3lla-beep/Talez" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                  <i class="fab fa-github"></i> Source Code
+                </a>
+              </div>
+            </div>
+          </article>
+
           <!-- Terminal Impact -->
-          <article class="project-card project-card--featured" data-aos="zoom-in" data-aos-offset="150" data-aos-duration="800">
+          <article class="project-card" data-aos="fade-right" data-aos-offset="150" data-aos-duration="700">
+            <div class="project-card__image">
+              <img src="assets/img/terminal-impact.webp" alt="Terminal Impact - VS Code Extension" loading="lazy">
+            </div>
             <div class="project-card__badge">
               <i class="fas fa-star"></i> Published Extension
             </div>
@@ -322,33 +353,14 @@
             </div>
           </article>
 
-          <!-- Talez -->
-          <article class="project-card project-card--featured" data-aos="fade-right" data-aos-offset="150" data-aos-duration="700">
-            <div class="project-card__badge project-card__badge--award">
-              <i class="fas fa-trophy"></i> Best Project 2025
-            </div>
-            <div class="project-card__content">
-              <h3 class="project-card__title">Talez</h3>
-              <p class="project-card__description" data-i18n="projects.talez.desc">
-                Interactive storybook app for children that helps them express themselves through AI-powered
-                image and text generation. Awarded best project across all Le Wagon batches in 2025.
-              </p>
-              <div class="project-card__stack">
-                <span class="tech-tag">Ruby on Rails</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">SCSS</span>
-                <span class="tech-tag">AI APIs</span>
-              </div>
-              <div class="project-card__links">
-                <a href="https://github.com/victorav3lla-beep/Talez" target="_blank" rel="noopener noreferrer" class="project-card__link">
-                  <i class="fab fa-github"></i> Source Code
-                </a>
-              </div>
-            </div>
-          </article>
-
           <!-- Muzik -->
           <article class="project-card" data-aos="fade-left" data-aos-offset="150" data-aos-duration="700">
+            <div class="project-card__image">
+              <img src="assets/img/muzik.webp" alt="Muzik - Music discovery app" loading="lazy">
+            </div>
+            <div class="project-card__badge project-card__badge--bootcamp">
+              <i class="fas fa-music"></i> Bootcamp Project
+            </div>
             <div class="project-card__content">
               <h3 class="project-card__title">Muzik</h3>
               <p class="project-card__description" data-i18n="projects.muzik.desc">
@@ -369,7 +381,10 @@
           </article>
 
           <!-- Track ID Hunter -->
-          <article class="project-card project-card--coming-soon" data-aos="fade-right" data-aos-offset="150" data-aos-duration="700">
+          <article class="project-card project-card--coming-soon" data-aos="zoom-in" data-aos-offset="150" data-aos-duration="800">
+            <div class="project-card__image project-card__image--placeholder">
+              <span class="placeholder-icon"><i class="fas fa-headphones"></i></span>
+            </div>
             <div class="project-card__badge project-card__badge--soon">
               <i class="fas fa-clock"></i> Coming Soon
             </div>
@@ -542,6 +557,9 @@
   <script src="assets/js/typewriter.js"></script>
 
   <script src="assets/js/main.js"></script>
+
+  <!-- Custom Cursor -->
+  <script src="assets/js/cursor.js"></script>
 </body>
 
 </html>

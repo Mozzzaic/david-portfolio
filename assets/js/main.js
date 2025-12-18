@@ -900,7 +900,7 @@ function initParticles() {
           value: "#8B5CF6",
         },
         opacity: {
-          value: isDark ? 0.4 : 0.25,
+          value: 0.25,
         },
         size: {
           value: { min: 1, max: 3 },
@@ -919,7 +919,7 @@ function initParticles() {
           enable: true,
           distance: 150,
           color: "#8B5CF6",
-          opacity: isDark ? 0.25 : 0.12,
+          opacity: 0.3,
           width: 1,
         },
       },
@@ -936,7 +936,7 @@ function initParticles() {
           grab: {
             distance: 140,
             links: {
-              opacity: 0.5,
+              opacity: 0.75,
             },
           },
         },
@@ -945,6 +945,19 @@ function initParticles() {
     })
     .then((container) => {
       particlesInstance = container;
+
+      // Override particles mouse tracking to follow the ball
+      function syncParticlesToBall() {
+        if (window.customCursorPos && particlesInstance?.interactivity?.mouse) {
+          particlesInstance.interactivity.mouse.position = {
+            x: window.customCursorPos.x * window.devicePixelRatio,
+            y: window.customCursorPos.y * window.devicePixelRatio
+          };
+          particlesInstance.interactivity.mouse.isInside = true;
+        }
+        requestAnimationFrame(syncParticlesToBall);
+      }
+      syncParticlesToBall();
     });
 }
 
@@ -971,18 +984,18 @@ function updateParticlesTheme(theme) {
   if (theme === "orange") {
     particles.color.value = "#581C87";
     links.color = "#581C87";
-    particles.opacity.value = 0.5;
+    particles.opacity.value = 0.25;
     links.opacity = 0.3;
   } else if (theme === "dark") {
     particles.color.value = "#8B5CF6";
     links.color = "#8B5CF6";
-    particles.opacity.value = 0.4;
-    links.opacity = 0.25;
+    particles.opacity.value = 0.25;
+    links.opacity = 0.3;
   } else {
     particles.color.value = "#8B5CF6";
     links.color = "#8B5CF6";
     particles.opacity.value = 0.25;
-    links.opacity = 0.12;
+    links.opacity = 0.3;
   }
 
   particlesInstance.refresh();
@@ -1086,23 +1099,37 @@ function initSidebarObservers() {
 // --------------------------------------------------------------------------
 
 function initCardEffects() {
-  if (typeof VanillaTilt === 'undefined' || window.innerWidth <= 768) return;
-
-  // Highlight cards only: full 3D tilt + glare
-  const highlightCards = document.querySelectorAll('.highlight-card');
-  if (highlightCards.length > 0) {
-    VanillaTilt.init(highlightCards, {
-      max: 12,
-      speed: 400,
-      glare: true,
-      "max-glare": 0.2,
-      scale: 1.03,
-      perspective: 1000,
-      gyroscope: false,
-    });
+  // Highlight cards: VanillaTilt (if available and not mobile)
+  if (typeof VanillaTilt !== 'undefined' && window.innerWidth > 768) {
+    const highlightCards = document.querySelectorAll('.highlight-card');
+    if (highlightCards.length > 0) {
+      VanillaTilt.init(highlightCards, {
+        max: 12,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.2,
+        scale: 1.03,
+        perspective: 1000,
+        gyroscope: false,
+      });
+    }
   }
 
-  // Project & Creative cards: CSS-only effects (no VanillaTilt)
+  // Project cards: Mouse tracking glow effect
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--mouse-x', x + '%');
+      card.style.setProperty('--mouse-y', y + '%');
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--mouse-x', '50%');
+      card.style.setProperty('--mouse-y', '50%');
+    });
+  });
 }
 
 // --------------------------------------------------------------------------
