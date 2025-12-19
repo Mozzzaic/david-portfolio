@@ -1,0 +1,472 @@
+/* ==========================================================================
+   PORTFOLIO PAGE STYLES - Dark Theme with Starfield
+   Full black background, no particles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CSS VARIABLES - DARK MODE (Always)
+   -------------------------------------------------------------------------- */
+.page--portfolio {
+  /* Dark theme colors - always active */
+  --bg: #09090B;
+  --bg-elevated: #18181B;
+  --bg-subtle: #27272A;
+  --text: #FAFAFA;
+  --text-muted: #A1A1AA;
+  --text-subtle: #71717A;
+  --border: #27272A;
+  --border-hover: #3F3F46;
+
+  /* Accent - Violet */
+  --accent: #8B5CF6;
+  --accent-light: #A78BFA;
+  --accent-dark: #7C3AED;
+  --accent-glow: rgba(139, 92, 246, 0.4);
+  --accent-soft: rgba(139, 92, 246, 0.18);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 50px rgba(139, 92, 246, 0.5);
+  --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+
+  /* Transitions */
+  --tr-fast: 0.15s ease;
+  --tr-medium: 0.25s ease;
+  --tr-slow: 0.4s ease;
+}
+
+/* --------------------------------------------------------------------------
+   BASE - FORCE DARK MODE
+   -------------------------------------------------------------------------- */
+.page--portfolio {
+  background-color: #09090B !important;
+  color: var(--text) !important;
+}
+
+/* Hide gradient blobs - we only want starfield */
+.page--portfolio .gradient-bg,
+.page--portfolio .gradient-blob,
+.page--portfolio .floating-particles,
+.page--portfolio #tsparticles {
+  display: none !important;
+}
+
+/* Starfield always visible */
+.page--portfolio #starfield-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* Ensure menu toggle is above everything */
+.page--portfolio .menu-toggle {
+  z-index: 1001;
+}
+
+/* --------------------------------------------------------------------------
+   NAV DRAWER - DARK MODE OVERRIDES
+   -------------------------------------------------------------------------- */
+.page--portfolio .menu-toggle {
+  background: rgba(24, 24, 27, 0.8);
+  border-color: var(--border);
+}
+
+.page--portfolio .menu-toggle__bar {
+  background: var(--text);
+}
+
+.page--portfolio .nav-drawer {
+  background: rgba(9, 9, 11, 0.95);
+  border-left-color: rgba(139, 92, 246, 0.2);
+}
+
+.page--portfolio .nav-drawer__pages {
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.page--portfolio .nav-drawer__page-link {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+.page--portfolio .nav-drawer__page-link:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   SIDEBARS - VISIBLE BY DEFAULT
+   -------------------------------------------------------------------------- */
+.page--portfolio .sidebar {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   HERO SECTION
+   -------------------------------------------------------------------------- */
+.page--portfolio .portfolio-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 0 4rem;
+  position: relative;
+  z-index: 10;
+}
+
+.page--portfolio .portfolio-hero__title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--text) 0%, var(--accent-light) 50%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page--portfolio .portfolio-hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-muted);
+  max-width: 40rem;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+.page--portfolio .portfolio-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION STYLING
+   -------------------------------------------------------------------------- */
+.page--portfolio section {
+  padding: clamp(4rem, 10vw, 6rem) 0;
+  position: relative;
+  z-index: 10;
+}
+
+.page--portfolio .section__kicker {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.page--portfolio .section__title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.page--portfolio .section__subtitle {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--text-muted);
+  max-width: 36rem;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   BADGES
+   -------------------------------------------------------------------------- */
+.page--portfolio .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  transition: all var(--tr-medium);
+  backdrop-filter: blur(8px);
+}
+
+.page--portfolio .badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 15px var(--accent-glow);
+  color: var(--text);
+}
+
+.page--portfolio .badge i {
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   PORTFOLIO SERIES
+   -------------------------------------------------------------------------- */
+.page--portfolio .portfolio-series {
+  border-top: 1px solid var(--border);
+}
+
+.page--portfolio .portfolio-series__head {
+  margin-bottom: 2.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   PORTFOLIO GRID
+   -------------------------------------------------------------------------- */
+.page--portfolio .portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .page--portfolio .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .page--portfolio .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   PORTFOLIO ITEM
+   -------------------------------------------------------------------------- */
+.page--portfolio .portfolio-item {
+  position: relative;
+  border-radius: var(--radius-lg, 16px);
+  overflow: hidden;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  transition: all var(--tr-medium);
+  cursor: pointer;
+  margin: 0;
+}
+
+.page--portfolio .portfolio-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page--portfolio .portfolio-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+}
+
+.page--portfolio .portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Caption */
+.page--portfolio .portfolio-item__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all var(--tr-medium);
+}
+
+.page--portfolio .portfolio-item:hover .portfolio-item__caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   PRESS SECTION
+   -------------------------------------------------------------------------- */
+.page--portfolio .portfolio-press {
+  border-top: 1px solid var(--border);
+}
+
+.page--portfolio .press-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2.5rem;
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: var(--radius-xl, 24px);
+  transition: all var(--tr-medium);
+}
+
+.page--portfolio .press-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.page--portfolio .press-card__content {
+  flex: 1;
+}
+
+.page--portfolio .press-card .section__title {
+  margin-bottom: 0.5rem;
+}
+
+.page--portfolio .press-card .section__subtitle {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .page--portfolio .press-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .page--portfolio .press-card__content {
+    text-align: center;
+  }
+
+  .page--portfolio .press-card .section__subtitle {
+    max-width: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   BUTTONS
+   -------------------------------------------------------------------------- */
+.page--portfolio .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 9999px;
+  transition: all var(--tr-medium);
+  cursor: pointer;
+}
+
+.page--portfolio .btn--primary {
+  background: var(--accent);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.page--portfolio .btn--primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--accent-glow);
+  color: white;
+}
+
+.page--portfolio .btn--primary:active {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER
+   -------------------------------------------------------------------------- */
+.page--portfolio .footer {
+  position: relative;
+  z-index: 100;
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 0;
+  text-align: center;
+  margin-top: 3rem;
+  background: rgba(9, 9, 11, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.page--portfolio .footer p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.page--portfolio .footer__legal {
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .page--portfolio .portfolio-hero {
+    min-height: auto;
+    padding-top: 8rem;
+  }
+
+  .page--portfolio .portfolio-hero__title {
+    font-size: 2rem;
+  }
+
+  .page--portfolio section {
+    padding: 3rem 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SCROLLBAR - DARK THEME
+   -------------------------------------------------------------------------- */
+.page--portfolio {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--bg-subtle);
+}
+
+.page--portfolio::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+  height: 8px;
+}
+
+.page--portfolio::-webkit-scrollbar-track {
+  background: var(--bg-subtle);
+  border-radius: 4px;
+}
+
+.page--portfolio::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+  border: 2px solid var(--bg-subtle);
+}
+
+.page--portfolio::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-light);
+}
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .page--portfolio *,
+  .page--portfolio *::before,
+  .page--portfolio *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

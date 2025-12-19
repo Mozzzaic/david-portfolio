@@ -62,7 +62,7 @@ const translations = {
     "creative.photo.title": "Photography",
     "creative.photo.text": "10 years of visual storytelling. Travel, portraits, and night atmospheres.",
     "creative.music.title": "Music Production",
-    "creative.music.text": "7 years in Ableton. Electronic music, sound design, and sonic experiments.",
+    "creative.music.text": "7 years in <strong>Ableton</strong>. Electronic music, sound design, and sonic experiments. I also write Phase, a newsletter on <strong>Substack</strong> about Electronic Music & <strong>Berlin</strong>.",
 
     // Contact Section
     "contact.kicker": "Get in Touch",
@@ -128,12 +128,12 @@ const translations = {
 
     "portfolio.hero.kicker": "Photo portfolio",
     "portfolio.hero.title": "Places, faces and late nights.",
-    "portfolio.hero.subtitle": "A selection of images from travels, portraits and night walks. This is the visual side of my practice — the same eye I bring to web projects.",
+    "portfolio.hero.subtitle": "A selection of images from travels, portraits and night walks. This is the visual side of my practice, the same eye I bring to web projects.",
     "portfolio.series.kicker": "Series",
     "portfolio.series.travel.title": "Travel & places",
-    "portfolio.series.travel.subtitle": "Deserts, coastlines and cities in-between — quiet frames from the road.",
+    "portfolio.series.travel.subtitle": "Deserts, coastlines and cities in-between quiet frames from the road.",
     "portfolio.series.portraits.title": "Portraits",
-    "portfolio.series.portraits.subtitle": "People in their own light — slow sessions focused on trust and presence.",
+    "portfolio.series.portraits.subtitle": "People in their own light, slow sessions focused on trust and presence.",
     "portfolio.series.night.title": "Nights & atmospheres",
     "portfolio.series.night.subtitle": "Late-night walks, city glow and small surreal moments.",
     "portfolio.press.title": "Press & festivals",
@@ -142,7 +142,7 @@ const translations = {
 
     "lab.placeholder.kicker": "Creative Lab",
     "lab.placeholder.title": "Creative lab in progress",
-    "lab.placeholder.subtitle": "A space to share behind-the-scenes from photo and music projects, experiments and tools. I'm gathering notes and visuals — they'll be online soon.",
+    "lab.placeholder.subtitle": "A space to share behind-the-scenes from photo and music projects, experiments and tools. I'm gathering notes and visuals, they'll be online soon.",
     "lab.placeholder.cta": "Check the web services",
 
     "proof.kicker": "Social proof",
@@ -153,9 +153,11 @@ const translations = {
     "proof.quote2": "\"We shipped a new landing page in three days. Clean, fast, and easy for my team to tweak later.\"",
     "proof.author2": "Mark P. — Boutique studio lead",
 
-    "offers.kicker": "Service packs",
-    "offers.title": "3 clear packs to get online quickly",
-    "offers.subtitle": "Each pack comes with a defined scope, price range and realistic timeline. You provide the content (text, images, logo), I handle the rest.",
+    "offers.kicker": "Transparent pricing",
+    "offers.title": "3 clear packs. No hidden fees.",
+    "offers.subtitle": "After 10 years in sales, I know what clients hate: vague quotes, endless back-and-forth, and surprise invoices. That's why I work with fixed-scope packs. You know what you get, what it costs, and when it's done. You bring the content — I handle the build.",
+    "offers.note_title": "Why these rates?",
+    "offers.note_text": "I work solo, no agency overhead. You get senior-level attention at freelance rates — direct communication, fast turnaround, and a site built to convert, not just to look pretty.",
 
     "offers.landing.title": "Landing 72h",
     "offers.landing.subtitle": "1–3 sections, fast launch",
@@ -325,7 +327,7 @@ const translations = {
     "creative.photo.title": "Photographie",
     "creative.photo.text": "10 ans de narration visuelle. Voyages, portraits et atmosphères nocturnes.",
     "creative.music.title": "Production Musicale",
-    "creative.music.text": "7 ans sur Ableton. Musique électronique, sound design et expérimentations sonores.",
+    "creative.music.text": "7 ans sur <strong>Ableton</strong>. Musique électronique, sound design et expérimentations sonores. J'écris aussi Phase, une newsletter sur <strong>Substack</strong> sur la musique électronique & <strong>Berlin</strong>.",
 
     // Contact Section
     "contact.kicker": "Contact",
@@ -416,9 +418,11 @@ const translations = {
     "proof.quote2": "« Landing livrée en trois jours, propre, rapide et facile à ajuster en interne. »",
     "proof.author2": "Mark P. — Directeur de studio boutique",
 
-    "offers.kicker": "Offres packagées",
-    "offers.title": "3 packs clairs pour être en ligne rapidement",
-    "offers.subtitle": "Chaque pack a un périmètre défini, une fourchette de prix et un délai réaliste. Vous fournissez les contenus (textes, images, logo), je m'occupe du reste.",
+    "offers.kicker": "Tarifs transparents",
+    "offers.title": "3 formules claires. Sans frais cachés.",
+    "offers.subtitle": "Après 10 ans dans la vente, je sais ce que les clients détestent : les devis flous, les allers-retours interminables et les factures surprises. C'est pourquoi je travaille avec des packs à périmètre fixe. Vous savez ce que vous obtenez, combien ça coûte et quand c'est livré. Vous fournissez le contenu — je m'occupe de la construction.",
+    "offers.note_title": "Pourquoi ces tarifs ?",
+    "offers.note_text": "Je travaille en solo, sans les frais d'une agence. Vous bénéficiez d'une attention de niveau senior aux tarifs freelance — communication directe, délais rapides et un site conçu pour convertir, pas juste pour être joli.",
 
     "offers.landing.title": "Landing 72h",
     "offers.landing.subtitle": "1–3 sections, mise en ligne rapide",
@@ -547,12 +551,12 @@ function applyLanguage(lang) {
     const value = dict[key];
     if (!value) return;
 
-    // Handle line breaks
+    // Handle line breaks and HTML tags
     if (value.includes("\n")) {
       const parts = value.split("\n");
       el.innerHTML = parts.map((p) => `<span>${p}</span>`).join("<br>");
     } else {
-      el.textContent = value;
+      el.innerHTML = value;
     }
   });
 
@@ -900,7 +904,7 @@ function initParticles() {
           value: "#8B5CF6",
         },
         opacity: {
-          value: 0.25,
+          value: 0.5,
         },
         size: {
           value: { min: 1, max: 3 },
@@ -919,7 +923,7 @@ function initParticles() {
           enable: true,
           distance: 150,
           color: "#8B5CF6",
-          opacity: 0.3,
+          opacity: 0.5,
           width: 1,
         },
       },
@@ -936,7 +940,7 @@ function initParticles() {
           grab: {
             distance: 140,
             links: {
-              opacity: 0.75,
+              opacity: 0.8,
             },
           },
         },
@@ -975,30 +979,24 @@ function updateParticlesTheme(theme) {
     }
   }
 
-  // Update tsParticles colors (still runs in background for all modes)
+  // Update tsParticles colors smoothly without resetting positions
   if (!particlesInstance) return;
 
-  const particles = particlesInstance.options.particles;
-  const links = particles.links;
-
+  let newColor;
   if (theme === "orange") {
-    particles.color.value = "#581C87";
-    links.color = "#581C87";
-    particles.opacity.value = 0.25;
-    links.opacity = 0.3;
-  } else if (theme === "dark") {
-    particles.color.value = "#8B5CF6";
-    links.color = "#8B5CF6";
-    particles.opacity.value = 0.25;
-    links.opacity = 0.3;
+    newColor = "#581C87";
   } else {
-    particles.color.value = "#8B5CF6";
-    links.color = "#8B5CF6";
-    particles.opacity.value = 0.25;
-    links.opacity = 0.3;
+    newColor = "#8B5CF6";
   }
 
-  particlesInstance.refresh();
+  // Update each particle's color directly (no position reset)
+  particlesInstance.particles.forEach((particle) => {
+    particle.color.value = newColor;
+  });
+
+  // Update link color in options for new connections
+  particlesInstance.options.particles.links.color = newColor;
+  particlesInstance.options.particles.color.value = newColor;
 }
 
 // --------------------------------------------------------------------------
@@ -1164,6 +1162,11 @@ document.addEventListener("DOMContentLoaded", () => {
       applyLanguage(lang);
     });
   });
+
+  // Skip home page initializations for page--web (handled by web-main.js)
+  if (document.body.classList.contains("page--web")) {
+    return;
+  }
 
   // Text reveal BEFORE AOS (avoid conflict)
   initTextReveal();

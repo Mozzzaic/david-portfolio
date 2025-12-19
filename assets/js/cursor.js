@@ -58,9 +58,40 @@ class CustomCursor {
     });
 
     // Hover sur éléments interactifs - seulement le blob invert
-    const hoverSelector = 'a, button, .project-card, .btn-primary, .btn-secondary, [role="button"], .nav-link, .social-link, .project-image, .hero__name, .highlight-card';
+    const hoverSelector = [
+      // Base interactive elements
+      'a', 'button', '[role="button"]',
+      // Buttons
+      '.btn', '.btn-primary', '.btn-secondary', '.btn--primary', '.btn--secondary',
+      // Navigation
+      '.nav-link', '.nav-drawer__link',
+      // Cards & interactive elements (index.html)
+      '.project-card', '.project-image', '.highlight-card', '.social-link',
+      // Cards & interactive elements (web.html)
+      '.card', '.hero-card', '.case', '.step', '.testimonial', '.who-item',
+      '.about-card', '.showcase-item', '.contact-card', '.case-link', '.about-link',
+      // Badges & tags
+      '.badge', '.case-tag', '.card-tag',
+      // FAQ
+      'details', 'summary'
+    ].join(', ');
+    // Hero name a un blob plus petit pour ne pas déborder
+    const heroNameSelector = '.hero__name';
+    // Exclure les icônes sociales (sidebar + footer)
+    const excludeSelector = '.sidebar__icon, .contact__social a';
 
     document.addEventListener('mouseover', (e) => {
+      const excluded = e.target.closest(excludeSelector);
+      if (excluded) return;
+
+      // Hero name: même blob que les autres
+      const heroName = e.target.closest(heroNameSelector);
+      if (heroName) {
+        this.targetBlobSize = 80;
+        return;
+      }
+
+      // Autres éléments: blob normal (80px)
       const target = e.target.closest(hoverSelector);
       if (target) {
         this.targetBlobSize = 80;
@@ -69,7 +100,8 @@ class CustomCursor {
 
     document.addEventListener('mouseout', (e) => {
       const target = e.target.closest(hoverSelector);
-      if (target) {
+      const heroName = e.target.closest(heroNameSelector);
+      if (target || heroName) {
         this.targetBlobSize = 0;
       }
     });
@@ -145,7 +177,19 @@ class CustomCursor {
     this.blobSize += (this.targetBlobSize - this.blobSize) * 0.1;
 
     // === APPLY TRANSFORMS ===
-    this.cursor.style.transform = `translateX(${this.cursorX}px) translateY(${this.cursorY}px)`;
+    // Offset la boule devant le curseur basé sur la direction vers la souris
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    const offsetAmount = Math.min(distance * 0.5, 80); // 50% de la distance, max 80px
+
+    let offsetX = 0;
+    let offsetY = 0;
+    if (distance > 5) {
+      // Normaliser la direction et appliquer l'offset
+      offsetX = (dx / distance) * offsetAmount;
+      offsetY = (dy / distance) * offsetAmount;
+    }
+
+    this.cursor.style.transform = `translateX(${this.cursorX + offsetX}px) translateY(${this.cursorY + offsetY}px)`;
 
     const scaleX = this.stretch;
     const scaleY = 1 / Math.sqrt(this.stretch);

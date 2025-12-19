@@ -1,0 +1,745 @@
+/* ==========================================================================
+   CREATIVE LAB PAGE STYLES - Orange Theme with Particles
+   Warm sunset/sunrise vibe
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CSS VARIABLES - ORANGE MODE (Always)
+   -------------------------------------------------------------------------- */
+.page--creative-lab {
+  /* Orange theme colors - always active */
+  --bg: #FF8C32;
+  --bg-elevated: rgba(255, 255, 255, 0.2);
+  --bg-subtle: rgba(255, 255, 255, 0.15);
+  --text: #46146E;
+  --text-muted: #5A1E8C;
+  --text-subtle: #6B21A8;
+  --border: rgba(70, 20, 110, 0.25);
+  --border-hover: rgba(70, 20, 110, 0.4);
+
+  /* Accent - Deep Purple */
+  --accent: #46146E;
+  --accent-light: #6B21A8;
+  --accent-dark: #3B1162;
+  --accent-glow: rgba(70, 20, 110, 0.4);
+  --accent-soft: rgba(70, 20, 110, 0.15);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(70, 20, 110, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(70, 20, 110, 0.15);
+  --shadow-lg: 0 10px 15px -3px rgba(70, 20, 110, 0.2);
+  --shadow-glow: 0 8px 32px rgba(70, 20, 110, 0.25);
+  --shadow-hover: 0 20px 40px -10px rgba(70, 20, 110, 0.3);
+
+  /* Transitions */
+  --tr-fast: 0.15s ease;
+  --tr-medium: 0.25s ease;
+  --tr-slow: 0.4s ease;
+}
+
+/* --------------------------------------------------------------------------
+   BASE - FORCE ORANGE MODE
+   -------------------------------------------------------------------------- */
+.page--creative-lab {
+  background-color: #FF8C32 !important;
+  color: var(--text) !important;
+}
+
+/* Particles container */
+.page--creative-lab #tsparticles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Hide starfield and gradient blobs */
+.page--creative-lab #starfield-canvas,
+.page--creative-lab .gradient-bg,
+.page--creative-lab .gradient-blob {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   NAV DRAWER - ORANGE MODE OVERRIDES
+   -------------------------------------------------------------------------- */
+.page--creative-lab .menu-toggle {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(70, 20, 110, 0.2);
+  z-index: 1001;
+}
+
+.page--creative-lab .menu-toggle__bar {
+  background: #46146E;
+}
+
+.page--creative-lab .nav-drawer {
+  background: rgba(255, 160, 70, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left-color: rgba(70, 20, 110, 0.2);
+}
+
+.page--creative-lab .nav-drawer__name {
+  color: #46146E;
+}
+
+.page--creative-lab .nav-drawer__tag {
+  background: rgba(70, 20, 110, 0.15);
+  color: #46146E;
+}
+
+.page--creative-lab .nav-drawer__link {
+  color: #46146E;
+}
+
+.page--creative-lab .nav-drawer__link:hover {
+  color: #3B1162;
+}
+
+.page--creative-lab .nav-drawer__link::after {
+  background: #46146E;
+}
+
+.page--creative-lab .nav-drawer__icon {
+  color: #581C87;
+}
+
+.page--creative-lab .nav-drawer__close {
+  border-color: rgba(70, 20, 110, 0.3);
+  color: #46146E;
+}
+
+.page--creative-lab .nav-drawer__close:hover {
+  background: #46146E;
+  border-color: #46146E;
+  color: white;
+}
+
+.page--creative-lab .nav-drawer__pages {
+  background: rgba(70, 20, 110, 0.12);
+}
+
+.page--creative-lab .nav-drawer__pages-label {
+  color: #46146E;
+}
+
+.page--creative-lab .nav-drawer__pages-label::before {
+  background: #46146E;
+}
+
+.page--creative-lab .nav-drawer__page-link {
+  color: #46146E;
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(70, 20, 110, 0.3);
+}
+
+.page--creative-lab .nav-drawer__page-link::before {
+  color: #46146E;
+}
+
+.page--creative-lab .nav-drawer__page-link:hover {
+  color: white;
+  background: #46146E;
+  border-color: #46146E;
+  box-shadow: 0 4px 15px rgba(70, 20, 110, 0.4);
+}
+
+.page--creative-lab .nav-drawer__footer {
+  border-top-color: rgba(70, 20, 110, 0.2);
+}
+
+.page--creative-lab .lang-btn {
+  color: #5A1E8C;
+  border-color: rgba(70, 20, 110, 0.3);
+}
+
+.page--creative-lab .lang-btn:hover {
+  border-color: #46146E;
+  color: #46146E;
+}
+
+.page--creative-lab .lang-btn[aria-pressed="true"] {
+  background: #46146E;
+  border-color: #46146E;
+  color: white;
+}
+
+/* --------------------------------------------------------------------------
+   SIDEBARS - VISIBLE BY DEFAULT
+   -------------------------------------------------------------------------- */
+.page--creative-lab .sidebar {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.page--creative-lab .sidebar__icon,
+.page--creative-lab .sidebar__email {
+  color: #46146E;
+}
+
+.page--creative-lab .sidebar__icon:hover {
+  color: #3B1162;
+}
+
+.page--creative-lab .sidebar__line {
+  background: rgba(70, 20, 110, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   HERO SECTION
+   -------------------------------------------------------------------------- */
+.page--creative-lab .lab-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 0 4rem;
+  position: relative;
+  z-index: 10;
+}
+
+.page--creative-lab .lab-hero__title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.page--creative-lab .lab-hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-muted);
+  max-width: 40rem;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+.page--creative-lab .lab-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION STYLING
+   -------------------------------------------------------------------------- */
+.page--creative-lab section {
+  padding: clamp(4rem, 10vw, 6rem) 0;
+  position: relative;
+  z-index: 10;
+}
+
+.page--creative-lab .section__kicker {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.page--creative-lab .section__title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.page--creative-lab .section__subtitle {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--text-muted);
+  max-width: 36rem;
+  line-height: 1.7;
+}
+
+.page--creative-lab .lab-section {
+  border-top: 1px solid var(--border);
+}
+
+.page--creative-lab .lab-section__head {
+  margin-bottom: 2.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   BADGES
+   -------------------------------------------------------------------------- */
+.page--creative-lab .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  transition: all var(--tr-medium);
+  backdrop-filter: blur(8px);
+}
+
+.page--creative-lab .badge:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-md);
+}
+
+.page--creative-lab .badge i {
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   MUSIC CARDS
+   -------------------------------------------------------------------------- */
+.page--creative-lab .music-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .page--creative-lab .music-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .page--creative-lab .music-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.page--creative-lab .music-card {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all var(--tr-medium);
+}
+
+.page--creative-lab .music-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.35);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.page--creative-lab .music-card__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: white;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.page--creative-lab .music-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.page--creative-lab .music-card__text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   PHASE NEWSLETTER SECTION
+   -------------------------------------------------------------------------- */
+.page--creative-lab .phase-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .page--creative-lab .phase-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Main PHASE Card */
+.page--creative-lab .phase-card--main {
+  padding: 2.5rem;
+  background: rgba(70, 20, 110, 0.1);
+  border: 1px solid rgba(70, 20, 110, 0.25);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.page--creative-lab .phase-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.page--creative-lab .phase-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.page--creative-lab .phase-logo__text {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.page--creative-lab .phase-logo__wave {
+  width: 40px;
+  height: 20px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent) 100%);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M0 10 Q5 0 10 10 T20 10 T30 10 T40 10' fill='none' stroke='black' stroke-width='3'/%3E%3C/svg%3E");
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M0 10 Q5 0 10 10 T20 10 T30 10 T40 10' fill='none' stroke='black' stroke-width='3'/%3E%3C/svg%3E");
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+.page--creative-lab .phase-card__badge {
+  padding: 0.375rem 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  background: var(--accent);
+  border-radius: 9999px;
+}
+
+.page--creative-lab .phase-card__tagline {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.page--creative-lab .phase-card__features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.page--creative-lab .phase-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.page--creative-lab .phase-feature i {
+  width: 20px;
+  color: var(--accent);
+}
+
+/* Issue Card */
+.page--creative-lab .phase-card--issue {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.page--creative-lab .phase-issue__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.page--creative-lab .phase-issue__number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  font-family: var(--font-mono, monospace);
+}
+
+.page--creative-lab .phase-issue__date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.page--creative-lab .phase-issue__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.page--creative-lab .phase-issue__topics {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page--creative-lab .phase-topic {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  transition: all var(--tr-fast);
+}
+
+.page--creative-lab .phase-topic:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.page--creative-lab .phase-topic__number {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--font-mono, monospace);
+  min-width: 24px;
+}
+
+.page--creative-lab .phase-topic__content h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.page--creative-lab .phase-topic__content p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.page--creative-lab .phase-issue__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: all var(--tr-fast);
+}
+
+.page--creative-lab .phase-issue__link:hover {
+  color: var(--accent-dark);
+}
+
+.page--creative-lab .phase-issue__link i {
+  transition: transform var(--tr-fast);
+}
+
+.page--creative-lab .phase-issue__link:hover i {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   EXPERIMENTS GRID
+   -------------------------------------------------------------------------- */
+.page--creative-lab .experiments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .page--creative-lab .experiments-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .page--creative-lab .experiments-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.page--creative-lab .experiment-card {
+  position: relative;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all var(--tr-medium);
+}
+
+.page--creative-lab .experiment-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.3);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.page--creative-lab .experiment-card__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(70, 20, 110, 0.15);
+  color: var(--accent);
+  border-radius: 12px;
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+  transition: all var(--tr-medium);
+}
+
+.page--creative-lab .experiment-card:hover .experiment-card__icon {
+  background: var(--accent);
+  color: white;
+}
+
+.page--creative-lab .experiment-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.page--creative-lab .experiment-card__text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.page--creative-lab .experiment-card__status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(70, 20, 110, 0.1);
+  border-radius: 9999px;
+}
+
+/* --------------------------------------------------------------------------
+   BUTTONS
+   -------------------------------------------------------------------------- */
+.page--creative-lab .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 9999px;
+  transition: all var(--tr-medium);
+  cursor: pointer;
+}
+
+.page--creative-lab .btn--primary {
+  background: var(--accent);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.page--creative-lab .btn--primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--accent-glow);
+  color: white;
+}
+
+.page--creative-lab .btn--primary:active {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER
+   -------------------------------------------------------------------------- */
+.page--creative-lab .footer {
+  position: relative;
+  z-index: 100;
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 0;
+  text-align: center;
+  margin-top: 3rem;
+  background: rgba(255, 140, 50, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.page--creative-lab .footer p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.page--creative-lab .footer__legal {
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .page--creative-lab .lab-hero {
+    min-height: auto;
+    padding-top: 8rem;
+  }
+
+  .page--creative-lab .lab-hero__title {
+    font-size: 2rem;
+  }
+
+  .page--creative-lab section {
+    padding: 3rem 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   CUSTOM CURSOR - ORANGE THEME
+   -------------------------------------------------------------------------- */
+.page--creative-lab .custom-cursor {
+  background: radial-gradient(circle at 30% 30%, rgb(255, 200, 150) 60%, rgb(249, 115, 22) 100%);
+  box-shadow:
+    0 0 15px 5px rgba(255, 255, 255, 0.32),
+    0 0 35px 12px rgba(255, 255, 255, 0.16),
+    0 0 60px 20px rgba(255, 255, 255, 0.08),
+    0 0 80px 30px rgba(249, 115, 22, 0.13);
+}
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .page--creative-lab *,
+  .page--creative-lab *::before,
+  .page--creative-lab *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

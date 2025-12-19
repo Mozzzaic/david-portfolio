@@ -5,13 +5,13 @@
   <title>David Pinheiro – Web Developer, landing pages & showcase sites</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Berlin-based web developer creating fast, clear landing pages and showcase sites for freelancers and small businesses across Europe.">
-  <link rel="canonical" href="https://davidpinheiro.dev/">
+  <link rel="canonical" href="https://davidpinheiro.dev/web">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="David Pinheiro – Web Developer, landing pages & showcase sites">
   <meta property="og:description" content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses. Based in Berlin, available remote in the EU.">
-  <meta property="og:url" content="https://davidpinheiro.dev/">
+  <meta property="og:url" content="https://davidpinheiro.dev/web">
   <meta property="og:image" content="https://davidpinheiro.dev/og-image.jpg">
 
   <!-- Twitter Cards -->
@@ -20,82 +20,207 @@
   <meta name="twitter:description" content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses.">
   <meta name="twitter:image" content="https://davidpinheiro.dev/og-image.jpg">
 
-  <!-- Favicon minimal -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%232563eb'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='32' fill='white'>D</text></svg>">
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%238B5CF6'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='32' font-weight='bold' fill='white'>D</text></svg>">
 
-  <!-- Fonts (Inter) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/home.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS - Animate On Scroll -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/new-styles.css">
+  <link rel="stylesheet" href="assets/css/web-styles.css">
 </head>
 <body class="page--web">
-  <header>
-    <div class="container nav" aria-label="Site header">
-      <div class="nav-left">
-        <span data-i18n="nav.name">David Pinheiro</span>
-        <span class="nav-tag" data-i18n="nav.role">Web Developer</span>
-      </div>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
-        <a href="web.html" class="nav-link nav-link--active" data-i18n="nav.web" aria-current="page">Web / Services</a>
-        <a href="portfolio.html" class="nav-link" data-i18n="nav.portfolio">Portfolio</a>
-        <a href="creative-lab.html" class="nav-link" data-i18n="nav.lab">Creative Lab</a>
-        <a href="https://calendly.com/david-pinheiro-d/15min" class="btn btn-secondary" aria-label="Book a 15-minute call with David — no sales pressure, just a plan" data-i18n="nav.cta">
-          15-min call
+  <!-- Page Reveal Curtain -->
+  <div class="page-curtain" aria-hidden="true">
+    <div class="page-curtain__logo">
+      <span>DP</span>
+    </div>
+    <div class="page-curtain__panel page-curtain__panel--left"></div>
+    <div class="page-curtain__panel page-curtain__panel--right"></div>
+  </div>
+
+  <!-- Particles Background -->
+  <div id="tsparticles"></div>
+
+  <!-- Gradient Background (subtle blue/white) -->
+  <div class="gradient-bg" aria-hidden="true">
+    <div class="gradient-blob gradient-blob--1"></div>
+    <div class="gradient-blob gradient-blob--2"></div>
+    <div class="gradient-blob gradient-blob--3"></div>
+  </div>
+
+  <!-- Hamburger Menu Button -->
+  <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span class="menu-toggle__bar"></span>
+    <span class="menu-toggle__bar"></span>
+    <span class="menu-toggle__bar"></span>
+  </button>
+
+  <!-- Slide-out Navigation -->
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Main navigation">
+    <button class="nav-drawer__close" aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="nav-drawer__header">
+      <span class="nav-drawer__name">David Pinheiro</span>
+      <span class="nav-drawer__tag">Web Developer</span>
+    </div>
+
+    <ul class="nav-drawer__list">
+      <li class="nav-drawer__item" style="--i: 0">
+        <a href="index.html" class="nav-drawer__link">
+          <span class="nav-drawer__icon">01</span>
+          <span class="nav-drawer__text" data-i18n="nav.home">Home</span>
         </a>
-      </nav>
-      <div class="lang-switch" aria-label="Language switcher">
-        <button class="btn btn-ghost" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
-        <button class="btn btn-ghost" type="button" data-lang-btn="fr" aria-pressed="false">FR</button>
+      </li>
+      <li class="nav-drawer__item" style="--i: 1">
+        <a href="#hero" class="nav-drawer__link nav-drawer__link--active">
+          <span class="nav-drawer__icon">02</span>
+          <span class="nav-drawer__text" data-i18n="nav.services">Services</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 2">
+        <a href="#offers" class="nav-drawer__link">
+          <span class="nav-drawer__icon">03</span>
+          <span class="nav-drawer__text" data-i18n="nav.packs">Packs</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 3">
+        <a href="#process" class="nav-drawer__link">
+          <span class="nav-drawer__icon">04</span>
+          <span class="nav-drawer__text" data-i18n="nav.process">Process</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 4">
+        <a href="#cases" class="nav-drawer__link">
+          <span class="nav-drawer__icon">05</span>
+          <span class="nav-drawer__text" data-i18n="nav.cases">Projects</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 5">
+        <a href="#showcase" class="nav-drawer__link">
+          <span class="nav-drawer__icon">06</span>
+          <span class="nav-drawer__text" data-i18n="nav.showcase">Process</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 6">
+        <a href="#faq" class="nav-drawer__link">
+          <span class="nav-drawer__icon">07</span>
+          <span class="nav-drawer__text" data-i18n="nav.faq">FAQ</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 7">
+        <a href="#contact" class="nav-drawer__link">
+          <span class="nav-drawer__icon">08</span>
+          <span class="nav-drawer__text" data-i18n="nav.contact">Contact</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-drawer__pages">
+      <p class="nav-drawer__pages-label">Pages</p>
+      <a href="index.html" class="nav-drawer__page-link">Portfolio Home</a>
+      <a href="portfolio.html" class="nav-drawer__page-link">Photo Portfolio</a>
+      <a href="creative-lab.html" class="nav-drawer__page-link">Creative Lab</a>
+    </div>
+
+    <div class="nav-drawer__footer">
+      <div class="nav-drawer__controls">
+        <div class="nav-drawer__lang">
+          <button class="lang-btn" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+          <span class="lang-separator">/</span>
+          <button class="lang-btn" type="button" data-lang-btn="fr" aria-pressed="false">FR</button>
+        </div>
       </div>
     </div>
-  </header>
+  </nav>
+
+  <!-- Overlay -->
+  <div class="nav-overlay" aria-hidden="true"></div>
+
+  <!-- Left Sidebar - Social Links -->
+  <aside class="sidebar sidebar--left" aria-label="Social links">
+    <a href="https://github.com/Mozzzaic" target="_blank" rel="noopener noreferrer" class="sidebar__icon" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/davidpinheiro" target="_blank" rel="noopener noreferrer" class="sidebar__icon" aria-label="LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noopener noreferrer" class="sidebar__icon" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <div class="sidebar__line"></div>
+  </aside>
+
+  <!-- Right Sidebar - Email -->
+  <aside class="sidebar sidebar--right" aria-label="Email contact">
+    <a href="mailto:david.pinheiro.d@gmail.com" class="sidebar__email">david.pinheiro.d@gmail.com</a>
+    <div class="sidebar__line"></div>
+  </aside>
 
   <main>
     <!-- HERO -->
     <section class="hero hero--intro" id="hero">
       <div class="container hero-grid">
         <div>
-          <p class="section-kicker" data-i18n="hero.kicker">Landing pages & showcase sites</p>
-          <h1 data-i18n="hero.title">Clean, fast pages that make people click.</h1>
+          <p class="section-kicker" data-i18n="hero.kicker">Web Developer · Berlin</p>
+          <h1 data-i18n="hero.title">Your offer deserves a page that converts.</h1>
           <p class="hero-subtitle" data-i18n="hero.subtitle">
-            I design and build landing pages and showcase sites that explain your offer clearly,
-            load fast and guide visitors to your main action: booking, quote request, or purchase.
+            Clear message. Fast load. More conversions.<br>
+            Landing pages and showcase sites, live in days.
           </p>
-          <div class="hero-tags">
-            <span class="pill" data-i18n="hero.tag1">Based in Berlin</span>
-            <span class="pill" data-i18n="hero.tag2">Remote EU</span>
-            <span class="pill" data-i18n="hero.tag3">FR / EN / PT / ES</span>
+          <div class="hero__badges">
+            <span class="badge"><i class="fas fa-map-marker-alt"></i> <span data-i18n="hero.tag1">Berlin, Germany</span></span>
+            <span class="badge"><i class="fas fa-globe"></i> <span data-i18n="hero.tag2">Remote EU</span></span>
+            <span class="badge"><i class="fas fa-language"></i> <span data-i18n="hero.tag3">FR / EN / PT / ES</span></span>
+            <span class="badge badge--highlight"><i class="fas fa-briefcase"></i> <span data-i18n="hero.tag4">Ex-Sales Manager @ Paprec</span></span>
           </div>
           <div class="hero-actions">
-            <a href="https://calendly.com/david-pinheiro-d/15min" class="btn btn-primary" aria-label="Book a 15-minute call with David — no sales pressure, just a plan" data-i18n="hero.cta_primary">
-              Book a 15-min call
+            <a href="https://calendly.com/david-pinheiro-d/15min" class="btn btn--primary" aria-label="Book a 15-minute call with David — no sales pressure, just a plan" data-i18n="hero.cta_primary">
+              <span>Book a 15-min call</span>
+              <i class="fas fa-calendar-alt"></i>
             </a>
-            <a href="#offers" class="btn btn-secondary" aria-label="Jump to the service packs section" data-i18n="hero.cta_secondary">
-              See the 3 packs
+            <a href="#offers" class="btn btn--secondary" aria-label="Find the right pack for your project" data-i18n="hero.cta_secondary">
+              <span>Find your pack</span>
+              <i class="fas fa-arrow-right"></i>
             </a>
           </div>
           <p class="hero-note" data-i18n="hero.note">
-            In 15 minutes, we clarify your needs, outline the plan, budget and next steps. No sales pitch.
+            15 minutes to understand your project. Then I come back with a clear proposal: scope, budget, timeline.
           </p>
         </div>
         <aside class="hero-card" aria-label="Key guarantees">
           <strong data-i18n="hero.card_title">What you get</strong>
           <ul>
-            <li data-i18n="hero.card_li1">A site that is easy to understand for your visitors.</li>
-            <li data-i18n="hero.card_li2">Optimised loading time, especially on mobile.</li>
-            <li data-i18n="hero.card_li3">Basic SEO and Analytics (GA4) already plugged in.</li>
+            <li data-i18n="hero.card_li1">A page visitors actually understand — in 5 seconds.</li>
+            <li data-i18n="hero.card_li2">Mobile-first, loads in under 2 seconds.</li>
+            <li data-i18n="hero.card_li3">SEO + Analytics ready from day one.</li>
           </ul>
-          <div class="hero-meta">
-            <div class="hero-meta-row">
-              <span data-i18n="hero.meta1">📍 Berlin & remote EU</span>
-              <span data-i18n="hero.meta2">🕒 Landing possible within 72 hours</span>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat__number counter" data-target="90" data-suffix="+">0+</span>
+              <span class="hero-stat__label" data-i18n="hero.stat1">Lighthouse score</span>
             </div>
-            <div class="hero-meta-row">
-              <span data-i18n="hero.meta3">🌐 French, English, Portuguese, Spanish</span>
+            <div class="hero-stat">
+              <span class="hero-stat__number">&lt;2s</span>
+              <span class="hero-stat__label" data-i18n="hero.stat2">Load time</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat__number counter" data-target="24" data-suffix="h">0h</span>
+              <span class="hero-stat__label" data-i18n="hero.stat3">Response time</span>
             </div>
           </div>
         </aside>
@@ -105,26 +230,26 @@
     <!-- WHO THIS IS FOR -->
     <section id="fit" aria-labelledby="fit-title">
       <div class="container">
-        <p class="section-kicker" data-i18n="fit.kicker">Who it’s for</p>
-        <h2 class="section-title" id="fit-title" data-i18n="fit.title">Who I work with</h2>
-        <p class="section-subtitle" data-i18n="fit.subtitle">
+        <p class="section-kicker" data-aos="fade-up" data-i18n="fit.kicker">Who it's for</p>
+        <h2 class="section-title" id="fit-title" data-aos="fade-up" data-aos-delay="50" data-i18n="fit.title">Who I work with</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="fit.subtitle">
           I mostly collaborate with small, nimble teams who need clarity and momentum.
         </p>
         <div class="who-grid" role="list">
-          <div class="who-item" role="listitem" data-i18n="fit.item1">
-            Freelance creatives launching a new offer or productized service.
+          <div class="who-item" role="listitem" data-aos="fade-right" data-aos-delay="150" data-i18n="fit.item1">
+            Freelancers tired of explaining their offer 10 times before a prospect gets it.
           </div>
-          <div class="who-item" role="listitem" data-i18n="fit.item2">
-            Small studios needing a landing page that explains their positioning fast.
+          <div class="who-item" role="listitem" data-aos="fade-left" data-aos-delay="200" data-i18n="fit.item2">
+            Studios losing leads because their homepage is a wall of text.
           </div>
-          <div class="who-item" role="listitem" data-i18n="fit.item3">
-            Coaches and consultants who want leads to book a call without hunting for information.
+          <div class="who-item" role="listitem" data-aos="fade-right" data-aos-delay="250" data-i18n="fit.item3">
+            Coaches watching visitors bounce before they even see the "Book a call" button.
           </div>
-          <div class="who-item" role="listitem" data-i18n="fit.item4">
-            Bootstrapped SaaS or e-commerce founders polishing their early-stage presence.
+          <div class="who-item" role="listitem" data-aos="fade-left" data-aos-delay="300" data-i18n="fit.item4">
+            Founders who know their product is great — but their site doesn't show it.
           </div>
         </div>
-        <p class="who-note" data-i18n="fit.note">
+        <p class="who-note" data-aos="fade-up" data-aos-delay="350" data-i18n="fit.note">
           Past work with: business coach, photo studio, boutique agency, SaaS advisor.
         </p>
       </div>
@@ -133,24 +258,24 @@
     <!-- TESTIMONIALS -->
     <section id="proof" aria-labelledby="proof-title">
       <div class="container">
-        <p class="section-kicker" data-i18n="proof.kicker">Social proof</p>
-        <h2 class="section-title" id="proof-title" data-i18n="proof.title">What clients say after launch</h2>
-        <p class="section-subtitle" data-i18n="proof.subtitle">
+        <p class="section-kicker" data-aos="fade-up" data-i18n="proof.kicker">Social proof</p>
+        <h2 class="section-title" id="proof-title" data-aos="fade-up" data-aos-delay="50" data-i18n="proof.title">What clients say after launch</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="proof.subtitle">
           Short notes from recent projects — straight to the point, like the sites we ship.
         </p>
         <div class="testimonials-grid" role="list">
-          <figure class="testimonial" role="listitem" aria-labelledby="proof-quote1">
+          <figure class="testimonial" role="listitem" aria-labelledby="proof-quote1" data-aos="fade-right" data-aos-delay="150">
             <blockquote>
               <p id="proof-quote1" data-i18n="proof.quote1">
-                “David distilled my messy draft into something clients actually read. Calls doubled the first week.”
+                "David distilled my messy draft into something clients actually read. Calls doubled the first week."
               </p>
             </blockquote>
             <cite data-i18n="proof.author1">Lina S. — Creative coach</cite>
           </figure>
-          <figure class="testimonial" role="listitem" aria-labelledby="proof-quote2">
+          <figure class="testimonial" role="listitem" aria-labelledby="proof-quote2" data-aos="fade-left" data-aos-delay="200">
             <blockquote>
               <p id="proof-quote2" data-i18n="proof.quote2">
-                “We shipped a new landing page in three days. Clean, fast, and easy for my team to tweak later.”
+                "We shipped a new landing page in three days. Clean, fast, and easy for my team to tweak later."
               </p>
             </blockquote>
             <cite data-i18n="proof.author2">Mark P. — Boutique studio lead</cite>
@@ -162,16 +287,15 @@
     <!-- OFFERS -->
     <section id="offers">
       <div class="container">
-        <p class="section-kicker" data-i18n="offers.kicker">Service packs</p>
-        <h2 class="section-title" data-i18n="offers.title">3 clear packs to get online quickly</h2>
-        <p class="section-subtitle" data-i18n="offers.subtitle">
-          Each pack comes with a defined scope, price range and realistic timeline.
-          You provide the content (text, images, logo), I handle the rest.
+        <p class="section-kicker" data-aos="fade-up" data-i18n="offers.kicker">Transparent pricing</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="offers.title">3 clear packs. No hidden fees.</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="offers.subtitle">
+          After 10 years in sales, I know what clients hate: vague quotes, endless back-and-forth, and surprise invoices. That's why I work with fixed-scope packs. You know what you get, what it costs, and when it's done. You bring the content — I handle the build.
         </p>
 
         <div class="cards" aria-label="Service offers">
           <!-- Landing 72h -->
-          <article class="card">
+          <article class="card" data-aos="fade-up" data-aos-delay="150">
             <header class="card-header">
               <div>
                 <h3 class="card-title" data-i18n="offers.landing.title">Landing 72h</h3>
@@ -179,7 +303,7 @@
               </div>
               <div>
                 <div class="card-price" data-i18n="offers.landing.price">€500–900</div>
-                <div class="card-tag" data-i18n="offers.landing.tag">~72h</div>
+                <div class="card-tag"><span class="counter" data-target="72" data-prefix="~" data-suffix="h">~0h</span></div>
               </div>
             </header>
             <p class="card-intro" data-i18n="offers.landing.intro">
@@ -198,7 +322,7 @@
           </article>
 
           <!-- Showcase site -->
-          <article class="card">
+          <article class="card" data-aos="fade-up" data-aos-delay="200">
             <header class="card-header">
               <div>
                 <h3 class="card-title" data-i18n="offers.vitrine.title">Showcase site (3–5 pages)</h3>
@@ -224,7 +348,7 @@
           </article>
 
           <!-- Maintenance -->
-          <article class="card">
+          <article class="card" data-aos="fade-up" data-aos-delay="250">
             <header class="card-header">
               <div>
                 <h3 class="card-title" data-i18n="offers.maintenance.title">Monthly maintenance</h3>
@@ -250,6 +374,13 @@
           </article>
         </div>
 
+        <aside class="pricing-note" aria-label="Pricing philosophy" data-aos="fade-up" data-aos-delay="300">
+          <strong data-i18n="offers.note_title">Why these rates?</strong>
+          <p data-i18n="offers.note_text">
+            I work solo, no agency overhead. You get senior-level attention at freelance rates — direct communication, fast turnaround, and a site built to convert, not just to look pretty.
+          </p>
+        </aside>
+
         <div class="inline-list">
           <strong data-i18n="mentions.title">Quick terms:</strong>
           <ul>
@@ -265,14 +396,14 @@
     <!-- PROCESS -->
     <section id="process">
       <div class="container">
-        <p class="section-kicker" data-i18n="process.kicker">Process</p>
-        <h2 class="section-title" data-i18n="process.title">From idea to live site, with minimal friction</h2>
-        <p class="section-subtitle" data-i18n="process.subtitle">
-          The goal: move from “we should have a proper site” to “here’s the link, share it” without unnecessary meetings.
+        <p class="section-kicker" data-aos="fade-up" data-i18n="process.kicker">Process</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="process.title">From idea to live site, with minimal friction</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="process.subtitle">
+          The goal: move from "we should have a proper site" to "here's the link, share it" without unnecessary meetings.
         </p>
 
         <div class="process-grid" aria-label="Process steps">
-          <div class="step">
+          <div class="step" data-aos="fade-up" data-aos-delay="150">
             <div class="step-number">1</div>
             <div class="step-title" data-i18n="process.step1.title">Quick brief (30 min)</div>
             <p data-i18n="process.step1.text">
@@ -280,7 +411,7 @@
               You send what you already have: logo, copy drafts, visuals, references.
             </p>
           </div>
-          <div class="step">
+          <div class="step" data-aos="fade-up" data-aos-delay="200">
             <div class="step-number">2</div>
             <div class="step-title" data-i18n="process.step2.title">Structure & wireframe</div>
             <p data-i18n="process.step2.text">
@@ -288,7 +419,7 @@
               We adjust once together before I start coding.
             </p>
           </div>
-          <div class="step">
+          <div class="step" data-aos="fade-up" data-aos-delay="250">
             <div class="step-number">3</div>
             <div class="step-title" data-i18n="process.step3.title">Build & go live</div>
             <p data-i18n="process.step3.text">
@@ -300,61 +431,136 @@
       </div>
     </section>
 
-    <!-- CASES -->
+    <!-- CASES - Real Projects -->
     <section id="cases">
       <div class="container">
-        <p class="section-kicker" data-i18n="cases.kicker">Case studies</p>
-        <h2 class="section-title" data-i18n="cases.title">Before / after: more clarity, more action</h2>
-        <p class="section-subtitle" data-i18n="cases.subtitle">
-          Two recent redesigns: same core content, but better structure, clearer message and stronger CTAs.
+        <p class="section-kicker" data-aos="fade-up" data-i18n="cases.kicker">Real projects</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="cases.title">Built with the same process I'll use for yours</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="cases.subtitle">
+          No fake case studies. These are real projects I built — with the same standards I bring to client work.
         </p>
 
         <div class="cases-grid">
-          <article class="case">
-            <div class="case-label" data-i18n="cases.case1.label">Case 1</div>
-            <h3 data-i18n="cases.case1.title">Wellness coach – Landing 72h</h3>
-            <p data-i18n="cases.case1.before">
-              <strong>Before:</strong> long page, dense text, weak CTA, no clear message above the fold.
+          <!-- Case 1: Portfolio -->
+          <article class="case" data-aos="fade-right" data-aos-delay="150">
+            <div class="case-label" data-i18n="cases.case1.label">Project 1</div>
+            <h3 data-i18n="cases.case1.title">This website — Showcase site</h3>
+            <p data-i18n="cases.case1.challenge">
+              <strong>Challenge:</strong> Position myself as a freelance web developer with a clear offer and professional presence.
             </p>
-            <p data-i18n="cases.case1.after">
-              <strong>After:</strong> hero focused on a clear target, 3 concrete benefits, one strong Calendly CTA on desktop and mobile.
+            <p data-i18n="cases.case1.solution">
+              <strong>Solution:</strong> Clean landing page, 3 service packs, transparent pricing, strong CTA, bilingual (EN/FR).
             </p>
             <p data-i18n="cases.case1.result">
-              <strong>Result:</strong> smoother journey, more calls booked from mobile, positive feedback on clarity.
+              <strong>Result:</strong> 90+ Lighthouse score, <2s load time, conversion-focused design.
             </p>
+            <div class="case-tags">
+              <span class="case-tag">HTML/CSS/JS</span>
+              <span class="case-tag">Responsive</span>
+              <span class="case-tag">i18n</span>
+            </div>
           </article>
 
-          <article class="case">
-            <div class="case-label" data-i18n="cases.case2.label">Case 2</div>
-            <h3 data-i18n="cases.case2.title">Photo studio in Berlin – Showcase site</h3>
-            <p data-i18n="cases.case2.before">
-              <strong>Before:</strong> slow site, confusing portfolio, technical copy, menu that didn’t speak to clients.
+          <!-- Case 2: Talez -->
+          <article class="case" data-aos="fade-left" data-aos-delay="200">
+            <div class="case-label case-label--award" data-i18n="cases.case2.label">
+              <i class="fas fa-trophy"></i> Best Project 2025
+            </div>
+            <h3 data-i18n="cases.case2.title">Talez — Full-stack Web App</h3>
+            <p data-i18n="cases.case2.challenge">
+              <strong>Challenge:</strong> Build a complete web app in 2 weeks with a team of 4 developers.
             </p>
-            <p data-i18n="cases.case2.after">
-              <strong>After:</strong> 4 clear pages (Home, Portfolio, Services, Contact), optimised images, simple navigation, shorter copy.
+            <p data-i18n="cases.case2.solution">
+              <strong>Solution:</strong> Clear UX, fast iterations, focus on core features, Ruby on Rails backend.
             </p>
             <p data-i18n="cases.case2.result">
-              <strong>Result:</strong> faster loading, better mobile UX, more qualified quote requests.
+              <strong>Result:</strong> Voted Best Project @ Le Wagon Berlin (Batch 2025).
             </p>
+            <div class="case-tags">
+              <span class="case-tag">Ruby on Rails</span>
+              <span class="case-tag">PostgreSQL</span>
+              <span class="case-tag">Team project</span>
+            </div>
+            <a href="https://github.com/Mozzzaic/talez" target="_blank" rel="noopener noreferrer" class="case-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
           </article>
         </div>
+      </div>
+    </section>
 
-        <div class="before-after" aria-label="Before and after screenshots">
-          <div class="ba-item">
-            <div class="ba-label" data-i18n="cases.before_label">Before</div>
-            <img
-              src="{CASE1_BEFORE_URL}"
-              alt="Screenshot of the site before the redesign"
-              loading="lazy"
-              class="ba-img">
+    <!-- PROCESS SHOWCASE -->
+    <section id="showcase">
+      <div class="container">
+        <p class="section-kicker" data-aos="fade-up" data-i18n="showcase.kicker">How I work</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="showcase.title">From brief to launch — here's what happens</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="showcase.subtitle">
+          Every project follows the same structured approach. No surprises, no scope creep.
+        </p>
+
+        <div class="showcase-grid">
+          <!-- Step 1: Wireframe -->
+          <div class="showcase-item" data-aos="fade-up" data-aos-delay="150">
+            <div class="showcase-number">01</div>
+            <div class="showcase-visual">
+              <div class="showcase-placeholder">
+                <i class="fas fa-pencil-ruler"></i>
+                <span>Wireframe</span>
+              </div>
+              <!-- Replace with: <img src="assets/img/process-wireframe.webp" alt="Wireframe example" loading="lazy"> -->
+            </div>
+            <h3 class="showcase-title" data-i18n="showcase.step1.title">Structure first</h3>
+            <p class="showcase-text" data-i18n="showcase.step1.text">
+              Before any design, I map out the user journey. What do visitors need to understand? Where should they click?
+            </p>
           </div>
-          <div class="ba-item">
-            <div class="ba-label" data-i18n="cases.after_label">After</div>
-            <img
-              src="{CASE1_AFTER_URL}"
-              alt="Screenshot of the site after the redesign"
-              loading="lazy"
-              class="ba-img">
+
+          <!-- Step 2: Mobile -->
+          <div class="showcase-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="showcase-number">02</div>
+            <div class="showcase-visual">
+              <div class="showcase-placeholder">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Mobile</span>
+              </div>
+              <!-- Replace with: <img src="assets/img/process-mobile.webp" alt="Mobile design" loading="lazy"> -->
+            </div>
+            <h3 class="showcase-title" data-i18n="showcase.step2.title">Mobile-first design</h3>
+            <p class="showcase-text" data-i18n="showcase.step2.text">
+              60%+ of your visitors are on mobile. I design for small screens first, then scale up.
+            </p>
+          </div>
+
+          <!-- Step 3: Performance -->
+          <div class="showcase-item" data-aos="fade-up" data-aos-delay="250">
+            <div class="showcase-number">03</div>
+            <div class="showcase-visual">
+              <div class="showcase-placeholder showcase-placeholder--score">
+                <span class="showcase-score">90+</span>
+                <span>Lighthouse</span>
+              </div>
+              <!-- Replace with: <img src="assets/img/process-lighthouse.webp" alt="Lighthouse score" loading="lazy"> -->
+            </div>
+            <h3 class="showcase-title" data-i18n="showcase.step3.title">Performance check</h3>
+            <p class="showcase-text" data-i18n="showcase.step3.text">
+              Every site is tested for speed, accessibility, and SEO. I don't ship until the score is green.
+            </p>
+          </div>
+
+          <!-- Step 4: Live -->
+          <div class="showcase-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="showcase-number">04</div>
+            <div class="showcase-visual">
+              <div class="showcase-placeholder">
+                <i class="fas fa-rocket"></i>
+                <span>Live</span>
+              </div>
+              <!-- Replace with: <img src="assets/img/process-live.webp" alt="Live site" loading="lazy"> -->
+            </div>
+            <h3 class="showcase-title" data-i18n="showcase.step4.title">Ready to share</h3>
+            <p class="showcase-text" data-i18n="showcase.step4.text">
+              Domain connected, analytics set up, handover done. You get a site you're proud to send.
+            </p>
           </div>
         </div>
       </div>
@@ -363,39 +569,53 @@
     <!-- ABOUT -->
     <section id="about">
       <div class="container">
-        <p class="section-kicker" data-i18n="about.kicker">About</p>
-        <h2 class="section-title" data-i18n="about.title">Berlin-based web developer with a creative background</h2>
-        <p class="section-subtitle" data-i18n="about.subtitle">
-          I come from photography and music, and I apply the same mindset to the web:
-          remove noise, keep the essential, and make it pleasant to look at and use.
+        <p class="section-kicker" data-aos="fade-up" data-i18n="about.kicker">About me</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="about.title">A different kind of developer</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="about.subtitle">
+          I come from <strong>photography</strong> and <strong>music</strong>, and I apply the same mindset to the web:<br>
+          remove noise, keep the essential, make it pleasant to look at and use.
         </p>
 
         <div class="about-grid">
-          <div class="about-card">
+          <!-- Left card: What I bring -->
+          <div class="about-card" data-aos="fade-right" data-aos-delay="150">
+            <h3 class="about-card-title" data-i18n="about.card1_title">What I bring to your project</h3>
             <p class="about-highlight" data-i18n="about.speed">
-              <strong>Speed:</strong> simple, lightweight stack (HTML, CSS, JS) so your site is quick to build and easy to maintain.
+              <strong>Speed:</strong> Lightweight stack (HTML, CSS, JS) — your site is <strong>quick to build</strong> and easy to maintain.
             </p>
             <p class="about-highlight" data-i18n="about.design">
-              <strong>Design:</strong> clean layouts, readable type, real breathing space, focus on your message and visuals.
+              <strong>Design:</strong> Clean layouts, readable type, <strong>real breathing space</strong>. Your message and visuals come first.
             </p>
             <p class="about-highlight" data-i18n="about.support">
-              <strong>Support:</strong> I help you prioritise, structure your content and decide what really deserves to be on the page.
+              <strong>Support:</strong> I help you <strong>prioritise</strong>, structure your content, and decide what really deserves to be on the page.
             </p>
-            <p class="about-meta" data-i18n="about.languages">
-              Languages: French, English, Portuguese, Spanish – handy if you work across different markets or teams.
+            <p class="about-languages" data-i18n="about.languages">
+              <i class="fas fa-language"></i> <strong>4 languages:</strong> French, English, Portuguese, Spanish — handy if you work across markets or teams.
             </p>
           </div>
-          <div class="about-card">
+
+          <!-- Right card: Background -->
+          <div class="about-card" data-aos="fade-left" data-aos-delay="200">
+            <h3 class="about-card-title" data-i18n="about.card2_title">Background</h3>
             <p data-i18n="about.text1">
-              Based in Berlin, I work with freelancers, creative studios and small businesses in Germany, France and across the EU.
+              In <strong>2025</strong>, I graduated from <strong>Le Wagon Berlin</strong>'s intensive bootcamp and immediately started building.
+              My first VS Code extension, <strong>Terminal Impact</strong>, is already published on the marketplace.
             </p>
             <p data-i18n="about.text2">
-              My goal: a site you’re not shy to share, because it finally matches who you are and what you offer.
+              Beyond code, I've spent <strong>10 years behind a camera</strong> and <strong>7 years producing music</strong> in Ableton.
+              This creative background gives me an <strong>eye for design</strong> and attention to detail that shows in my work.
             </p>
-            <p>
-              GitHub : <a href="https://github.com/Mozzzaic" target="_blank" rel="noreferrer">github.com/Mozzzaic</a><br>
-              Instagram : <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noreferrer">@dvd.phr</a>
-            </p>
+            <div class="about-links">
+              <a href="https://marketplace.visualstudio.com/items?itemName=Mozzzaic.terminal-impact" target="_blank" rel="noopener noreferrer" class="about-link">
+                <i class="fas fa-puzzle-piece"></i> Terminal Impact
+              </a>
+              <a href="https://github.com/Mozzzaic" target="_blank" rel="noopener noreferrer" class="about-link">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/davidpinheiro" target="_blank" rel="noopener noreferrer" class="about-link">
+                <i class="fab fa-linkedin-in"></i> LinkedIn
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -404,13 +624,13 @@
     <!-- FAQ -->
     <section id="faq">
       <div class="container">
-        <p class="section-kicker" data-i18n="faq.kicker">FAQ</p>
-        <h2 class="section-title" data-i18n="faq.title">Quick answers</h2>
-        <p class="section-subtitle" data-i18n="faq.subtitle">
+        <p class="section-kicker" data-aos="fade-up" data-i18n="faq.kicker">FAQ</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="faq.title">Quick answers</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="faq.subtitle">
           A few common questions. The rest is easier to cover in a short call.
         </p>
 
-        <div class="faq-grid">
+        <div class="faq-grid" data-aos="fade-up" data-aos-delay="150">
           <details aria-labelledby="faq-q1">
             <summary aria-controls="faq-a1">
               <span class="faq-question" id="faq-q1" data-i18n="faq.q1">How much does a project cost?</span>
@@ -492,13 +712,13 @@
     <!-- CONTACT -->
     <section id="contact">
       <div class="container">
-        <p class="section-kicker" data-i18n="contact.kicker">Contact</p>
-        <h2 class="section-title" data-i18n="contact.title">Book a 15-minute call</h2>
-        <p class="section-subtitle" data-i18n="contact.subtitle">
+        <p class="section-kicker" data-aos="fade-up" data-i18n="contact.kicker">Contact</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="contact.title">Book a 15-minute call</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="contact.subtitle">
           Tell me where you are (idea, draft, existing site) and what you want your next site to do for you.
         </p>
 
-        <div class="contact-card">
+        <div class="contact-card" data-aos="zoom-in" data-aos-delay="150">
           <div class="contact-info">
             <p class="contact-highlight" data-i18n="contact.highlight">
               A short call, a concrete plan: scope, budget, timeline.
@@ -507,19 +727,21 @@
               📍 Based in Berlin, working remotely across the EU.
             </p>
             <p>
-              ✉️ Email : <a href="mailto:david.pinheiro.d@gmail.com">david.pinheiro.d@gmail.com</a>
+              <i class="fas fa-envelope"></i> <a href="mailto:david.pinheiro.d@gmail.com">david.pinheiro.d@gmail.com</a>
             </p>
-            <p>
-              GitHub : <a href="https://github.com/Mozzzaic" target="_blank" rel="noreferrer">github.com/Mozzzaic</a><br>
-              Instagram : <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noreferrer">@dvd.phr</a>
-            </p>
-            <p data-i18n="contact.langs">
-              Languages: French, English, Portuguese, Spanish.
-            </p>
+            <div class="contact__social">
+              <a href="https://github.com/Mozzzaic" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/davidpinheiro" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
           </div>
           <div>
-            <a href="https://calendly.com/david-pinheiro-d/15min" class="btn btn-primary btn-full" aria-label="Book a 15-minute call with David — no sales pressure, just a plan and budget" data-i18n="contact.cta">
-              Book a 15-min slot
+            <a href="https://calendly.com/david-pinheiro-d/15min" class="btn btn--primary btn--full" aria-label="Book a 15-minute call with David — no sales pressure, just a plan and budget" data-i18n="contact.cta">
+              <span>Book a 15-min slot</span>
+              <i class="fas fa-calendar-alt"></i>
             </a>
             <p class="contact-note" data-i18n="contact.note">
               Pick a slot, describe your project in a few lines, and you’ll get a confirmation email with the video link.
@@ -533,26 +755,37 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p data-i18n="footer.available">Available in Berlin & remote EU.</p>
-      <div class="footer-links">
-        <a href="mailto:david.pinheiro.d@gmail.com">david.pinheiro.d@gmail.com</a>
-        <a href="https://github.com/Mozzzaic" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noreferrer">Instagram</a>
-      </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="footer.copyright">&copy; 2025 David Pinheiro. Built with vanilla HTML, CSS & JS.</p>
+      <p class="footer__legal" data-i18n="footer.legal">
+        Based in Berlin. Available for projects across the EU.
+      </p>
     </div>
   </footer>
 
-  <!-- Simple legal text (anchor target) -->
-  <div id="legal" class="legal">
-    <p data-i18n="legal.text">
-      Site edited by David Pinheiro, web developer based in Berlin. Contact: david.pinheiro.d@gmail.com.
-      Data sent through forms is only used to answer your requests and is not sold to third parties.
-      This site may use Google Analytics 4 for anonymised audience measurement. You can disable analytics cookies in your browser settings.
-    </p>
-  </div>
+  <!-- Sticky CTA -->
+  <a href="https://calendly.com/david-pinheiro-d/15min" class="sticky-cta" aria-label="Book a call">
+    <span class="sticky-cta__text">Book a call</span>
+    <svg class="sticky-cta__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </a>
 
+  <!-- tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+  <!-- AOS - Animate On Scroll -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Main JS (translations) -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Custom Cursor -->
+  <script src="assets/js/cursor.js"></script>
+
+  <!-- Web Page JS (menu, FAQ, scroll, etc.) -->
+  <script src="assets/js/web-main.js"></script>
 </body>
 </html>

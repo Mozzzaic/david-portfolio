@@ -1,92 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>David Pinheiro – Web Developer, landing pages & showcase sites</title>
+  <title>David Pinheiro – Creative Lab | Music & Visual Experiments</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Berlin-based web developer creating fast, clear landing pages and showcase sites for freelancers and small businesses across Europe.">
-  <link rel="canonical" href="https://davidpinheiro.dev/">
+  <meta name="description"
+    content="Creative Lab by David Pinheiro. Music production, PHASE newsletter, and sonic experiments from Berlin.">
+  <link rel="canonical" href="https://davidpinheiro.dev/creative-lab">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="David Pinheiro – Web Developer, landing pages & showcase sites">
-  <meta property="og:description" content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses. Based in Berlin, available remote in the EU.">
-  <meta property="og:url" content="https://davidpinheiro.dev/">
+  <meta property="og:title" content="David Pinheiro – Creative Lab | Music & Visual Experiments">
+  <meta property="og:description"
+    content="Creative Lab by David Pinheiro. Music production, PHASE newsletter, and sonic experiments from Berlin.">
+  <meta property="og:url" content="https://davidpinheiro.dev/creative-lab">
   <meta property="og:image" content="https://davidpinheiro.dev/og-image.jpg">
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="David Pinheiro – Web Developer, landing pages & showcase sites">
-  <meta name="twitter:description" content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses.">
+  <meta name="twitter:title" content="David Pinheiro – Creative Lab | Music & Visual Experiments">
+  <meta name="twitter:description"
+    content="Creative Lab by David Pinheiro. Music production, PHASE newsletter, and sonic experiments from Berlin.">
   <meta name="twitter:image" content="https://davidpinheiro.dev/og-image.jpg">
 
-  <!-- Favicon minimal -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%232563eb'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='32' fill='white'>D</text></svg>">
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23F97316'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='32' font-weight='bold' fill='white'>D</text></svg>">
 
-  <!-- Fonts (Inter) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/home.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS - Animate On Scroll -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="assets/css/new-styles.css">
+  <link rel="stylesheet" href="assets/css/creative-lab-styles.css">
 </head>
-<body class="page--lab">
-  <header>
-    <div class="container nav" aria-label="Site header">
-      <div class="nav-left">
-        <span data-i18n="nav.name">David Pinheiro</span>
-        <span class="nav-tag" data-i18n="nav.role">Web Developer</span>
-      </div>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
-        <a href="web.html" class="nav-link" data-i18n="nav.web">Web / Services</a>
-        <a href="portfolio.html" class="nav-link" data-i18n="nav.portfolio">Portfolio</a>
-        <a href="creative-lab.html" class="nav-link nav-link--active" data-i18n="nav.lab" aria-current="page">Creative Lab</a>
-      </nav>
-      <div class="lang-switch" aria-label="Language switcher">
-        <button class="btn btn-ghost" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
-        <button class="btn btn-ghost" type="button" data-lang-btn="fr" aria-pressed="false">FR</button>
+
+<body class="page--creative-lab">
+  <!-- Particles Container -->
+  <div id="tsparticles"></div>
+
+  <!-- Hamburger Menu Button -->
+  <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span class="menu-toggle__bar"></span>
+    <span class="menu-toggle__bar"></span>
+    <span class="menu-toggle__bar"></span>
+  </button>
+
+  <!-- Slide-out Navigation -->
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Main navigation">
+    <button class="nav-drawer__close" aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="nav-drawer__header">
+      <span class="nav-drawer__name">David Pinheiro</span>
+      <span class="nav-drawer__tag">Sound & Vision</span>
+    </div>
+
+    <ul class="nav-drawer__list">
+      <li class="nav-drawer__item" style="--i: 0">
+        <a href="#lab-hero" class="nav-drawer__link nav-drawer__link--active">
+          <span class="nav-drawer__icon">01</span>
+          <span class="nav-drawer__text">Home</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 1">
+        <a href="#music" class="nav-drawer__link">
+          <span class="nav-drawer__icon">02</span>
+          <span class="nav-drawer__text">Music</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 2">
+        <a href="#phase" class="nav-drawer__link">
+          <span class="nav-drawer__icon">03</span>
+          <span class="nav-drawer__text">PHASE</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 3">
+        <a href="#experiments" class="nav-drawer__link">
+          <span class="nav-drawer__icon">04</span>
+          <span class="nav-drawer__text">Experiments</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-drawer__pages">
+      <p class="nav-drawer__pages-label">Pages</p>
+      <a href="index.html" class="nav-drawer__page-link">Portfolio Home</a>
+      <a href="web.html" class="nav-drawer__page-link">Web / Services</a>
+      <a href="portfolio.html" class="nav-drawer__page-link">Photo Portfolio</a>
+    </div>
+
+    <div class="nav-drawer__footer">
+      <div class="nav-drawer__lang">
+        <button class="lang-btn" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+        <span class="lang-separator">/</span>
+        <button class="lang-btn" type="button" data-lang-btn="fr" aria-pressed="false">FR</button>
       </div>
     </div>
-  </header>
+  </nav>
+
+  <!-- Overlay -->
+  <div class="nav-overlay" aria-hidden="true"></div>
+
+  <!-- Left Sidebar - Social Links -->
+  <aside class="sidebar sidebar--left" aria-label="Social links">
+    <a href="https://github.com/Mozzzaic" target="_blank" rel="noopener noreferrer" class="sidebar__icon" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/davidpinheiro" target="_blank" rel="noopener noreferrer" class="sidebar__icon" aria-label="LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noopener noreferrer" class="sidebar__icon" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <div class="sidebar__line"></div>
+  </aside>
+
+  <!-- Right Sidebar - Email -->
+  <aside class="sidebar sidebar--right" aria-label="Email contact">
+    <a href="mailto:david.pinheiro.d@gmail.com" class="sidebar__email">david.pinheiro.d@gmail.com</a>
+    <div class="sidebar__line"></div>
+  </aside>
 
   <main>
-    <section class="page-placeholder" id="creative-lab">
+    <!-- Hero Section -->
+    <section class="lab-hero" id="lab-hero">
       <div class="container">
-        <p class="section-kicker" data-i18n="lab.placeholder.kicker">Creative Lab</p>
-        <h1 data-i18n="lab.placeholder.title">Creative lab in progress</h1>
-        <p data-i18n="lab.placeholder.subtitle">
-          A space to share behind-the-scenes from photo and music projects, experiments and tools.
-          I’m gathering notes and visuals — they’ll be online soon.
+        <p class="section__kicker" data-aos="fade-up">Creative Lab</p>
+        <h1 class="lab-hero__title" data-aos="fade-up" data-aos-delay="100">
+          Sound, signals & sonic experiments.
+        </h1>
+        <p class="lab-hero__subtitle" data-aos="fade-up" data-aos-delay="200">
+          A space where music production meets visual exploration. 7 years in Ableton, countless late nights, and a newsletter decoding electronic culture from Berlin.
         </p>
-        <a href="web.html" class="btn btn-primary" data-i18n="lab.placeholder.cta">
-          Check the web services
-        </a>
+        <div class="lab-hero__badges" data-aos="fade-up" data-aos-delay="300">
+          <span class="badge"><i class="fas fa-headphones"></i> 7 years Ableton</span>
+          <span class="badge"><i class="fas fa-map-marker-alt"></i> Berlin</span>
+          <span class="badge"><i class="fas fa-wave-square"></i> Electronic Music</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music Production Section -->
+    <section class="lab-section" id="music" aria-labelledby="music-title">
+      <div class="container">
+        <p class="section__kicker" data-aos="fade-up">Sound Design</p>
+        <div class="lab-section__head">
+          <h2 class="section__title" id="music-title" data-aos="fade-up" data-aos-delay="50">
+            Music Production
+          </h2>
+          <p class="section__subtitle" data-aos="fade-up" data-aos-delay="100">
+            7 years of electronic music production in Ableton Live. Sound design, mixing, and sonic experiments across genres.
+          </p>
+        </div>
+
+        <div class="music-cards" data-aos="fade-up" data-aos-delay="150">
+          <div class="music-card">
+            <div class="music-card__icon">
+              <i class="fas fa-sliders-h"></i>
+            </div>
+            <h3 class="music-card__title">Ableton Live</h3>
+            <p class="music-card__text">Primary DAW for production, sound design, and live performance. Deep knowledge of Max for Live, audio effects, and workflow optimization.</p>
+          </div>
+
+          <div class="music-card">
+            <div class="music-card__icon">
+              <i class="fas fa-wave-square"></i>
+            </div>
+            <h3 class="music-card__title">Sound Design</h3>
+            <p class="music-card__text">Creating textures, atmospheres, and rhythmic elements from scratch. Synthesis, sampling, and granular processing.</p>
+          </div>
+
+          <div class="music-card">
+            <div class="music-card__icon">
+              <i class="fas fa-broadcast-tower"></i>
+            </div>
+            <h3 class="music-card__title">Electronic Genres</h3>
+            <p class="music-card__text">Techno, bass music, downtempo, and ambient. Exploring the space between dancefloor energy and introspective listening.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE Newsletter Section -->
+    <section class="lab-section lab-section--phase" id="phase" aria-labelledby="phase-title">
+      <div class="container">
+        <p class="section__kicker" data-aos="fade-up">Newsletter</p>
+        <div class="lab-section__head">
+          <h2 class="section__title" id="phase-title" data-aos="fade-up" data-aos-delay="50">
+            PHASE
+          </h2>
+          <p class="section__subtitle" data-aos="fade-up" data-aos-delay="100">
+            Electronic culture, signals & frequencies from Berlin. A newsletter decoding the sonic landscape of electronic music.
+          </p>
+        </div>
+
+        <div class="phase-content" data-aos="fade-up" data-aos-delay="150">
+          <div class="phase-card phase-card--main">
+            <div class="phase-card__header">
+              <div class="phase-logo">
+                <span class="phase-logo__text">PHASE</span>
+                <span class="phase-logo__wave"></span>
+              </div>
+              <span class="phase-card__badge">On Substack</span>
+            </div>
+            <p class="phase-card__tagline">Electronic culture, signals & frequencies from Berlin.</p>
+            <div class="phase-card__features">
+              <div class="phase-feature">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Regular deep dives</span>
+              </div>
+              <div class="phase-feature">
+                <i class="fas fa-music"></i>
+                <span>Track analysis</span>
+              </div>
+              <div class="phase-feature">
+                <i class="fas fa-map-pin"></i>
+                <span>Berlin scene insights</span>
+              </div>
+            </div>
+            <a href="https://phasenewsletter.substack.com/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+              <span>Subscribe to PHASE</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="phase-card phase-card--issue">
+            <div class="phase-issue__header">
+              <span class="phase-issue__number">001</span>
+              <span class="phase-issue__date">Nov 20, 2025</span>
+            </div>
+            <h3 class="phase-issue__title">The Physics of Winter & The Bass Shift at Berghain</h3>
+            <div class="phase-issue__topics">
+              <div class="phase-topic">
+                <span class="phase-topic__number">01</span>
+                <div class="phase-topic__content">
+                  <h4>Phase In</h4>
+                  <p>Why November through winter is "the best time of year to consume music" in Berlin.</p>
+                </div>
+              </div>
+              <div class="phase-topic">
+                <span class="phase-topic__number">02</span>
+                <div class="phase-topic__content">
+                  <h4>The Deep Dive</h4>
+                  <p>REEF at Berghain: How bass music altered the acoustic properties of Berlin's iconic venue.</p>
+                </div>
+              </div>
+              <div class="phase-topic">
+                <span class="phase-topic__number">03</span>
+                <div class="phase-topic__content">
+                  <h4>Radar</h4>
+                  <p>Four curated tracks analyzed across production techniques and sound design.</p>
+                </div>
+              </div>
+              <div class="phase-topic">
+                <span class="phase-topic__number">04</span>
+                <div class="phase-topic__content">
+                  <h4>Field Notes</h4>
+                  <p>Why Berlin functions as electronic music's gravitational center.</p>
+                </div>
+              </div>
+            </div>
+            <a href="https://phasenewsletter.substack.com/p/phase-001" target="_blank" rel="noopener noreferrer" class="phase-issue__link">
+              Read PHASE 001 <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiments Section -->
+    <section class="lab-section" id="experiments" aria-labelledby="experiments-title">
+      <div class="container">
+        <p class="section__kicker" data-aos="fade-up">Work in Progress</p>
+        <div class="lab-section__head">
+          <h2 class="section__title" id="experiments-title" data-aos="fade-up" data-aos-delay="50">
+            Experiments
+          </h2>
+          <p class="section__subtitle" data-aos="fade-up" data-aos-delay="100">
+            Ongoing explorations in sound, visuals, and the space where they intersect. Always learning, always building.
+          </p>
+        </div>
+
+        <div class="experiments-grid" data-aos="fade-up" data-aos-delay="150">
+          <div class="experiment-card">
+            <div class="experiment-card__icon">
+              <i class="fas fa-microchip"></i>
+            </div>
+            <h3 class="experiment-card__title">Modular & Eurorack</h3>
+            <p class="experiment-card__text">Exploring hardware synthesis and the unpredictable nature of voltage-controlled sound.</p>
+            <span class="experiment-card__status">Learning</span>
+          </div>
+
+          <div class="experiment-card">
+            <div class="experiment-card__icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <h3 class="experiment-card__title">Visual Synesthesia</h3>
+            <p class="experiment-card__text">Connecting audio signals to visual outputs. Sound-reactive graphics and generative art.</p>
+            <span class="experiment-card__status">Exploring</span>
+          </div>
+
+          <div class="experiment-card">
+            <div class="experiment-card__icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3 class="experiment-card__title">Creative Coding</h3>
+            <p class="experiment-card__text">Using code as a creative medium. Generative patterns, data sonification, and algorithmic composition.</p>
+            <span class="experiment-card__status">Building</span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p data-i18n="footer.available">Available in Berlin & remote EU.</p>
-      <div class="footer-links">
-        <a href="mailto:david.pinheiro.d@gmail.com">david.pinheiro.d@gmail.com</a>
-        <a href="https://github.com/Mozzzaic" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noreferrer">Instagram</a>
-      </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 David Pinheiro. Built with vanilla HTML, CSS & JS.</p>
+      <p class="footer__legal">
+        Based in Berlin. Available for projects across the EU.
+      </p>
     </div>
   </footer>
 
-  <!-- Simple legal text (anchor target) -->
-  <div id="legal" class="legal">
-    <p data-i18n="legal.text">
-      Site edited by David Pinheiro, web developer based in Berlin. Contact: david.pinheiro.d@gmail.com.
-      Data sent through forms is only used to answer your requests and is not sold to third parties.
-      This site may use Google Analytics 4 for anonymised audience measurement. You can disable analytics cookies in your browser settings.
-    </p>
-  </div>
+  <!-- AOS - Animate On Scroll -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+  <!-- Main JS (translations) -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Custom Cursor -->
+  <script src="assets/js/cursor.js"></script>
+
+  <!-- Creative Lab Page JS -->
+  <script src="assets/js/creative-lab-main.js"></script>
 </body>
+
 </html>

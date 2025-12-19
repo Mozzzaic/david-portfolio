@@ -3,194 +3,306 @@
 
 <head>
   <meta charset="utf-8">
-  <title>David Pinheiro – Web Developer, landing pages & showcase sites</title>
+  <title>David Pinheiro – Photo Portfolio | Berlin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-    content="Berlin-based web developer creating fast, clear landing pages and showcase sites for freelancers and small businesses across Europe.">
-  <link rel="canonical" href="https://davidpinheiro.dev/">
+    content="Photo portfolio by David Pinheiro. Travel photography, portraits and night atmospheres. Based in Berlin.">
+  <link rel="canonical" href="https://davidpinheiro.dev/portfolio">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="David Pinheiro – Web Developer, landing pages & showcase sites">
+  <meta property="og:title" content="David Pinheiro – Photo Portfolio | Berlin">
   <meta property="og:description"
-    content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses. Based in Berlin, available remote in the EU.">
-  <meta property="og:url" content="https://davidpinheiro.dev/">
+    content="Photo portfolio by David Pinheiro. Travel photography, portraits and night atmospheres.">
+  <meta property="og:url" content="https://davidpinheiro.dev/portfolio">
   <meta property="og:image" content="https://davidpinheiro.dev/og-image.jpg">
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="David Pinheiro – Web Developer, landing pages & showcase sites">
+  <meta name="twitter:title" content="David Pinheiro – Photo Portfolio | Berlin">
   <meta name="twitter:description"
-    content="Fast, clear landing pages and showcase sites for freelancers, creatives and small businesses.">
+    content="Photo portfolio by David Pinheiro. Travel photography, portraits and night atmospheres.">
   <meta name="twitter:image" content="https://davidpinheiro.dev/og-image.jpg">
 
-  <!-- Favicon minimal -->
+  <!-- Favicon -->
   <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%232563eb'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='32' fill='white'>D</text></svg>">
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%238B5CF6'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='32' font-weight='bold' fill='white'>D</text></svg>">
 
-  <!-- Fonts (Inter) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/home.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS - Animate On Scroll -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Three.js for Starfield -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <link rel="stylesheet" href="assets/css/new-styles.css">
+  <link rel="stylesheet" href="assets/css/portfolio-styles.css">
 </head>
 
 <body class="page--portfolio">
-  <header>
-    <div class="container nav" aria-label="Site header">
-      <div class="nav-left">
-        <span data-i18n="nav.name">David Pinheiro</span>
-        <span class="nav-tag" data-i18n="nav.role">Web Developer</span>
-      </div>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
-        <a href="web.html" class="nav-link" data-i18n="nav.web">Web / Services</a>
-        <a href="portfolio.html" class="nav-link nav-link--active" data-i18n="nav.portfolio"
-          aria-current="page">Portfolio</a>
-        <a href="creative-lab.html" class="nav-link" data-i18n="nav.lab">Creative Lab</a>
-      </nav>
-      <div class="lang-switch" aria-label="Language switcher">
-        <button class="btn btn-ghost" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
-        <button class="btn btn-ghost" type="button" data-lang-btn="fr" aria-pressed="false">FR</button>
+  <!-- Starfield Canvas -->
+  <canvas id="starfield-canvas" aria-hidden="true"></canvas>
+
+  <!-- Hamburger Menu Button -->
+  <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span class="menu-toggle__bar"></span>
+    <span class="menu-toggle__bar"></span>
+    <span class="menu-toggle__bar"></span>
+  </button>
+
+  <!-- Slide-out Navigation -->
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Main navigation">
+    <button class="nav-drawer__close" aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="nav-drawer__header">
+      <span class="nav-drawer__name">David Pinheiro</span>
+      <span class="nav-drawer__tag">Photographer</span>
+    </div>
+
+    <ul class="nav-drawer__list">
+      <li class="nav-drawer__item" style="--i: 0">
+        <a href="#portfolio-hero" class="nav-drawer__link nav-drawer__link--active">
+          <span class="nav-drawer__icon">01</span>
+          <span class="nav-drawer__text" data-i18n="nav.home">Home</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 1">
+        <a href="#series-travel" class="nav-drawer__link">
+          <span class="nav-drawer__icon">02</span>
+          <span class="nav-drawer__text">Travel</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 2">
+        <a href="#series-portraits" class="nav-drawer__link">
+          <span class="nav-drawer__icon">03</span>
+          <span class="nav-drawer__text">Portraits</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 3">
+        <a href="#series-night" class="nav-drawer__link">
+          <span class="nav-drawer__icon">04</span>
+          <span class="nav-drawer__text">Nights</span>
+        </a>
+      </li>
+      <li class="nav-drawer__item" style="--i: 4">
+        <a href="#presskit" class="nav-drawer__link">
+          <span class="nav-drawer__icon">05</span>
+          <span class="nav-drawer__text">Press</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-drawer__pages">
+      <p class="nav-drawer__pages-label">Pages</p>
+      <a href="index.html" class="nav-drawer__page-link">Portfolio Home</a>
+      <a href="web.html" class="nav-drawer__page-link">Web / Services</a>
+      <a href="creative-lab.html" class="nav-drawer__page-link">Creative Lab</a>
+    </div>
+
+    <div class="nav-drawer__footer">
+      <div class="nav-drawer__lang">
+        <button class="lang-btn" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+        <span class="lang-separator">/</span>
+        <button class="lang-btn" type="button" data-lang-btn="fr" aria-pressed="false">FR</button>
       </div>
     </div>
-  </header>
+  </nav>
+
+  <!-- Overlay -->
+  <div class="nav-overlay" aria-hidden="true"></div>
+
+  <!-- Left Sidebar - Social Links -->
+  <aside class="sidebar sidebar--left" aria-label="Social links">
+    <a href="https://github.com/Mozzzaic" target="_blank" rel="noopener noreferrer" class="sidebar__icon" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/davidpinheiro" target="_blank" rel="noopener noreferrer" class="sidebar__icon" aria-label="LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noopener noreferrer" class="sidebar__icon" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <div class="sidebar__line"></div>
+  </aside>
+
+  <!-- Right Sidebar - Email -->
+  <aside class="sidebar sidebar--right" aria-label="Email contact">
+    <a href="mailto:david.pinheiro.d@gmail.com" class="sidebar__email">david.pinheiro.d@gmail.com</a>
+    <div class="sidebar__line"></div>
+  </aside>
 
   <main>
+    <!-- Hero Section -->
     <section class="portfolio-hero" id="portfolio-hero">
       <div class="container">
-        <p class="section-kicker" data-i18n="portfolio.hero.kicker">Photo portfolio</p>
-        <h1 class="portfolio-hero__title section-title" data-i18n="portfolio.hero.title">Places, faces and late nights.
+        <p class="section__kicker" data-aos="fade-up" data-i18n="portfolio.hero.kicker">Photo Portfolio</p>
+        <h1 class="portfolio-hero__title" data-aos="fade-up" data-aos-delay="100" data-i18n="portfolio.hero.title">
+          Places, faces and late nights.
         </h1>
-        <p class="portfolio-hero__subtitle section-subtitle" data-i18n="portfolio.hero.subtitle">
+        <p class="portfolio-hero__subtitle" data-aos="fade-up" data-aos-delay="200" data-i18n="portfolio.hero.subtitle">
           A selection of images from travels, portraits and night walks. This is the visual side of my practice — the
           same eye I bring to web projects.
         </p>
+        <div class="portfolio-hero__badges" data-aos="fade-up" data-aos-delay="300">
+          <span class="badge"><i class="fas fa-camera"></i> 10 years</span>
+          <span class="badge"><i class="fas fa-map-marker-alt"></i> Berlin</span>
+          <span class="badge"><i class="fas fa-eye"></i> Visual storytelling</span>
+        </div>
       </div>
     </section>
 
+    <!-- Travel Series -->
     <section class="portfolio-series" id="series-travel" aria-labelledby="series-travel-title">
       <div class="container">
-        <p class="section-kicker" data-i18n="portfolio.series.kicker">Series</p>
+        <p class="section__kicker" data-aos="fade-up" data-i18n="portfolio.series.kicker">Series</p>
         <div class="portfolio-series__head">
-          <h2 class="section-title" id="series-travel-title" data-i18n="portfolio.series.travel.title">Travel & places
+          <h2 class="section__title" id="series-travel-title" data-aos="fade-up" data-aos-delay="50" data-i18n="portfolio.series.travel.title">
+            Travel & places
           </h2>
-          <p class="section-subtitle" data-i18n="portfolio.series.travel.subtitle">
+          <p class="section__subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="portfolio.series.travel.subtitle">
             Deserts, coastlines and cities in-between — quiet frames from the road.
           </p>
         </div>
         <div class="portfolio-grid" role="list">
-          <figure class="portfolio-item" role="listitem">
+          <figure class="portfolio-item" role="listitem" data-aos="fade-up" data-aos-delay="150">
             <img src="assets/img/portfolio-travel-1.webp" alt="Golden hour dunes and a lone road in the desert"
               loading="lazy">
+            <figcaption class="portfolio-item__caption">Desert road at golden hour</figcaption>
           </figure>
-          <figure class="portfolio-item" role="listitem">
+          <figure class="portfolio-item" role="listitem" data-aos="fade-up" data-aos-delay="200">
             <img src="assets/img/portfolio-travel-2.webp" alt="Rocky coastline with misty sunrise light" loading="lazy">
+            <figcaption class="portfolio-item__caption">Misty coastline at sunrise</figcaption>
           </figure>
-          <figure class="portfolio-item" role="listitem">
+          <figure class="portfolio-item" role="listitem" data-aos="fade-up" data-aos-delay="250">
             <img src="assets/img/portfolio-travel-3.webp" alt="Quiet European street with pastel buildings"
               loading="lazy">
+            <figcaption class="portfolio-item__caption">European street scene</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
+    <!-- Portraits Series -->
     <section class="portfolio-series" id="series-portraits" aria-labelledby="series-portraits-title">
       <div class="container">
-        <p class="section-kicker" data-i18n="portfolio.series.kicker">Series</p>
+        <p class="section__kicker" data-aos="fade-up" data-i18n="portfolio.series.kicker">Series</p>
         <div class="portfolio-series__head">
-          <h2 class="section-title" id="series-portraits-title" data-i18n="portfolio.series.portraits.title">Portraits
+          <h2 class="section__title" id="series-portraits-title" data-aos="fade-up" data-aos-delay="50" data-i18n="portfolio.series.portraits.title">
+            Portraits
           </h2>
-          <p class="section-subtitle" data-i18n="portfolio.series.portraits.subtitle">
+          <p class="section__subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="portfolio.series.portraits.subtitle">
             People in their own light — slow sessions focused on trust and presence.
           </p>
         </div>
         <div class="portfolio-grid" role="list">
-          <figure class="portfolio-item" role="listitem">
+          <figure class="portfolio-item" role="listitem" data-aos="fade-up" data-aos-delay="150">
             <img src="assets/img/portfolio-portraits-1.webp" alt="Portrait of a woman looking out a studio window"
               loading="lazy">
+            <figcaption class="portfolio-item__caption">Studio window light</figcaption>
           </figure>
-          <figure class="portfolio-item" role="listitem">
+          <figure class="portfolio-item" role="listitem" data-aos="fade-up" data-aos-delay="200">
             <img src="assets/img/portfolio-portraits-2.webp" alt="Close-up portrait of an artist with dramatic shadows"
               loading="lazy">
+            <figcaption class="portfolio-item__caption">Artist portrait</figcaption>
           </figure>
-          <figure class="portfolio-item" role="listitem">
+          <figure class="portfolio-item" role="listitem" data-aos="fade-up" data-aos-delay="250">
             <img src="assets/img/portfolio-portraits-3.webp" alt="Musician seated with guitar in warm light"
               loading="lazy">
+            <figcaption class="portfolio-item__caption">Musician in warm light</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
+    <!-- Night Series -->
     <section class="portfolio-series" id="series-night" aria-labelledby="series-night-title">
       <div class="container">
-        <p class="section-kicker" data-i18n="portfolio.series.kicker">Series</p>
+        <p class="section__kicker" data-aos="fade-up" data-i18n="portfolio.series.kicker">Series</p>
         <div class="portfolio-series__head">
-          <h2 class="section-title" id="series-night-title" data-i18n="portfolio.series.night.title">Nights &
-            atmospheres</h2>
-          <p class="section-subtitle" data-i18n="portfolio.series.night.subtitle">
+          <h2 class="section__title" id="series-night-title" data-aos="fade-up" data-aos-delay="50" data-i18n="portfolio.series.night.title">
+            Nights & atmospheres
+          </h2>
+          <p class="section__subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="portfolio.series.night.subtitle">
             Late-night walks, city glow and small surreal moments.
           </p>
         </div>
         <div class="portfolio-grid" role="list">
-          <figure class="portfolio-item" role="listitem">
+          <figure class="portfolio-item" role="listitem" data-aos="fade-up" data-aos-delay="150">
             <img src="assets/img/portfolio-night-1.webp" alt="Neon-lit alleyway with reflections on wet pavement"
               loading="lazy">
+            <figcaption class="portfolio-item__caption">Neon alleyway</figcaption>
           </figure>
-          <figure class="portfolio-item" role="listitem">
+          <figure class="portfolio-item" role="listitem" data-aos="fade-up" data-aos-delay="200">
             <img src="assets/img/portfolio-night-2.webp" alt="Silhouette of a person under streetlights at night"
               loading="lazy">
+            <figcaption class="portfolio-item__caption">Streetlight silhouette</figcaption>
           </figure>
-          <figure class="portfolio-item" role="listitem">
+          <figure class="portfolio-item" role="listitem" data-aos="fade-up" data-aos-delay="250">
             <img src="assets/img/portfolio-night-3.webp" alt="Blurred city lights creating abstract shapes"
               loading="lazy">
+            <figcaption class="portfolio-item__caption">Abstract city lights</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
+    <!-- Press Section -->
     <section class="portfolio-press" id="presskit">
       <div class="container">
-        <div class="press-card">
-          <div>
-            <h2 class="section-title" data-i18n="portfolio.press.title">Press & festivals</h2>
-            <p class="section-subtitle" data-i18n="portfolio.press.text">
+        <div class="press-card" data-aos="fade-up">
+          <div class="press-card__content">
+            <p class="section__kicker">Press</p>
+            <h2 class="section__title" data-i18n="portfolio.press.title">Press & festivals</h2>
+            <p class="section__subtitle" data-i18n="portfolio.press.text">
               If you need a quick overview for programming, you can request or download a photo presskit.
             </p>
           </div>
-          <a href="assets/presskit/david-pinheiro-photo-presskit.pdf" class="btn btn-primary" target="_blank"
+          <a href="assets/presskit/david-pinheiro-photo-presskit.pdf" class="btn btn--primary" target="_blank"
             rel="noreferrer" data-i18n="portfolio.press.cta">
-            Download photo presskit
+            <span>Download presskit</span>
+            <i class="fas fa-download"></i>
           </a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p data-i18n="footer.available">Available in Berlin & remote EU.</p>
-      <div class="footer-links">
-        <a href="mailto:david.pinheiro.d@gmail.com">david.pinheiro.d@gmail.com</a>
-        <a href="https://github.com/Mozzzaic" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://www.instagram.com/dvd.phr" target="_blank" rel="noreferrer">Instagram</a>
-      </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="footer.copyright">&copy; 2025 David Pinheiro. Built with vanilla HTML, CSS & JS.</p>
+      <p class="footer__legal" data-i18n="footer.legal">
+        Based in Berlin. Available for projects across the EU.
+      </p>
     </div>
   </footer>
 
-  <!-- Simple legal text (anchor target) -->
-  <div id="legal" class="legal">
-    <p data-i18n="legal.text">
-      Site edited by David Pinheiro, web developer based in Berlin. Contact: david.pinheiro.d@gmail.com.
-      Data sent through forms is only used to answer your requests and is not sold to third parties.
-      This site may use Google Analytics 4 for anonymised audience measurement. You can disable analytics cookies in
-      your browser settings.
-    </p>
-  </div>
+  <!-- AOS - Animate On Scroll -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+  <!-- Starfield Canvas Animation -->
+  <script src="assets/js/starfield.js"></script>
+
+  <!-- Main JS (translations) -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Custom Cursor -->
+  <script src="assets/js/cursor.js"></script>
+
+  <!-- Portfolio Page JS -->
+  <script src="assets/js/portfolio-main.js"></script>
 </body>
 
 </html>

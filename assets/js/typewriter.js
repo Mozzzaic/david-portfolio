@@ -13,23 +13,39 @@ class Typewriter {
     this.wordIndex = 0;
     this.charIndex = 0;
     this.isDeleting = false;
+    this.started = false;
 
-    this.init();
+    this.prepare();
   }
 
-  init() {
+  prepare() {
     this.textSpan = document.createElement('span');
     this.textSpan.className = 'typewriter-text';
+    // Afficher "Business." dès le début (avant même que l'animation démarre)
+    this.textSpan.textContent = this.words[0];
 
     this.cursorElement = document.createElement('span');
     this.cursorElement.className = 'typewriter-cursor';
     this.cursorElement.textContent = '|';
+    // Cacher le curseur jusqu'au démarrage
+    this.cursorElement.style.opacity = '0';
 
     this.element.textContent = '';
     this.element.appendChild(this.textSpan);
     this.element.appendChild(this.cursorElement);
+  }
 
-    this.type();
+  start() {
+    if (!this.started) {
+      this.started = true;
+      // Afficher le curseur
+      this.cursorElement.style.opacity = '1';
+      // Le premier mot est déjà affiché dans prepare()
+      this.charIndex = this.words[0].length;
+      this.isDeleting = true;
+      // Attendre avant de commencer à effacer
+      setTimeout(() => this.type(), this.waitTime);
+    }
   }
 
   type() {
@@ -59,9 +75,18 @@ class Typewriter {
   }
 }
 
+// Stocker les instances pour pouvoir les démarrer plus tard
+window.typewriterInstances = [];
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-typewriter]').forEach(el => {
     const words = el.dataset.typewriter.split('|').map(w => w.trim());
-    new Typewriter(el, { words });
+    const instance = new Typewriter(el, { words });
+    window.typewriterInstances.push(instance);
   });
 });
+
+// Fonction globale pour démarrer tous les typewriters
+window.startTypewriters = function() {
+  window.typewriterInstances.forEach(tw => tw.start());
+};
