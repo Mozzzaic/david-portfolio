@@ -46,7 +46,7 @@ const translations = {
     "projects.title": "Projects",
     "projects.subtitle": "From VS Code extensions to award-winning bootcamp projects, here's what I've been building.",
     "projects.terminal.desc": "VS Code extension that highlights files created or modified by integrated terminal commands or AI agents, right in the Explorer. Helps developers track changes made by CLI tools and AI assistants.",
-    "projects.talez.desc": "Interactive storybook app for children that helps them express themselves through AI-powered image and text generation. Awarded best project across all Le Wagon batches in 2025.",
+    "projects.talez.desc": "Interactive storybook app for children that helps them express themselves through AI-powered image and text generation. My best project of 2025.",
     "projects.muzik.desc": "Music discovery and sharing app built during Le Wagon bootcamp. Allows users to explore and share their favorite tracks.",
     "projects.trackid.desc": "App for DJs to manage and organize their track IDs from sets and mixes. Never lose a track ID again.",
 
@@ -311,7 +311,7 @@ const translations = {
     "projects.title": "Projets",
     "projects.subtitle": "Des extensions VS Code aux projets primés du bootcamp, voici ce que j'ai construit.",
     "projects.terminal.desc": "Extension VS Code qui met en évidence les fichiers créés ou modifiés par les commandes du terminal intégré ou les agents IA, directement dans l'Explorateur.",
-    "projects.talez.desc": "Application de livres interactifs pour enfants qui les aide à s'exprimer grâce à la génération d'images et de textes par IA. Élu meilleur projet de toutes les promos Le Wagon en 2025.",
+    "projects.talez.desc": "Application de livres interactifs pour enfants qui les aide à s'exprimer grâce à la génération d'images et de textes par IA. Mon meilleur projet de 2025.",
     "projects.muzik.desc": "Application de découverte et partage musical développée pendant le bootcamp Le Wagon. Permet aux utilisateurs d'explorer et partager leurs morceaux préférés.",
     "projects.trackid.desc": "Application pour DJs permettant de gérer et organiser les Track IDs des sets et mixes. Ne perdez plus jamais un Track ID.",
 
