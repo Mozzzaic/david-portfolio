@@ -1152,6 +1152,21 @@ function initFAQ() {
 // INITIALIZE
 // --------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------
+// SECONDARY LINKS IN CLICKABLE CARDS
+// --------------------------------------------------------------------------
+
+function initSecondaryLinks() {
+  document.querySelectorAll('[data-href]').forEach((el) => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      window.open(el.dataset.href, '_blank', 'noopener,noreferrer');
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const initialLang = detectInitialLanguage();
   applyLanguage(initialLang);
@@ -1180,6 +1195,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollProgress();
   initActiveNavTracking();
   initCardEffects();
+  initSecondaryLinks();
 
   // Initialize starfield (for dark mode)
   initStarfield();
