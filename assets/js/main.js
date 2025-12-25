@@ -619,11 +619,7 @@ function initMenu() {
 
   function toggleMenu() {
     const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
-    if (isOpen) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+    isOpen ? closeMenu() : openMenu();
   }
 
   menuToggle.addEventListener("click", toggleMenu);
@@ -775,8 +771,7 @@ function initSmoothScroll() {
       event.preventDefault();
       target.scrollIntoView({ behavior: "smooth", block: "start" });
 
-      // Update URL without scrolling
-      history.pushState(null, null, href);
+      history.pushState(null, "", href);
     });
   });
 }
@@ -864,11 +859,7 @@ function initScrollThemeTransition() {
 // STARFIELD CANVAS INITIALIZATION
 // --------------------------------------------------------------------------
 
-// starfield instance is created in starfield.js as window.starfield
-
 function initStarfield() {
-  // Starfield is auto-initialized via window.starfield in starfield.js
-  // Just verify it exists - don't start yet, will be activated when entering dark mode
   if (!window.starfield) {
     console.warn('Starfield not initialized');
   }
@@ -950,9 +941,9 @@ function initParticles() {
     .then((container) => {
       particlesInstance = container;
 
-      // Override particles mouse tracking to follow the ball
+      // Sync particles mouse tracking to follow the cursor ball
       function syncParticlesToBall() {
-        if (window.customCursorPos && particlesInstance?.interactivity?.mouse) {
+        if (particlesInstance?.interactivity?.mouse && window.customCursorPos) {
           particlesInstance.interactivity.mouse.position = {
             x: window.customCursorPos.x * window.devicePixelRatio,
             y: window.customCursorPos.y * window.devicePixelRatio
@@ -966,35 +957,24 @@ function initParticles() {
 }
 
 function updateParticlesTheme(theme) {
-  // Handle starfield toggle for dark mode only
+  // Toggle starfield for dark mode only
   if (theme === "dark") {
-    // Start starfield in dark mode
-    if (window.starfield) {
-      window.starfield.start();
-    }
+    window.starfield?.start();
   } else {
-    // Stop starfield in light/orange mode
-    if (window.starfield) {
-      window.starfield.stop();
-    }
+    window.starfield?.stop();
   }
 
-  // Update tsParticles colors smoothly without resetting positions
   if (!particlesInstance) return;
 
-  let newColor;
-  if (theme === "orange") {
-    newColor = "#581C87";
-  } else {
-    newColor = "#8B5CF6";
-  }
+  // Set color based on theme
+  const newColor = theme === "orange" ? "#581C87" : "#8B5CF6";
 
-  // Update each particle's color directly (no position reset)
+  // Update existing particles
   particlesInstance.particles.forEach((particle) => {
     particle.color.value = newColor;
   });
 
-  // Update link color in options for new connections
+  // Update options for new particles
   particlesInstance.options.particles.links.color = newColor;
   particlesInstance.options.particles.color.value = newColor;
 }
@@ -1046,10 +1026,10 @@ function initScrollAnimations() {
 // --------------------------------------------------------------------------
 
 function initSidebarObservers() {
+  const aboutContent = document.querySelector(".about__content");
   const contactSection = document.querySelector(".contact");
 
-  // Show/hide sidebar when About content is visible (at "In 2025, I graduated..." level)
-  const aboutContent = document.querySelector(".about__content");
+  // Show sidebar when about section is visible
   if (aboutContent) {
     const showObserver = new IntersectionObserver(
       (entries) => {
@@ -1058,35 +1038,25 @@ function initSidebarObservers() {
           if (entry.isIntersecting) {
             document.body.classList.add("sidebar-visible");
           } else if (rect.top > 0) {
-            // Only hide when scrolling back UP (about content is below viewport)
+            // Hide only when scrolling back up
             document.body.classList.remove("sidebar-visible");
           }
         });
       },
-      {
-        threshold: 0.3,
-        rootMargin: "0px 0px 0px 0px",
-      }
+      { threshold: 0.3 }
     );
     showObserver.observe(aboutContent);
   }
 
-  // Hide sidebar when Contact section appears
+  // Hide sidebar when contact section is visible
   if (contactSection) {
     const hideObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            document.body.classList.add("contact-visible");
-          } else {
-            document.body.classList.remove("contact-visible");
-          }
+          document.body.classList.toggle("contact-visible", entry.isIntersecting);
         });
       },
-      {
-        threshold: 0,
-        rootMargin: "0px 0px 0px 0px",
-      }
+      { threshold: 0 }
     );
     hideObserver.observe(contactSection);
   }
@@ -1139,18 +1109,14 @@ function initFAQ() {
     const summary = detail.querySelector("summary");
     if (!summary) return;
 
-    const setExpanded = () => {
-      summary.setAttribute("aria-expanded", detail.open ? "true" : "false");
-    };
+    function updateAria() {
+      summary.setAttribute("aria-expanded", detail.open);
+    }
 
-    setExpanded();
-    detail.addEventListener("toggle", setExpanded);
+    updateAria();
+    detail.addEventListener("toggle", updateAria);
   });
 }
-
-// --------------------------------------------------------------------------
-// INITIALIZE
-// --------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------
 // SECONDARY LINKS IN CLICKABLE CARDS
@@ -1166,6 +1132,10 @@ function initSecondaryLinks() {
     });
   });
 }
+
+// --------------------------------------------------------------------------
+// INITIALIZE
+// --------------------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
   const initialLang = detectInitialLanguage();
@@ -1211,9 +1181,8 @@ document.addEventListener("DOMContentLoaded", () => {
       easing: 'ease-out-cubic',
       once: true,
       offset: 100,
-      delay: 0,
       anchorPlacement: 'top-bottom',
-      disable: window.innerWidth < 768 ? true : false,
+      disable: window.innerWidth < 768,
     });
   }
 });
