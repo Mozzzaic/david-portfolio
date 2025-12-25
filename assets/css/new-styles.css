@@ -2752,7 +2752,7 @@ body.scrolled-orange .hero__title.text-revealed .letter {
 
 /* Enhanced hero name gradient - violet to orange (only the name, not "Hi, I'm") */
 .hero__name {
-  background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 50%, #F97316 100%);
+  background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 50%, #F59E0B 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -3090,13 +3090,21 @@ body:not(.scrolled-dark):not(.scrolled-orange) .custom-cursor {
     #7C3AED,
     #8B5CF6,
     #A855F7,
+    #C026D3,
     #D946EF,
     #EC4899,
+    #F43F5E,
+    #EF4444,
     #F97316,
-    #FBBF24,
+    #FB923C,
+    #F59E0B,
+    #FB923C,
     #F97316,
+    #EF4444,
+    #F43F5E,
     #EC4899,
     #D946EF,
+    #C026D3,
     #A855F7,
     #8B5CF6,
     #7C3AED
@@ -3135,19 +3143,19 @@ body:not(.scrolled-dark):not(.scrolled-orange) .custom-cursor {
 body.scrolled-orange .hero__name.gradient-text-animated {
   background: linear-gradient(
     90deg,
-    #EA580C,
+    #D97706,
+    #F59E0B,
+    #FBBF24,
     #F97316,
     #FB923C,
-    #FBBF24,
-    #FDE047,
     #A855F7,
     #C084FC,
     #A855F7,
-    #FDE047,
-    #FBBF24,
     #FB923C,
     #F97316,
-    #EA580C
+    #FBBF24,
+    #F59E0B,
+    #D97706
   ) !important;
   background-size: 200% 100% !important;
 }

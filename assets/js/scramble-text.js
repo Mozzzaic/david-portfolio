@@ -10,16 +10,19 @@ class ScrambleText {
     // Total de caractères dans le nom complet (ex: "David Pinheiro" = 13 lettres)
     this.totalCharsInFullName = parseInt(element.getAttribute('data-total') || '0', 10);
 
-    // Dégradé de couleurs : violet → rose → orange → jaune
+    // Dégradé arc-en-ciel : violet → magenta → pink → coral → orange (sans jaune)
     this.colors = [
+      '#7C3AED', // violet foncé
       '#8B5CF6', // violet
       '#A855F7', // violet clair
-      '#D946EF', // rose
+      '#C026D3', // fuchsia
+      '#D946EF', // magenta
       '#EC4899', // pink
+      '#F43F5E', // rose/coral
+      '#EF4444', // rouge
       '#F97316', // orange
       '#FB923C', // orange clair
-      '#FBBF24', // jaune
-      '#FDE047', // jaune clair
+      '#F59E0B', // amber
     ];
 
     this.init();
