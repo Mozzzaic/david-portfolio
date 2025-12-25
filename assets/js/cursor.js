@@ -77,8 +77,8 @@ class CustomCursor {
     ].join(', ');
     // Hero name a un blob plus petit pour ne pas déborder
     const heroNameSelector = '.hero__name';
-    // Exclure les icônes sociales (sidebar + footer)
-    const excludeSelector = '.sidebar__icon, .contact__social a';
+    // Exclure les icônes sociales (sidebar + footer) et les badges du hero
+    const excludeSelector = '.sidebar__icon, .contact__social a, .hero__badges .badge';
 
     document.addEventListener('mouseover', (e) => {
       const excluded = e.target.closest(excludeSelector);

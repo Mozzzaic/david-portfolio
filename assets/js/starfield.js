@@ -305,9 +305,9 @@ class Starfield {
       this.camera.position.y += this.driftDirection.y;
       this.camera.position.z += this.driftDirection.z;
 
-      // Parallaxe souris (subtil)
-      this.camera.rotation.y = this.mouseX;
-      this.camera.rotation.x = this.mouseY;
+      // Parallaxe souris désactivé
+      // this.camera.rotation.y = this.mouseX;
+      // this.camera.rotation.x = this.mouseY;
 
       // Wrap-around des étoiles pour un voyage infini
       this.wrapStars();
