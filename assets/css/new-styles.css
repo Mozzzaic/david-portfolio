@@ -3039,20 +3039,14 @@ body.scrolled-orange .particle--accent {
   left: -10px;
   z-index: 99999;
   pointer-events: none;
-  /* Halo commence après la boule (spread 5px) pour ne pas la flouter */
+  will-change: transform;
+  backface-visibility: hidden;
   box-shadow:
     0 0 15px 5px rgba(255, 255, 255, 0.32),
     0 0 35px 12px rgba(255, 255, 255, 0.16),
     0 0 60px 20px rgba(255, 255, 255, 0.08),
     0 0 80px 30px rgba(168, 85, 247, 0.13);
-  transition:
-    width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
-    height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
-    top 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
-    left 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
-    opacity 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease;
+  transition: opacity 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 /* Orange mode */

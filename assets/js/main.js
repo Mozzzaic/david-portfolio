@@ -925,13 +925,14 @@ function initParticles() {
             enable: true,
             mode: "grab",
           },
+          onClick: { enable: false },
           resize: true,
         },
         modes: {
           grab: {
-            distance: 140,
+            distance: 180,
             links: {
-              opacity: 0.8,
+              opacity: 0.5,
             },
           },
         },
@@ -940,41 +941,40 @@ function initParticles() {
     })
     .then((container) => {
       particlesInstance = container;
-
-      // Sync particles mouse tracking to follow the cursor ball
-      function syncParticlesToBall() {
-        if (particlesInstance?.interactivity?.mouse && window.customCursorPos) {
-          particlesInstance.interactivity.mouse.position = {
-            x: window.customCursorPos.x * window.devicePixelRatio,
-            y: window.customCursorPos.y * window.devicePixelRatio
-          };
-          particlesInstance.interactivity.mouse.isInside = true;
-        }
-        requestAnimationFrame(syncParticlesToBall);
-      }
-      syncParticlesToBall();
+      window.particlesInstance = container;
     });
 }
 
 function updateParticlesTheme(theme) {
-  // Toggle starfield for dark mode only
+  // Handle starfield toggle for dark mode only
   if (theme === "dark") {
-    window.starfield?.start();
+    // Start starfield in dark mode
+    if (window.starfield) {
+      window.starfield.start();
+    }
   } else {
-    window.starfield?.stop();
+    // Stop starfield in light/orange mode
+    if (window.starfield) {
+      window.starfield.stop();
+    }
   }
 
+  // Update tsParticles colors smoothly without resetting positions
   if (!particlesInstance) return;
 
-  // Set color based on theme
-  const newColor = theme === "orange" ? "#581C87" : "#8B5CF6";
+  let newColor;
+  if (theme === "orange") {
+    newColor = "#581C87";
+  } else {
+    newColor = "#8B5CF6";
+  }
 
-  // Update existing particles
+  // Update each particle's color directly (no position reset)
   particlesInstance.particles.forEach((particle) => {
     particle.color.value = newColor;
   });
 
-  // Update options for new particles
+  // Update link color in options for new connections
   particlesInstance.options.particles.links.color = newColor;
   particlesInstance.options.particles.color.value = newColor;
 }
